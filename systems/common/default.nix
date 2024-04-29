@@ -229,8 +229,14 @@
 
   security.polkit.enable = true;
 
-  nix.settings.trusted-substituters = [ "https://ai.cachix.org" ];
-  nix.settings.trusted-public-keys = [ "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc=" ];
+  nix.settings = {
+    trusted-substituters = [
+      "https://ai.cachix.org"
+    ];
+    trusted-public-keys = [
+      "ai.cachix.org-1:N9dzRK+alWwoKXQlnn0H6aUx0lU/mspIoz8hMvGvbbc="
+    ];
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
