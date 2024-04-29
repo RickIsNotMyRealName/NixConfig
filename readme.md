@@ -1,0 +1,77 @@
+# My NixOS configuration
+
+## Todo
+
+- Waybar
+  - Add highest cpu using processes on tooltip
+- wpgtk
+  - Look into using it for theming gtk apps with pywal
+- Zsh
+  - Add plugins?
+  - Fix the autocompletion
+- Hyprland
+  - Setup a better theme
+    - Setup resize mode for windows
+    - Add lockscreen
+      - Theme it
+- home-manager
+  - Migrate zsh config
+  - Make an alacritty config
+- Setup fonts
+- Chrome
+  - Find a way to automatically enable the following:
+    - `chrome://flags/#enable-force-dark`
+    - `chrome://flags/#ozone-platform-hint`
+- Thunar
+  - Make it work with pywal to change colors
+- Wofi
+  - Fix selected text color to be more visible
+- Create a control center of sorts
+  - Basic bluetooth settings
+  - Media controls
+  - Volume controls
+  - Brightness controls
+  - Basic network settings
+  - System Information
+    - CPU
+      - Temp
+      - Usage
+      - Frequency
+    - RAM
+      - Usage
+    - Disk
+    - Battery
+  - Power settings
+    - Shutdown
+    - Restart
+    - Sleep
+    - Hibernate
+    - Lock
+  - Etc
+- GPT4VTool.sh
+  - Add more actions
+    - Save to a file
+    - Open in a text editor
+    - Add to log file
+    - Proper commands
+- OpenRGP
+  - Install it
+- sops-nix
+- [spicetify](https://github.com/the-argus/spicetify-nix)
+  - Configure something so i can have full screened lyrics
+  - Configure something so i can have a mini player
+- lf
+  - I dont know what i will all need to do to make this viable. More research needed.
+  - Add default file types to open with certain programs
+  - Add the `enter` key to open files?
+- lm-studio
+- open-webui
+  - Find way to automatically create ~/open-webui otherwise starting the service will fail
+- cachix
+  - https://wiki.hyprland.org/0.19.2beta/Nix/#cachix
+
+## Useful commands
+
+- `nix-shell -p ncdu --run 'ncdu ./'`: Check disk usage of the current directory
+- `nix-shell -p htop --run 'htop'`: Check system usage
+- `nix-store --add-fixed sha256 ./CiscoPacketTracer822_amd64_signed.deb`: Adds `cisco packet tracer` deb to the nix store
