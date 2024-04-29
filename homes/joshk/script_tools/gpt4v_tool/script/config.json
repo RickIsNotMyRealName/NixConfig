@@ -1,0 +1,110 @@
+{
+    "prompts": [
+        {
+            "userPrompt": "Notify, Clip: What is the correct answer?",
+            "prompt": "What is the correct answer? Keep your response as short as possible. If the question is a multiple choice question, provide all correct answers in a comma separated list.",
+            "actions": [
+                {
+                    "type": "showInNotification"
+                },
+                {
+                    "type": "copyToClipboard"
+                },
+                {
+                    "type": "pipeTo_tempedit"
+                }
+            ]
+        },
+        {
+            "userPrompt": "Notify, Clip: What is in this image? Keep your response as short as possible.",
+            "prompt": "What is in this image? Keep your response as short as possible.",
+            "actions": [
+                {
+                    "type": "showInNotification"
+                },
+                {
+                    "type": "copyToClipboard"
+                },
+                {
+                    "type": "pipeTo_tempedit"
+                }
+            ]
+        },
+        {
+            "userPrompt": "Notify, Clip: What is the main idea of this text? Keep your response as short as possible.",
+            "prompt": "What is the main idea of this text? Keep your response as short as possible.",
+            "actions": [
+                {
+                    "type": "showInNotification"
+                },
+                {
+                    "type": "copyToClipboard"
+                },
+                {
+                    "type": "pipeTo_tempedit"
+                }
+            ]
+        },
+        {
+            "userPrompt": "Notify, Clip: What does the image say. You are too read it out word for word without any mistakes, deviations or additions.",
+            "prompt": "You are doing some OCR. What does the image say. You are too read it out word for word without any mistakes, deviations or additions. You should not add any of your own text to the response. Do not even wrap the text in quotes or put it in a code block.",
+            "actions": [
+                {
+                    "type": "showInNotification"
+                },
+                {
+                    "type": "copyToClipboard"
+                },
+                {
+                    "type": "pipeTo_tempedit"
+                }
+            ]
+        },
+        {
+            "userPrompt": "Execute: Run a custom script.",
+            "prompt": "What is the output of the script?",
+            "actions": [
+                {
+                    "type": "runCommand",
+                    "command": "/path/to/script.sh",
+                    "arguments": [
+                        "arg1",
+                        "arg2"
+                    ]
+                }
+            ]
+        },
+        {
+            "userPrompt": "CUSTOM_PROMPT",
+            "actions": [
+                {
+                    "type": "showInNotification"
+                },
+                {
+                    "type": "copyToClipboard"
+                }
+            ]
+        }
+    ],
+    "settings": {
+        "showErrorNotifications": true,
+        "showSuccessNotifications": true,
+        "showInfoNotifications": true,
+        "screenshotToolPath": "grim",
+        "screenshotToolArguments": [
+            "-g"
+        ],
+        "screenshotSavePath": "~/Pictures/Screenshots",
+        "notificationSettings": {
+            "position": "top-right",
+            "duration": 5000,
+            "maxNotifications": 3
+        },
+        "actions": {
+            "showInNotification": {},
+            "copyToClipboard": {},
+            "pipeTo_tempedit": {}
+        }
+    },
+    "apiKeyPath": "/run/secrets/GPTV4ToolAPIKey"
+}
