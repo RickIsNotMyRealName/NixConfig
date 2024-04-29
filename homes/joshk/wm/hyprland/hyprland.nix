@@ -35,6 +35,7 @@
     enable = true;
     settings = import ./hyprland-conf.nix { config = config; };
     # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    xwayland.enable = true;
   };
 
 
