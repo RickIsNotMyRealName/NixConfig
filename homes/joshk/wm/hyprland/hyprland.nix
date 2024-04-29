@@ -34,7 +34,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = import ./hyprland-conf.nix { config = config; };
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    # package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
 
