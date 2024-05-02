@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, outputs, ... }:
 {
 
   imports = [
@@ -39,7 +39,7 @@
     ## Spicetify
     ./spicetify/spicetify.nix # not working
 
-  ];
+  ] ++ (builtins.attrValues outputs.homeModules);
 
   home = {
     username = "joshk";
