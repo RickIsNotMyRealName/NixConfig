@@ -39,6 +39,8 @@
     ## Spicetify
     ./spicetify/spicetify.nix # not working
 
+    ./psi-notify/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules);
 
   home = {
