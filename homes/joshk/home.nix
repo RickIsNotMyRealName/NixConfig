@@ -56,7 +56,6 @@
       bibletime
       kcalc
       protonvpn-gui
-      ciscoPacketTracer8
       neofetch
       nwg-wrapper
       git
