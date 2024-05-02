@@ -56,14 +56,6 @@
             "Laptop"
           ];
         };
-        "SchoolStuff" = {
-          id = "SchoolStuff";
-          path = "/home/joshk/Desktop/SyncStuff/SchoolStuff";
-          devices = [
-            "Phone"
-            "Laptop"
-          ];
-        };
         "NixOSConfig" = {
           path = "/home/joshk/NixConfig";
           devices = [
