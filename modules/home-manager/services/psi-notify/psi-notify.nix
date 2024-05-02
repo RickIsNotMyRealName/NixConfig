@@ -61,22 +61,23 @@
 }:
 let
   cfg = config.services.psi-notify;
-  # Custom function to handle nested attributes
-  # Custom function to handle nested attributes and format them correctly
+
   customToKeyValue = attrs:
     let
-      renderValue = value: 
+      renderValue = value:
         if lib.isAttrs value then
           lib.concatStringsSep "\n" (lib.mapAttrsToList (n: v: "threshold ${n} ${v}") value)
         else
           toString value;
     in
-    lib.concatStringsSep "\n" (lib.mapAttrsToList (name: value:
-      if lib.isAttrs value then
-        renderValue value  # Handle nested attributes without prefixing
-      else
-        "${name} ${renderValue value}"  # Normal attributes
-    ) attrs);
+    lib.concatStringsSep "\n" (lib.mapAttrsToList
+      (name: value:
+        if lib.isAttrs value then
+          renderValue value 
+        else
+          "${name} ${renderValue value}"
+      )
+      attrs);
 
   toConfig = attrs: ''
     ${customToKeyValue attrs}
@@ -108,9 +109,33 @@ in
 
     xdg.configFile = lib.mkMerge [
       (lib.mkIf (cfg.settings != { }) {
-        "psi-notify".text = toConfig cfg.settings;
+        "psi-notify" = {
+          text = toConfig cfg.settings;
+          onChange = ''
+            systemctl --user restart psi-notify.service
+          '';
+        };
       })
     ];
 
+
+    systemd.user.services."psi-notify" = {
+      Unit = {
+        Description = "Notify on system-wide resource pressure using PSI";
+        Documentation = [ "man:psi-notify(1)" ];
+        PartOf = [ "graphical-session.target" ];
+      };
+      Service = {
+        ExecStart = "${cfg.package}/bin/psi-notify";
+        ExecReload = "${pkgs.coreutils}/bin/kill -HUP $MAINPID";
+        Type = "notify";
+        Restart = "always";
+        Slice = "background.slice";
+        WatchdogSec = "2s";
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
   };
 }
