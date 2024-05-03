@@ -38,6 +38,10 @@
     };
   };
 
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+  users.users.joshk.extraGroups = [ "libvirt" "libvirtd" "kvm" ];
+
 
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.

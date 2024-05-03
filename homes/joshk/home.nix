@@ -41,6 +41,7 @@
 
     ./psi-notify/default.nix
 
+    ./virt/default.nix
 
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
