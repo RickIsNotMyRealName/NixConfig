@@ -184,7 +184,7 @@
 
   bind = SUPER, E, exec, [workspace 2 silent;float;noanim] kitty
 */
-{ config, ... }:
+{ config, pkgs, ... }:
 {
   source = "$HOME/.cache/wal/colors-hyprland.conf";
 
@@ -418,6 +418,7 @@
   exec-once = [
     ".config/hypr/scripts/launch.sh"
     # ".config/hypr/scripts/reload.sh"
+    "exec ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
     "[workspace 9 silent] google-chrome-stable --app=https://messages.google.com/web"
     "[workspace 0 silent] google-chrome-stable --app=https://calendar.google.com"
     "[workspace 8 silent] spotify"

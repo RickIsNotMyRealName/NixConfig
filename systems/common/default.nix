@@ -132,6 +132,7 @@
     # sunshine
     # moonlight-qt
     # kdePackages.polkit-kde-agent-1 # FIXME install a polkit agent
+    polkit-kde-agent
     scrcpy
 
     # Archiving
