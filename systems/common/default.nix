@@ -145,7 +145,6 @@
     depotdownloader
 
     sops
-    firefox
 
     wayvnc
     remmina
