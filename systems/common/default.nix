@@ -5,7 +5,8 @@
     ./modules/hyprland.nix
     ./modules/sops.nix
 
-  ] ++ (builtins.attrValues outputs.nixosModules);
+  ] ++ (builtins.attrValues outputs.nixosModules)
+  ++ (builtins.attrValues inputs.NixVirt.nixosModules);
 
   nix = {
     package = pkgs.nixFlakes;
