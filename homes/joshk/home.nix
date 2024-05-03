@@ -66,7 +66,7 @@
       lf
       feh
       libnotify
-      gpt4all
+      # gpt4all # FIXME decide if i want this installed or not.
     ];
 
     sessionVariables = {

@@ -4,7 +4,8 @@
     # System hyprland
     ./modules/hyprland.nix
     ./modules/sops.nix
-  ];
+
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
   nix = {
     package = pkgs.nixFlakes;
@@ -15,7 +16,9 @@
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfree = true;
-      permittedInsecurePackages = [ ];
+      permittedInsecurePackages = [
+        "electron-25.9.0"
+      ];
     };
   };
 
@@ -127,7 +130,7 @@
     playerctl
     # sunshine
     # moonlight-qt
-    kdePackages.polkit-kde-agent-1
+    # kdePackages.polkit-kde-agent-1 # FIXME install a polkit agent
     scrcpy
 
     # Archiving
@@ -138,7 +141,7 @@
 
     vlc
 
-    protonmail-desktop
+    unstable.protonmail-desktop # FIXME when its in nixpkgs remove the unstable
 
     gparted
 
@@ -156,15 +159,16 @@
 
   programs.nh = {
     enable = true;
+    package = pkgs.unstable.nh;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/joshk/NixConfig";
   };
 
-  services.sunshine = {
-    enable = true;
-    # autoStart = true;
-  };
+  # services.sunshine = {
+  #   enable = true;
+  #   # autoStart = true;
+  # };
 
 
   services.zerotierone = {
@@ -220,7 +224,7 @@
     };
   };
 
-  services.displayManager.sddm = {
+  services.xserver.displayManager.sddm = {
     enable = true;
     theme = "chili";
     settings = { };
