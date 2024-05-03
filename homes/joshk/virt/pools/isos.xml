@@ -1,0 +1,7 @@
+<pool type="dir">
+  <name>ISOs</name>
+  <uuid>d81e044f-0fbf-40a3-b12f-7f9dfd4e3a32</uuid>
+  <target>
+    <path>/mnt/SSDData/ISOs/</path>
+  </target>
+</pool>

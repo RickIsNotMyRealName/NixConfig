@@ -1,0 +1,7 @@
+<pool type="dir">
+  <name>Images</name>
+  <uuid>b40959e1-4500-4280-9cf8-f0fae5a7059d</uuid>
+  <target>
+    <path>/mnt/SSDData/Images/</path>
+  </target>
+</pool>
