@@ -10,7 +10,7 @@
       backend = "podman";
       containers = {
         "open-webui" = {
-          autoStart = true;
+          autoStart = false;
           image = "ghcr.io/open-webui/open-webui";
           ports = [ "3000:8080" ];
           # TODO figure out how to create the data directory declaratively
