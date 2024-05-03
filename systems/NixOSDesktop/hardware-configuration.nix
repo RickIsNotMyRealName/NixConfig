@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
@@ -14,18 +15,29 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/8ee6754e-fef8-4e3e-aff3-a1d80c71a84c";
+    {
+      device = "/dev/disk/by-uuid/8ee6754e-fef8-4e3e-aff3-a1d80c71a84c";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B733-8EB0";
+    {
+      device = "/dev/disk/by-uuid/B733-8EB0";
       fsType = "vfat";
+    };
+  fileSystems."/mnt/SSDData" =
+    {
+      device = "/dev/disk/by-uuid/048e986e-7d20-4747-80d0-fd6fffd2f8c8";
+      fsType = "ext4";
+      options = [
+        "nofail" # Prevent system from failing if this drive doesn't mount
+        "rw" # Mount the drive as read-write
+        "discard" # Enable TRIM support
+      ];
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/9afa99a8-dd5c-4ee6-8f2d-64abd5d0f948"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/9afa99a8-dd5c-4ee6-8f2d-64abd5d0f948"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
