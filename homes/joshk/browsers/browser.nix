@@ -2,6 +2,6 @@
 {
   imports = [
     ./chrome/chrome.nix
-    # ./firefox/firefox.nix
+    ./firefox/firefox.nix
   ];
 }

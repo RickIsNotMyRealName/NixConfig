@@ -27,6 +27,10 @@
     nixos-hardware = {
       url = "github:NixOS/nixos-hardware/master";
     };
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, sops-nix, spicetify-nix, ... }@inputs:
