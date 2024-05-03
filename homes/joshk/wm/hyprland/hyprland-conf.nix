@@ -207,7 +207,7 @@
     "no_border_on_floating" = "true";
     "gaps_in" = "5";
     "gaps_out" = "10";
-    "gaps_workspaces" = "30";
+    # "gaps_workspaces" = "30";
     "col.inactive_border" = "$color0";
     "col.active_border" = "$foreground";
     "col.nogroup_border" = "$color13";
@@ -260,8 +260,8 @@
       "vibrancy" = "0.1696";
       "vibrancy_darkness" = "0.0";
       "special" = "false";
-      "popups" = "false";
-      "popups_ignorealpha" = "0.2";
+      # "popups" = "false";
+      # "popups_ignorealpha" = "0.2";
     };
   };
 
