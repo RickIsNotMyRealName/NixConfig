@@ -7,6 +7,7 @@
 
   programs.vscode = {
     enable = true;
+    package = pkgs.unstable.vscode;
     enableExtensionUpdateCheck = true;
     enableUpdateCheck = true;
     mutableExtensionsDir = false;
