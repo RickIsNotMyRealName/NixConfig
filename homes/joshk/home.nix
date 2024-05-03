@@ -41,7 +41,9 @@
 
     ./psi-notify/default.nix
 
-  ] ++ (builtins.attrValues outputs.homeModules);
+
+  ] ++ (builtins.attrValues outputs.homeModules)
+  ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
   home = {
     username = "joshk";
