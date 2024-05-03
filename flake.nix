@@ -34,9 +34,13 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    NixVirt = {
+      url = "https://flakehub.com/f/AshleyYakeley/NixVirt/*.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, spicetify-nix, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, sops-nix, spicetify-nix, NixVirt, ... }@inputs:
     let
       inherit (self) outputs;
 
