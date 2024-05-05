@@ -1,7 +1,7 @@
 <volume>
   <name>win10.img</name>
-  <capacity>107374182400</capacity>
-  <allocation>107374182400</allocation>
+  <capacity>128849018880</capacity>
+  <allocation>128849018880</allocation>
   <target>
     <format type="raw"/>
   </target>
