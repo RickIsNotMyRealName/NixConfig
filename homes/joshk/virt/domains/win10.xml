@@ -6,16 +6,48 @@
       <libosinfo:os id="http://microsoft.com/win/10"/>
     </libosinfo:libosinfo>
   </metadata>
-  <memory unit="KiB">4194304</memory>
-  <currentMemory unit="KiB">4194304</currentMemory>
+  <memory unit="KiB">12582912</memory>
+  <currentMemory unit="KiB">12582912</currentMemory>
   <vcpu placement="static">8</vcpu>
   <os>
     <type arch="x86_64" machine="pc-q35-8.1">hvm</type>
     <loader readonly="yes" type="pflash">/run/libvirt/nix-ovmf/OVMF_CODE.fd</loader>
     <nvram template="/run/libvirt/nix-ovmf/OVMF_VARS.fd">/var/lib/libvirt/qemu/nvram/win10_VARS.fd</nvram>
     <boot dev="hd"/>
+    <smbios mode="sysinfo"/>
   </os>
+  <sysinfo type="smbios">
+    <bios>
+      <entry name="vendor">American Megatrends Inc.</entry>
+      <entry name="version">1101</entry>
+      <entry name="date">01/15/2021</entry>
+    </bios>
+    <system>
+      <entry name="manufacturer">ASUS</entry>
+      <entry name="serial">453820667575276</entry>
+      <entry name="uuid">16997003-2d0b-4271-b93a-d9f126f67161</entry>
+    </system>
+    <baseBoard>
+      <entry name="manufacturer">ASUSTeK COMPUTER INC.</entry>
+      <entry name="product">TUF GAMING B460M-PLUS (WI-FI)</entry>
+      <entry name="version">Rev 1.xx</entry>
+      <entry name="serial">453820667575276</entry>
+    </baseBoard>
+  </sysinfo>
   <features>
+    <hyperv mode="passthrough">
+      <relaxed state="on"/>
+      <vapic state="on"/>
+      <spinlocks state="on" retries="8191"/>
+      <vendor_id state="on" value="0123766792AD"/>
+      <vpindex state='on'/>
+      <synic state='on'/>
+      <stimer state='on'/>
+      <reset state='on'/>
+    </hyperv>
+    <kvm>
+      <hidden state="on"/>
+    </kvm>
     <acpi/>
     <apic/>
     <hyperv mode="custom">
@@ -25,7 +57,9 @@
     </hyperv>
     <vmport state="off"/>
   </features>
-  <cpu mode="host-passthrough" check="none" migratable="on"/>
+  <cpu mode="host-passthrough" check="none" migratable="off">
+    <topology sockets="1" dies="1" cores="4" threads="2"/>
+  </cpu>
   <clock offset="localtime">
     <timer name="rtc" tickpolicy="catchup"/>
     <timer name="pit" tickpolicy="delay"/>
@@ -40,20 +74,24 @@
     <suspend-to-disk enabled="no"/>
   </pm>
   <devices>
-    <emulator>/run/libvirt/nix-emulators/qemu-system-x86_64</emulator>
+    <emulator>/run/libvirt/nix-emulators/qemu-kvm</emulator>
+    <input type='evdev'>
+      <source dev='/dev/input/by-id/usb-Logitech_G502_HERO_Gaming_Mouse_0B84394E3733-event-mouse' />
+    </input>
+    <input type='evdev'>
+      <source dev='/dev/input/by-id/usb-Razer_Razer_Cynosa_Chroma-event-kbd' grab='all' repeat='on' grabToggle='ctrl-ctrl'/>
+    </input>
     <disk type="file" device="disk">
-      <driver name="qemu" type="raw"/>
+      <driver name="qemu" type="raw" cache="none" discard="unmap"/>
       <source file="/mnt/SSDData/Images/win10.img"/>
-      <target dev="sda" bus="sata"/>
+      <target dev="vda" bus="virtio"/>
       <serial>sdf092fmos98h0jojs</serial>
-      <address type="drive" controller="0" bus="0" target="0" unit="0"/>
     </disk>
     <disk type="file" device="cdrom">
       <driver name="qemu" type="raw"/>
-      <source file="/mnt/SSDData/ISOs/Win10_22H2_English_x64v1.iso"/>
+      <source file="/mnt/SSDData/ISOs/virtio-win-0.1.248.iso"/>
       <target dev="sdb" bus="sata"/>
       <readonly/>
-      <address type="drive" controller="0" bus="0" target="0" unit="1"/>
     </disk>
     <controller type="usb" index="0" model="qemu-xhci" ports="15">
       <address type="pci" domain="0x0000" bus="0x02" slot="0x00" function="0x0"/>
@@ -138,7 +176,7 @@
     <interface type="network">
       <mac address="42:bc:1c:e9:ef:93"/>
       <source network="default"/>
-      <model type="e1000e"/>
+      <model type="virtio"/>
       <address type="pci" domain="0x0000" bus="0x01" slot="0x00" function="0x0"/>
     </interface>
     <serial type="pty">
@@ -162,14 +200,22 @@
       <listen type="address"/>
       <image compression="off"/>
     </graphics>
-    <sound model="ich9">
-      <address type="pci" domain="0x0000" bus="0x00" slot="0x1b" function="0x0"/>
-    </sound>
     <audio id="1" type="spice"/>
     <video>
-      <model type="vga" vram="16384" heads="1" primary="yes"/>
-      <address type="pci" domain="0x0000" bus="0x00" slot="0x01" function="0x0"/>
+      <model type="none"/>
     </video>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x04" slot="0x00" function="0x0"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x05" slot="0x00" function="0x0"/>
+    </hostdev>
+    <hostdev mode="subsystem" type="pci" managed="yes">
+      <source>
+        <address domain="0x0000" bus="0x04" slot="0x00" function="0x1"/>
+      </source>
+      <address type="pci" domain="0x0000" bus="0x06" slot="0x00" function="0x0"/>
+    </hostdev>
     <redirdev bus="usb" type="spicevmc">
       <address type="usb" bus="0" port="2"/>
     </redirdev>
