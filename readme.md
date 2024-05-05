@@ -65,6 +65,13 @@
   - Find way to automatically create ~/open-webui otherwise starting the service will fail
 - cachix
   - https://wiki.hyprland.org/0.19.2beta/Nix/#cachix
+- Virtualization
+  - https://angrysysadmins.tech/index.php/2022/07/grassyloki/vfio-tuning-your-windows-gaming-vm-for-optimal-performance/
+  - https://mathiashueber.com/performance-tweaks-gaming-on-virtual-machines/
+  - https://leduccc.medium.com/improving-the-performance-of-a-windows-10-guest-on-qemu-a5b3f54d9cf5
+  - vfio-isolate
+    - vfio-isolate is a crazy good project for mapping interrupts and host CPU prioritizes to other CPUs. This is important because host interrupts and CPU usage will cause high latency, stutters, or even crashing in the VM.
+  - 
 
 ## Useful commands
 
