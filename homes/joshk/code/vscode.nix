@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   # allow unfree
   nixpkgs.config = {
@@ -11,7 +11,7 @@
     enableExtensionUpdateCheck = true;
     enableUpdateCheck = true;
     mutableExtensionsDir = false;
-    extensions = import ./vscode-extensions.nix { pkgs = pkgs; };
+    extensions = import ./vscode-extensions.nix { pkgs = pkgs; lib = lib; };
     userSettings = import ./vscode-settings.nix;
 
   };

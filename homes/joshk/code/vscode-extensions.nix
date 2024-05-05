@@ -1,4 +1,4 @@
-{ pkgs }:
+{ pkgs, lib, ... }:
 with pkgs.vscode-extensions; [
   ms-vscode.cpptools
   jnoortheen.nix-ide
@@ -101,6 +101,20 @@ with pkgs.vscode-extensions; [
     publisher = "moshfeu";
     version = "0.24.3";
     sha256 = "sha256-eaumF2BIqEYoyL7LQ0Wx3+gkkFGpWKQoN3AisI8wTQY=";
+  }
+  # redhat.vscode-xml
+  {
+    name = "vscode-xml";
+    publisher = "redhat";
+    version = "0.26.1";
+    sha256 = "sha256-d9QZFf1DtcglvmCcspMiiKgfT6hHOyzqO1uq7DCGCZw=";
+  }
+  # DotJoshJohnson.xml
+  {
+    name = "xml";
+    publisher = "DotJoshJohnson";
+    version = "2.5.0";
+    sha256 = "sha256-ivG20stdIUWSumoqQFlWFqZxEdVs6wWz4Xo47F5vLro=";
   }
 
 ]
