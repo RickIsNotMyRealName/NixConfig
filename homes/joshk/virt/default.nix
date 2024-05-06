@@ -7,7 +7,7 @@
       domains = [
         {
           definition = ./domains/win10.xml;
-          active = true;
+          active = false;
         }
       ];
       networks = [
