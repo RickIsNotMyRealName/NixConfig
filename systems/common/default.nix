@@ -180,6 +180,11 @@
     ];
   };
 
+  services.ratbagd = {
+    enable = true;
+    # package = pkgs.libratbag;
+  };
+
 
   fonts.packages = with pkgs; [
     noto-fonts
