@@ -25,16 +25,16 @@
       device = "/dev/disk/by-uuid/B733-8EB0";
       fsType = "vfat";
     };
-  fileSystems."/mnt/SSDData" =
-    {
-      device = "/dev/disk/by-uuid/048e986e-7d20-4747-80d0-fd6fffd2f8c8";
-      fsType = "ext4";
-      options = [
-        "nofail" # Prevent system from failing if this drive doesn't mount
-        "rw" # Mount the drive as read-write
-        "discard" # Enable TRIM support
-      ];
-    };
+  # fileSystems."/mnt/SSDData" =
+  #   {
+  #     device = "/dev/disk/by-uuid/048e986e-7d20-4747-80d0-fd6fffd2f8c8";
+  #     fsType = "ext4";
+  #     options = [
+  #       "nofail" # Prevent system from failing if this drive doesn't mount
+  #       "rw" # Mount the drive as read-write
+  #       "discard" # Enable TRIM support
+  #     ];
+  #   };
 
   swapDevices =
     [{ device = "/dev/disk/by-uuid/9afa99a8-dd5c-4ee6-8f2d-64abd5d0f948"; }];
