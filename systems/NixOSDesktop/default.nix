@@ -39,6 +39,7 @@ in
     unstable.lutris
     unstable.winetricks
     unstable.wine
+    unstable.protonup
   ];
 
   services.ollama = {
