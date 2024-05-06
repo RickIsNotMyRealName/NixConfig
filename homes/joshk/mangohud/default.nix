@@ -5,7 +5,7 @@
 {
   programs.mangohud = {
     enable = true;
-    enableSessionWide = true;
+    enableSessionWide = false;
     settings = import ./config.nix;
     settingsPerApplication = {
       # "steam" = ./steam.nix; # FIXME ? is this right idk

@@ -53,7 +53,7 @@
   # preset=-1
 
   ### Enable most of the toggleable parameters (currently excludes `histogram`)
-  full = true;
+  # full = true;
 
   ### Show FPS only. ***Not meant to be used with other display params***
   # fps_only
