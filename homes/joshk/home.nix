@@ -41,7 +41,7 @@
 
     ./psi-notify/default.nix
 
-    ./virt/default.nix
+    # ./virt/default.nix
 
     ./mangohud/default.nix
 
