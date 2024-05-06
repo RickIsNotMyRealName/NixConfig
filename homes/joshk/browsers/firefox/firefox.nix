@@ -25,6 +25,10 @@ in
             "label" = "ChatGPT";
             "url" = "https://chat.openai.com/";
           }
+          {
+            "label" = "MyNixOS";
+            "url" = "https://mynixos.com/";
+          }
         ];
       };
     };
