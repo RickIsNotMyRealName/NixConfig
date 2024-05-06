@@ -35,6 +35,8 @@ in
   environment.systemPackages = with pkgs; [
     # AI
     lm-studio
+
+    lutris
   ];
 
   services.ollama = {
