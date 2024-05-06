@@ -43,6 +43,8 @@
 
     ./virt/default.nix
 
+    ./mangohud/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
