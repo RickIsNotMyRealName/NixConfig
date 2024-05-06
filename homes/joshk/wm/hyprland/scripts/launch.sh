@@ -6,4 +6,4 @@
 # Change the wallpaper
 ~/.config/hypr/scripts/changeWallpaper.sh
 
-hyprctl output create headless
+# hyprctl output create headless
