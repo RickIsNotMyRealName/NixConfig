@@ -71,7 +71,8 @@
   - https://leduccc.medium.com/improving-the-performance-of-a-windows-10-guest-on-qemu-a5b3f54d9cf5
   - vfio-isolate
     - vfio-isolate is a crazy good project for mapping interrupts and host CPU prioritizes to other CPUs. This is important because host interrupts and CPU usage will cause high latency, stutters, or even crashing in the VM.
-  - 
+- Gamemode
+  - Look into using gamemode for better performance
 
 ## Useful commands
 
