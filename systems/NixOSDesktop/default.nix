@@ -36,7 +36,9 @@ in
     # AI
     lm-studio
 
-    lutris
+    unstable.lutris
+    unstable.winetricks
+    unstable.wine
   ];
 
   services.ollama = {
