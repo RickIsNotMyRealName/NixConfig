@@ -293,6 +293,7 @@
     touchpad = {
       natural_scroll = "false";
     };
+    accel_profile = "flat";
   };
 
   /*
