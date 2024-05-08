@@ -80,10 +80,12 @@ in
       ovmf = {
         enable = true;
         packages = [
-          ((pkgs.OVMFFull.override {
-            secureBoot = true;
-            tpmSupport = true;
-          }).fd)
+          (
+            (pkgs.OVMFFull.override {
+              secureBoot = true;
+              tpmSupport = true;
+            }).fd
+          )
         ];
       };
     };
