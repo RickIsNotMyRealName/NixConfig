@@ -22,13 +22,31 @@ in
 
   programs.steam = {
     enable = true;
+    gamescopeSession.enable = true;
   };
+  programs.gamescope.enable = true;
 
   virtualisation.waydroid.enable = true;
 
   nixpkgs = {
     config = {
       cudaSupport = true;
+      packageOverrides = pkgs: {
+        steam = pkgs.steam.override {
+          extraPkgs = pkgs: with pkgs; [
+            xorg.libXcursor
+            xorg.libXi
+            xorg.libXinerama
+            xorg.libXScrnSaver
+            libpng
+            libpulseaudio
+            libvorbis
+            stdenv.cc.cc.lib
+            libkrb5
+            keyutils
+          ];
+        };
+      };
     };
   };
 
@@ -40,6 +58,8 @@ in
     unstable.winetricks
     unstable.wine
     unstable.protonup
+
+    unstable.gamescope
   ];
 
   services.ollama = {
@@ -86,7 +106,7 @@ in
   ];
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.
-  # services.xserver.enable = true;
-  # services.xserver.displayManager.sddm.enable = true;
-  # services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.enable = true;
+  services.xserver.desktopManager.plasma5.enable = true;
+  #services.xserver.displayManager.sddm.enable = true;
 }
