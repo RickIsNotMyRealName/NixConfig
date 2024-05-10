@@ -2,7 +2,7 @@
 {
   programs.waybar = {
     enable = true;
-    package = pkgs.waybar;
+    package = pkgs.unstable.waybar;
 
     style = import ./waybar-style.nix {
       config = config;

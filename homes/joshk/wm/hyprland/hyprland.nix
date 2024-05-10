@@ -27,7 +27,6 @@
     slurp
     wl-clipboard
     wdisplays
-    waybar
     swaybg
   ];
 
