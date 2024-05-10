@@ -267,7 +267,7 @@
 
   monitor = [
     # DP-3 Left
-    "DP-3, highrr, 0x0, 1,vrr,1"
+    "DP-3, highrr, 0x0, 1, vrr, 1"
     # HDMI-A-1 Right 
     "HDMI-A-1, highrr, 1920x0, 1"
     "eDP-1, 1920x1080@144, 0x0, 1"
