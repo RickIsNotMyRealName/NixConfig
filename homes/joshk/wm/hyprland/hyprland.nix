@@ -33,7 +33,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = import ./hyprland-conf.nix { config = config; pkgs = pkgs; };
-    package = pkgs.unstable.hyprland;
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     xwayland.enable = true;
   };
 
