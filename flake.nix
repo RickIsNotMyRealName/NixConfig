@@ -47,7 +47,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, sops-nix, spicetify-nix, NixVirt, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, hyprland, sops-nix, spicetify-nix, NixVirt, ... }@inputs:
     let
       inherit (self) outputs;
 
