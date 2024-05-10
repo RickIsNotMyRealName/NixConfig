@@ -220,9 +220,9 @@
     "col.active_border" = "$foreground";
     "col.nogroup_border" = "$color13";
     "col.nogroup_border_active" = "$color10";
-    "cursor_inactive_timeout" = "0";
+    # "cursor_inactive_timeout" = "0";
     "layout" = "master";
-    "no_cursor_warps" = "true";
+    # "no_cursor_warps" = "true";
     "no_focus_fallback" = "true";
     "apply_sens_to_raw" = "false";
     "resize_on_border" = "true";
