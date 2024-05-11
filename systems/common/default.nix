@@ -223,7 +223,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 57621 5900 ];
-      allowedUDPPorts = [ 22 5353 ];
+      allowedUDPPorts = [ 22 5353 37015 37016 37017 37018 37019 37020 ];
     };
     stevenblack = {
       enable = true;
