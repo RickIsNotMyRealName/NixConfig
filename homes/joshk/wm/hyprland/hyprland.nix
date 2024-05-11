@@ -22,12 +22,16 @@
     xdg-utils
     glib
     dracula-theme
-    gnome3.adwaita-icon-theme
+    gnome3.adwaita-icon-theme    
+    wdisplays
+    swaybg
+
+    # Screenshots
     grim
     slurp
     wl-clipboard
-    wdisplays
-    swaybg
+    imagemagick
+    feh # For displaying images 
   ];
 
   wayland.windowManager.hyprland = {
@@ -42,5 +46,6 @@
     ".config/hypr/scripts/reload.sh".source = ./scripts/reload.sh;
     ".config/hypr/scripts/launch.sh".source = ./scripts/launch.sh;
     ".config/hypr/scripts/changeWallpaper.sh".source = ./scripts/changeWallpaper.sh;
+    ".config/hypr/scripts/screenshot.sh".source = ./scripts/screenshot.sh;
   };
 }

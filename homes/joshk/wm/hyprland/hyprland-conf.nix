@@ -372,8 +372,8 @@
     ## To clipboard
     ", Print, exec, grim -g \"$(slurp -w 0)\" - | wl-copy"
 
-    ## To file
-    "$mod, Print, exec, grim -g \"$(slurp -w 0)\" ~/Pictures/Screenshots/$(date +'%Y-%m-%d-%H-%M-%S').png"
+    ## To file, clipboard, and pin to screen
+    "$mod, Print, exec, ~/.config/hypr/scripts/screenshot.sh"
 
     ## Call GPT4VTool
     "$mod, N, exec, GPT4VTool.sh"
