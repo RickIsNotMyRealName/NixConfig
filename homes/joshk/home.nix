@@ -45,6 +45,8 @@
 
     ./mangohud/default.nix
 
+    ./apex-config/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
