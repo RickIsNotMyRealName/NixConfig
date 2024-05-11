@@ -73,6 +73,7 @@
       libnotify
       # gpt4all # FIXME decide if i want this installed or not.
       piper
+      qjackctl
     ];
 
     sessionVariables = {
