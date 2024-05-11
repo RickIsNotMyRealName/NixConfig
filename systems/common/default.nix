@@ -141,7 +141,7 @@
 
     vlc
 
-    unstable.protonmail-desktop # FIXME when its in nixpkgs remove the unstable
+    unstable.protonmail-desktop
 
     gparted
 
