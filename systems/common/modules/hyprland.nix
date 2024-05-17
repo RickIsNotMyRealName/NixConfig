@@ -12,6 +12,7 @@
     NIXOS_OZONE_WL = "1";
     WLR_RENDERER_ALLOW_SOFTWARE = "1";
     WLR_DRM_NO_ATOMIC = "1";
+    XDG_CURRENT_DESKTOP = "Hyprland";
   };
 
   environment.systemPackages = with pkgs; [
