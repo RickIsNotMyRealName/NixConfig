@@ -154,6 +154,16 @@
 
     nvd
     nix-output-monitor
+
+    (flameshot.overrideAttrs (oldAttrs: {
+      src = fetchFromGitHub {
+        owner = "flameshot-org";
+        repo = "flameshot";
+        rev = "master";
+        sha256 = "sha256-tt9Q8HWNIXwmwjY6/8SpJSOCIKJ+P56BYpANykGxfYM=";
+      };
+      cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
+    }))
   ];
 
 

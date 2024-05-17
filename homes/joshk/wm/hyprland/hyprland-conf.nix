@@ -369,7 +369,7 @@
 
     # Screenshots
     ## To clipboard
-    ", Print, exec, grim -g \"$(slurp -w 0)\" - | wl-copy"
+    ", Print, exec, flameshot gui" # grim -g \"$(slurp -w 0)\" - | wl-copy"
 
     ## To file, clipboard, and pin to screen
     "$mod, Print, exec, ~/.config/hypr/scripts/screenshot.sh"
@@ -437,5 +437,6 @@
     "[workspace 9 silent] google-chrome-stable --app=https://chat.openai.com"
     "wayvnc -o DP-3 0.0.0.0"
     "steam -silent %U"
+    "flameshot"
   ];
 }
