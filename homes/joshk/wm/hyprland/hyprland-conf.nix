@@ -417,6 +417,7 @@
   ];
 
   windowrulev2 = [
+    # Make all windows with the title "Picture in picture" float
     "float, title:^(Picture in picture)$"
   ];
 
