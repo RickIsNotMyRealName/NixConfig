@@ -435,7 +435,7 @@
     "[workspace 0 silent] google-chrome-stable --app=https://calendar.google.com"
     "[workspace 8 silent] spotify"
     "[workspace 9 silent] google-chrome-stable --app=https://chat.openai.com"
-    "wayvnc -o HDMI-A-1 0.0.0.0"
+    "wayvnc -o DP-3 0.0.0.0"
     "steam -silent %U"
   ];
 }
