@@ -418,6 +418,8 @@
   windowrulev2 = [
     # Make all windows with the title "Picture in picture" float
     "float, title:^(Picture in picture)$"
+    # Make all windows with the title "flameshot" be fullscreen
+    "fullscreen, title:^(flameshot)$"
   ];
 
   # every reload
