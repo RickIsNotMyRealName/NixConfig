@@ -85,5 +85,7 @@
     "nixpkgs"
     "nixos"
   ];
+
+  "debug.onTaskErrors" = "abort";
 }
 
