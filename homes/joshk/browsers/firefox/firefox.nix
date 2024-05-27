@@ -7,29 +7,66 @@ in
   programs.firefox = {
     enable = true;
     package = pkgs.firefox;
-    profiles.joshk = {
-      extensions = with addons;[
-        ublock-origin
-        proton-pass
-      ];
-      settings = {
-        # Use `about:config` to find the keys and values
-        "signon.rememberSignons" = false;
-        "browser.shell.checkDefaultBrowser" = false;
-        "browser.shell.defaultBrowserCheckCount" = 1;
-        "browser.download.panel.shown" = true;
-        "browser.download.useDownloadDir" = false;
-        "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-        "browser.newtabpage.pinned" = [
-          {
-            "label" = "ChatGPT";
-            "url" = "https://chat.openai.com/";
-          }
-          {
-            "label" = "MyNixOS";
-            "url" = "https://mynixos.com/";
-          }
+    profiles = {
+      joshk = {
+        isDefault = true;
+        id = 0;
+        extensions = with addons;[
+          ublock-origin
+          proton-pass
         ];
+        settings = {
+          # Use `about:config` to find the keys and values
+          "signon.rememberSignons" = false;
+          "browser.shell.checkDefaultBrowser" = false;
+          "browser.shell.defaultBrowserCheckCount" = 1;
+          "browser.download.panel.shown" = true;
+          "browser.download.useDownloadDir" = false;
+          "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+          "browser.newtabpage.pinned" = [
+            {
+              "label" = "ChatGPT";
+              "url" = "https://chat.openai.com/";
+            }
+            {
+              "label" = "MyNixOS";
+              "url" = "https://mynixos.com/";
+            }
+          ];
+
+        };
+      };
+      streaming = {
+        isDefault = false;
+        id = 1;
+        extensions = with addons;[
+          ublock-origin
+          proton-pass
+          h264ify
+          enhanced-h264ify
+          privacy-badger
+          darkreader
+          sponsorblock
+        ];
+
+        settings = {
+          "signon.rememberSignons" = false;
+          "browser.shell.checkDefaultBrowser" = false;
+          "browser.shell.defaultBrowserCheckCount" = 1;
+          "browser.download.panel.shown" = true;
+          "browser.download.useDownloadDir" = false;
+          "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
+          "browser.newtabpage.pinned" = [
+            {
+              "label" = "ChatGPT";
+              "url" = "https://chat.openai.com/";
+            }
+            {
+              "label" = "MyNixOS";
+              "url" = "https://mynixos.com/";
+            }
+          ];
+        };
       };
     };
   };
