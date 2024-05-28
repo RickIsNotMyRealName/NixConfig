@@ -1,3 +1,4 @@
+# https://fictionbecomesfact.com/nixos-ollama-oterm-openwebui
 { config, ... }:
 {
   virtualisation = {
