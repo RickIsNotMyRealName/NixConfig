@@ -64,6 +64,7 @@ in
 
   services.ollama = {
     enable = true;
+    package = pkgs.ollama-minicpm-v2_5;
     acceleration = "cuda";
     environmentVariables = {
       OLLAMA_LLM_LIBRARY = "cuda_v12";
