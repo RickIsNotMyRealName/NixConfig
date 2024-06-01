@@ -77,6 +77,7 @@
       piper
       qjackctl
       gimp
+      heroic
     ];
 
     sessionVariables = {
