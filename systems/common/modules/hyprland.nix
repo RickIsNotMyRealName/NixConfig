@@ -1,9 +1,9 @@
 { pkgs, inputs, ... }:
 {
-
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages.${pkgs.system}.hyprland;
+    portalPackage = inputs.hyprland.packages.${pkgs.system}.xdg-desktop-portal-hyprland;
     xwayland.enable = true;
   };
 
@@ -16,7 +16,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    xdg-desktop-portal-hyprland
+    xdg-desktop-portal
   ];
 
   hardware = {
@@ -30,9 +30,8 @@
   xdg.portal = {
     enable = true;
     extraPortals = with pkgs; [
+      xdg-desktop-portal
       xdg-desktop-portal-gtk
-      # pkgs.xdg-desktop-portal-wlr
-      # pkgs.xdg-desktop-portal-hyprland
     ];
   };
 }
