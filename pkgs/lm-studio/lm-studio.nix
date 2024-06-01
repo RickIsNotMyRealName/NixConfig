@@ -1,11 +1,11 @@
 { lib, fetchurl, appimageTools, ... }:
 let
   pname = "lm-studio";
-  version = "0.2.21";
+  version = "0.2.24";
   name = "${pname}-${version}";
   src = fetchurl {
     url = "https://releases.lmstudio.ai/linux/${version}/beta/LM_Studio-${version}.AppImage";
-    sha256 = "sha256-8d9loC9FvTiGFWjHLPk6srOU8/CU+dVVNVtIZuMpLVw=";
+    sha256 = "sha256-1ahPRRgcYfW9eD04yeF4ft+yLn9+nIPOV5Vkv7rMiT8=";
   };
 
   appimageContents = appimageTools.extractType2 { inherit pname version src; };
