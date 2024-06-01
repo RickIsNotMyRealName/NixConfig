@@ -160,7 +160,7 @@
         owner = "flameshot-org";
         repo = "flameshot";
         rev = "master";
-        sha256 = "sha256-tt9Q8HWNIXwmwjY6/8SpJSOCIKJ+P56BYpANykGxfYM=";
+        sha256 = "sha256-uISujW2Bqv07MpxCj9sbms//cJQJNRI+uJmkUphl1ds=";
       };
       cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
     }))
