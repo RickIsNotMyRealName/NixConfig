@@ -105,7 +105,6 @@ in
     "vfio_pci"
     "vfio"
     "vfio_iommu_type1"
-    "vfio_virqfd"
   ];
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.
