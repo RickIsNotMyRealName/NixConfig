@@ -7,6 +7,6 @@ let
 in
 {
   # example = pkgs.callPackage ./example { };
-  lm-studio = pkgs.callPackage ./lm-studio/lm-studio.nix { };
-  ollama-minicpm-v2_5 = pkgs.callPackage ./ollama-minicpm-v2_5/ollama.nix { buildGo122Module = buildGo122Module; };
+  lm-studio = pkgs.callPackage ./lm-studio/package.nix { };
+  ollama-minicpm-v2_5 = pkgs.callPackage ./ollama-minicpm-v2_5/package.nix { buildGo122Module = buildGo122Module; };
 }
