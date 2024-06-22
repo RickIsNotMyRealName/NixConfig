@@ -2,8 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./wireless.nix
-    ./syncthing.nix
+    ./modules/wireless.nix
+    ./modules/syncthing.nix
   ];
 
 
