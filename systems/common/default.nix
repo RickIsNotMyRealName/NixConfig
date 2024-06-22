@@ -75,10 +75,12 @@
   users.users.joshk = {
     isNormalUser = true;
     description = "Josh Krahn";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "input" "adbusers" ];
     shell = pkgs.zsh;
     initialHashedPassword = "$y$j9T$jArB/OK7dwNWOYmxJ1Lm2/$BGA8dUMUqGp.lavPnys.JVdM.4J/7yeDdzUH4qqVw08"; # password is "test"
   };
+
+  programs.adb.enable = true;
 
   virtualisation.virtualbox = {
     host.enable = true;
