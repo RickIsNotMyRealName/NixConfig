@@ -9,6 +9,8 @@
   # Format code on save
   "editor.formatOnSave" = true;
 
+  "editor.multiCursorModifier" = "ctrlCmd";
+
   # Add font awesome to the font family
   "editor.fontFamily" = "'JetBrains Mono', 'Noto Sans Mono','Space Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'Font Awesome 6 Solid', 'Font Awesome 6 Regular'";
   #"editor.fontFamily" ="'Fira Code', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', 'Font Awesome 6 Solid'";
