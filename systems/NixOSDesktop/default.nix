@@ -53,6 +53,7 @@ in
   environment.systemPackages = with pkgs; [
     # AI
     lm-studio
+    comfyui
 
     unstable.lutris
     unstable.winetricks
