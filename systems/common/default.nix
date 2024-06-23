@@ -35,6 +35,8 @@
   boot.kernelModules = [ "uinput" "v4l2loopback" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
+  ] ++ [
+    pkgs.linuxPackages.v4l2loopback
   ];
 
   boot.extraModprobeConfig = ''
@@ -162,7 +164,7 @@
         owner = "flameshot-org";
         repo = "flameshot";
         rev = "master";
-        sha256 = "sha256-uISujW2Bqv07MpxCj9sbms//cJQJNRI+uJmkUphl1ds=";
+        sha256 = "sha256-Y9RnVxic5mlRIc48wYVQXrvu/s65smtMMVj8HBskHzE=";
       };
       cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
     }))
@@ -233,7 +235,7 @@
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 57621 5900 15151 ];
-      allowedUDPPorts = [ 22 5353 37015 37016 37017 37018 37019 37020 15151];
+      allowedUDPPorts = [ 22 5353 37015 37016 37017 37018 37019 37020 15151 ];
     };
     stevenblack = {
       enable = true;
