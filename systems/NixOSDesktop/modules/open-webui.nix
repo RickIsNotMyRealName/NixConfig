@@ -5,7 +5,7 @@
   ];
 
   services.open-webui = {
-    enable = true;
+    enable = false;
     package = pkgs.unstable.open-webui;
     openFirewall = true;
   };
