@@ -16,6 +16,7 @@ in
     ./modules/syncthing.nix
     ./modules/nvidia.nix
     ./modules/open-webui.nix
+    ./modules/comfyui-container.nix
   ];
 
   networking.hostName = "NixOSDesktop";
@@ -53,7 +54,7 @@ in
   environment.systemPackages = with pkgs; [
     # AI
     lm-studio
-    comfyui
+    # comfyui
 
     unstable.lutris
     unstable.winetricks
