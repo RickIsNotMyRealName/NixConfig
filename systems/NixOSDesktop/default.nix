@@ -21,6 +21,20 @@ in
 
   networking.hostName = "NixOSDesktop";
 
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+        Experimental = true;
+      };
+    };
+  };
+  services.blueman = {
+    enable = true;
+  };
+
   programs.steam = {
     enable = true;
     gamescopeSession.enable = true;
