@@ -86,7 +86,10 @@ in
       OLLAMA_LLM_LIBRARY = "cuda_v12";
       OLLAMA_HOST = "0.0.0.0";
     };
+    listenAddress = "0.0.0.0:11434";
   };
+  # Open port 11434
+  networking.firewall.allowedTCPPorts = [ 11434 ];
 
   virtualisation.libvirtd = {
     enable = true;
