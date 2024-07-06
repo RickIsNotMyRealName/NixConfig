@@ -2,6 +2,12 @@
 { pkgs, inputs, ... }:
 let
   addons = inputs.firefox-addons.packages.${pkgs.system};
+  serversHtmlContent = builtins.readFile ./servers.html;
+
+  # Create function to take in an html string and return a string that can be used in a bookmarklet
+  createBookmarklet = html: "javascript:(function(){ var html = '" + html + "'; var newWindow = window.open(); newWindow.document.write(html); newWindow.document.close(); })();";
+
+
 in
 {
   programs.firefox = {
@@ -33,8 +39,29 @@ in
               "url" = "https://mynixos.com/";
             }
           ];
-
         };
+        bookmarks = [
+          {
+            name = "Servers";
+            toolbar = true;
+            bookmarks = [
+              {
+                url = createBookmarklet serversHtmlContent;
+                name = "Servers";
+              }
+            ];
+          }
+          {
+            name = "PKG Watchlist";
+            toolbar = true;
+            bookmarks = [
+              {
+                name = "comfyui: init by fazo96 · Pull Request #268378 · NixOS/nixpkgs";
+                url = "https://github.com/NixOS/nixpkgs/pull/268378";
+              }
+            ];
+          }
+        ];
       };
       streaming = {
         isDefault = false;
