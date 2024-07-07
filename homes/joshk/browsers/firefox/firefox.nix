@@ -6,8 +6,6 @@ let
 
   # Create function to take in an html string and return a string that can be used in a bookmarklet
   createBookmarklet = html: "javascript:(function(){ var html = '" + html + "'; var newWindow = window.open(); newWindow.document.write(html); newWindow.document.close(); })();";
-
-
 in
 {
   programs.firefox = {
