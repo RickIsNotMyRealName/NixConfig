@@ -172,30 +172,30 @@
       };
       "on-click" = "pavucontrol";
     };
-    "custom/chatgpt" = {
-      "format" = "";
-      "tooltip" = true;
-      "tooltip-format" = "Open ChatGPT";
-      "on-click" = "google-chrome-stable --app=https://chat.openai.com";
-    };
-    "custom/exalidraw" = {
-      "format" = "";
-      "tooltip" = true;
-      "tooltip-format" = "Open Excalidraw";
-      "on-click" = "google-chrome-stable --app=https://excalidraw.com/";
-    };
-    "custom/messages" = {
-      "format" = "";
-      "tooltip" = true;
-      "tooltip-format" = "Open Google Messages";
-      "on-click" = "google-chrome-stable --app=https://messages.google.com/web";
-    };
-    "custom/calendar" = {
-      "format" = "";
-      "tooltip" = true;
-      "tooltip-format" = "Open Google Calendar";
-      "on-click" = "google-chrome-stable --app=https://calendar.google.com";
-    };
+    # "custom/chatgpt" = {
+    #   "format" = "";
+    #   "tooltip" = true;
+    #   "tooltip-format" = "Open ChatGPT";
+    #   "on-click" = "firefox --app=https://chat.openai.com";
+    # };
+    # "custom/exalidraw" = {
+    #   "format" = "";
+    #   "tooltip" = true;
+    #   "tooltip-format" = "Open Excalidraw";
+    #   "on-click" = "firefox --app=https://excalidraw.com/";
+    # };
+    # "custom/messages" = {
+    #   "format" = "";
+    #   "tooltip" = true;
+    #   "tooltip-format" = "Open Google Messages";
+    #   "on-click" = "firefox --app=https://messages.google.com/web";
+    # };
+    # "custom/calendar" = {
+    #   "format" = "";
+    #   "tooltip" = true;
+    #   "tooltip-format" = "Open Google Calendar";
+    #   "on-click" = "firefox --app=https://calendar.google.com";
+    # };
 
     "custom/quit" = {
       "format" = "󰗼";
