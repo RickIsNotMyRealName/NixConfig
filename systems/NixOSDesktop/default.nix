@@ -78,6 +78,7 @@ in
     unstable.protonup
 
     unstable.gamescope
+    unstable.local-ai
   ];
 
   services.ollama = {
