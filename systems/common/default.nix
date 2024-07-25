@@ -159,6 +159,8 @@
     nvd
     nix-output-monitor
 
+    caligula
+
     (flameshot.overrideAttrs (oldAttrs: {
       src = fetchFromGitHub {
         owner = "flameshot-org";
