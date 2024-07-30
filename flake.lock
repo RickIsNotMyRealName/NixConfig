@@ -289,6 +289,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-398141f": {
+      "locked": {
+        "lastModified": 1721227795,
+        "narHash": "sha256-BCe9RJVmB7GFb0BHNd+fjsDX5xCE32ISnsjYVcX37No=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "398141f68ad42a51e664751e72c5972ab8d4cbfd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "398141f68ad42a51e664751e72c5972ab8d4cbfd",
+        "type": "github"
+      }
+    },
     "nixpkgs-ovmf": {
       "locked": {
         "lastModified": 1708984720,
@@ -361,6 +377,7 @@
         "hyprland": "hyprland",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-398141f": "nixpkgs-398141f",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"

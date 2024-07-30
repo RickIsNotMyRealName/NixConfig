@@ -5,8 +5,8 @@
   ];
 
   services.open-webui = {
-    enable = false;
-    package = pkgs.unstable.open-webui;
+    enable = true;
+    package = pkgs.pinned.open-webui;
     openFirewall = true;
   };
 }

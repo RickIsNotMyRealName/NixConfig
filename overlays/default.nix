@@ -21,4 +21,10 @@
       config.allowUnfree = true;
     };
   };
+  pinned-packages = final: _prev: {
+    pinned = import inputs.nixpkgs-398141f {
+      system = final.system;
+      config.allowUnfree = true;
+    };
+  };
 }
