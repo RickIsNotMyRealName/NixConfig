@@ -126,8 +126,15 @@
           usernames = [ "joshk" ];
           extraSpecialArgs = { };
         };
+        NixOSServer = mkNixosSystem {
+          hostname = "NixOSServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+        };
       };
     };
 }
+
+
 
 
