@@ -11,6 +11,9 @@ let
 in
 {
   # example = pkgs.callPackage ./example { };
+  imports = [
+    ./python-packages/default.nix
+  ];
 
   lm-studio = pkgs.callPackage ./lm-studio/package.nix { };
 

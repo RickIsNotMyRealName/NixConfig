@@ -43,10 +43,39 @@ in
       hash = "sha256-gQOA2Bzyf+2vD/DZGz4udcSrrV1BQqdzddiJrCVjG84="; 
       fetchSubmodules = true;
     };
-    dependencies = with python311Packages; [ transformers matplotlib timm ];
+    # dependencies = with python311Packages; [ transformers matplotlib timm ];
 
     shellHook = ''
       export FLORENCE2_MODELS_DIR=$TMPDIR/florence2_models
     '';
+  };
+
+  # https://github.com/BadCafeCode/masquerade-nodes-comfyui
+  masquerade-nodes-comfyui = mkComfyUICustomNodes {
+    pname = "masquerade-nodes-comfyui";
+    version = "unstable-2024-06-22";
+
+    src = fetchFromGitHub {
+      owner = "BadCafeCode";
+      repo = "masquerade-nodes-comfyui";
+      rev = "432cb4d146a391b387a0cd25ace824328b5b61cf";
+      hash = "";
+      fetchSubmodules = true;
+    };
+  };
+
+  # https://github.com/shadowcz007/comfyui-ultralytics-yolo/
+  comfyui-ultralytics-yolo = mkComfyUICustomNodes {
+    pname = "comfyui-ultralytics-yolo";
+    version = "unstable-2024-06-22";
+
+    src = fetchFromGitHub {
+      owner = "shadowcz007";
+      repo = "comfyui-ultralytics-yolo";
+      rev = "c48a4aeaa4a1b07c882e3334ed9630084d817fce";
+      hash = "sha256-gQOA2Bzyf+2vD/DZGz4udcSrrV1BQqdzddiJrCVjG84=";
+      fetchSubmodules = true;
+    };
+    dependencies = with python311Packages; [ ultralytics ];
   };
 }
