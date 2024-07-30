@@ -20,6 +20,7 @@ in
   ];
 
   networking.hostName = "NixOSDesktop";
+  networking.nameservers = [ "1.1.1.1"];
 
   hardware.bluetooth = {
     enable = true;
@@ -86,7 +87,8 @@ in
     package = pkgs.ollama;
     acceleration = "cuda";
     environmentVariables = {
-      OLLAMA_LLM_LIBRARY = "cuda_v12";
+      # OLLAMA_LLM_LIBRARY = "cuda_v12";
+      OLLAMA_CUDA_LIBRARY = "cuda_v11";
       OLLAMA_HOST = "0.0.0.0";
     };
     listenAddress = "0.0.0.0:11434";
