@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, outputs, ... }:
+{ pkgs, config, inputs, outputs, usernames, ... }:
 {
   imports = [
     # System hyprland
@@ -73,22 +73,12 @@
     #media-session.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.joshk = {
-    isNormalUser = true;
-    description = "Josh Krahn";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "adbusers" ];
-    shell = pkgs.zsh;
-    initialHashedPassword = "$y$j9T$jArB/OK7dwNWOYmxJ1Lm2/$BGA8dUMUqGp.lavPnys.JVdM.4J/7yeDdzUH4qqVw08"; # password is "test"
-  };
-
   programs.adb.enable = true;
 
   virtualisation.virtualbox = {
     host.enable = true;
     # host.enableExtensionPack = true; # If the long compile times are driving you nuts comment this out
   };
-  users.extraGroups.vboxusers.members = [ "joshk" ];
 
   programs.zsh = {
     enable = true;
@@ -172,20 +162,10 @@
     }))
   ];
 
-
-  programs.nh = {
-    enable = true;
-    package = pkgs.unstable.nh;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/joshk/NixConfig";
-  };
-
   # services.sunshine = {
   #   enable = true;
   #   # autoStart = true;
   # };
-
 
   services.zerotierone = {
     enable = true;
@@ -198,7 +178,6 @@
     enable = true;
     # package = pkgs.libratbag;
   };
-
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -218,7 +197,6 @@
 
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
-
 
   environment = {
     shells = [ pkgs.zsh ];

@@ -66,10 +66,10 @@
         let
           inherit (nixpkgs) lib pkgs;
 
-          # Define a function to generate user configurations
-          mkUsers = usernames:
+          # Define a function to generate home manager user configurations
+          mkHomeUsers = usernames:
             let
-              userConfig = username: ./homes/${username}/home.nix;
+              userConfig = username: ./homes/${username}/home/home.nix;
             in
             builtins.listToAttrs (map
               (username: {
@@ -77,10 +77,20 @@
                 value = userConfig username;
               })
               usernames);
+
+          # Define a function to make a list of modules for the nixos system configuration from a list of usernames
+          # Example usage: mkNixosUsers [ "joshk" "rick" ]
+          # Returns a list of modules from ./homes/system/${username}/default.nix
+          mkNixosUsers = usernames:
+            let
+              userModules = username: ./homes/${username}/system/default.nix;
+            in
+            map (username: userModules username) usernames;
+
         in
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          specialArgs = { inherit inputs outputs; } // extraSpecialArgs;
+          specialArgs = { inherit inputs outputs usernames; } // extraSpecialArgs;
           modules = [
             ./systems/${hostname}/default.nix
             ./systems/common/default.nix
@@ -88,9 +98,9 @@
             {
               home-manager.extraSpecialArgs = { inherit inputs outputs; } // extraSpecialArgs;
               home-manager.useGlobalPkgs = true;
-              home-manager.users = mkUsers usernames;
+              home-manager.users = mkHomeUsers usernames;
             }
-          ];
+          ] ++ mkNixosUsers usernames;
         };
 
     in
