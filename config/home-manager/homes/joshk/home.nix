@@ -2,8 +2,6 @@
 {
 
   imports = [
-    ../../config/wm/hyprland/hyprland.nix
-
     ## Window Managers
     ../../config/wm/hyprland/hyprland.nix
 
