@@ -2,50 +2,52 @@
 {
 
   imports = [
+    ../../config/wm/hyprland/hyprland.nix
+
     ## Window Managers
-    ./wm/hyprland/hyprland.nix
+    ../../config/wm/hyprland/hyprland.nix
 
-    ./pywal/pywal.nix
+    ../../config/pywal/pywal.nix
 
-    ./waybar/waybar.nix
+    ../../config/waybar/waybar.nix
 
     ## Coding
-    ./code/vscode.nix
+    ../../config/code/vscode.nix
 
     ## Shells
-    ./shell/zsh.nix # not working
+    ../../config/shell/zsh.nix # not working
 
     ## Terminal
-    ./terminal/alacritty.nix
+    ../../config/terminal/alacritty.nix
 
     ## Fonts
-    #./fonts/fonts.nix
+    #../../config/fonts/fonts.nix
 
     ## OBS Studio
-    ./obs-studio/obs-studio.nix
+    ../../config/obs-studio/obs-studio.nix
 
     ## Browsers
-    ./browsers/browser.nix
+    ../../config/browsers/browser.nix
 
     ## Wallpapers
-    ./theme/wallpapers.nix
+    ../../config/theme/wallpapers.nix
 
     ## Git
-    ./git/git.nix
+    ../../config/git/git.nix
 
     ## Script Tools
-    ./script_tools/script_tools.nix
+    ../../config/script_tools/script_tools.nix
 
     ## Spicetify
-    ./spicetify/spicetify.nix # not working
+    ../../config/spicetify/spicetify.nix # not working
 
-    ./psi-notify/default.nix
+    ../../config/psi-notify/default.nix
 
-    # ./virt/default.nix
+    # ../../config/virt/default.nix
 
-    ./mangohud/default.nix
+    ../../config/mangohud/default.nix
 
-    ./apex-config/default.nix
+    ../../config/apex-config/default.nix
 
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);

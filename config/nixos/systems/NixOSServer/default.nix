@@ -7,8 +7,6 @@
   networking.hostName = "NixOSServer";
   # networking.nameservers = [ "1.1.1.1"];
 
-
-
   nixpkgs = {
     config = {
       cudaSupport = true;

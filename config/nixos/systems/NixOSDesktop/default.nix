@@ -1,26 +1,16 @@
 { pkgs, config, lib, ... }:
-let
-  gpuIDs3060 = [
-    "10de:2504" # Graphics
-    "10de:228e" # Audio
-  ];
-  gpuIDs960 = [
-    "10de:1401" # Graphics
-    "10de:0fba" # Audio
-    "8086:2723" # Wireless
-  ];
-in
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/syncthing.nix
-    ./modules/nvidia.nix
-    ./modules/open-webui.nix
-    ./modules/comfyui-container.nix
+
+    # ../../config/syncthing/default.nix
+    ../../config/nvidia/default.nix
+    ../../config/open-webui/default.nix
+    ../../config/comfyui/default.nix
   ];
 
   networking.hostName = "NixOSDesktop";
-  networking.nameservers = [ "1.1.1.1"];
+  networking.nameservers = [ "1.1.1.1" ];
 
   hardware.bluetooth = {
     enable = true;
@@ -123,13 +113,20 @@ in
     "vfio_iommu_type1.allow_unsafe_interrupts=1"
     "kvm.ignore_msrs=1"
     "preempt=voluntary"
-  ] ++ [ "vfio-pci.ids=${lib.concatStringsSep "," gpuIDs960}" ];
+  ];
 
   boot.initrd.kernelModules = [
     "vfio_pci"
     "vfio"
     "vfio_iommu_type1"
   ];
+
+  programs.adb.enable = true;
+
+  virtualisation.virtualbox = {
+    host.enable = true;
+    # host.enableExtensionPack = true; # If the long compile times are driving you nuts comment this out
+  };
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.
   services.xserver.enable = true;

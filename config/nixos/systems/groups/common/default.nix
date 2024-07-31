@@ -2,8 +2,8 @@
 {
   imports = [
     # System hyprland
-    ./modules/hyprland.nix
-    ./modules/sops.nix
+    ../../../config/hyprland/default.nix
+    ../../../config/sops/default.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules)
   ++ (builtins.attrValues inputs.NixVirt.nixosModules);
@@ -13,17 +13,22 @@
     extraOptions = ''experimental-features = nix-command flakes'';
   };
 
-  nixpkgs = {
-    overlays = builtins.attrValues outputs.overlays;
-    config = {
-      allowUnfree = true;
-      permittedInsecurePackages = [
-        "electron-25.9.0"
-      ];
+  programs.zsh = {
+    enable = true;
+    interactiveShellInit = ''
+      source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
+
+      # Make user colour green in prompt instead of default blue
+      zstyle ':prompt:grml:left:items:user' pre '%F{green}%B'
+    '';
+    promptInit = ""; # otherwise it'll override the grml prompt
+
+    enableCompletion = true;
+    autosuggestions = {
+      enable = true;
     };
+    syntaxHighlighting.enable = true;
   };
-
-
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -32,16 +37,7 @@
 
   boot.supportedFilesystems = [ "ntfs" ];
 
-  boot.kernelModules = [ "uinput" "v4l2loopback" ];
-  boot.extraModulePackages = with config.boot.kernelPackages; [
-    v4l2loopback
-  ] ++ [
-    pkgs.linuxPackages.v4l2loopback
-  ];
-
-  boot.extraModprobeConfig = ''
-    options v4l2loopback devices=2 video_nr=1,2 card_label="OBS Cam","Scrcpy" exclusive_caps=1,1
-  '';
+  boot.kernelModules = [ "uinput" ];
 
 
   # Set your time zone.
@@ -71,40 +67,6 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.joshk = {
-    isNormalUser = true;
-    description = "Josh Krahn";
-    extraGroups = [ "networkmanager" "wheel" "video" "input" "adbusers" ];
-    shell = pkgs.zsh;
-    initialHashedPassword = "$y$j9T$jArB/OK7dwNWOYmxJ1Lm2/$BGA8dUMUqGp.lavPnys.JVdM.4J/7yeDdzUH4qqVw08"; # password is "test"
-  };
-
-  programs.adb.enable = true;
-
-  virtualisation.virtualbox = {
-    host.enable = true;
-    # host.enableExtensionPack = true; # If the long compile times are driving you nuts comment this out
-  };
-  users.extraGroups.vboxusers.members = [ "joshk" ];
-
-  programs.zsh = {
-    enable = true;
-    interactiveShellInit = ''
-      source ${pkgs.grml-zsh-config}/etc/zsh/zshrc
-
-      # Make user colour green in prompt instead of default blue
-      zstyle ':prompt:grml:left:items:user' pre '%F{green}%B'
-    '';
-    promptInit = ""; # otherwise it'll override the grml prompt
-
-    enableCompletion = true;
-    autosuggestions = {
-      enable = true;
-    };
-    syntaxHighlighting.enable = true;
   };
 
   programs.thunar = {
@@ -173,13 +135,7 @@
   ];
 
 
-  programs.nh = {
-    enable = true;
-    package = pkgs.unstable.nh;
-    clean.enable = true;
-    clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/home/joshk/NixConfig";
-  };
+
 
   # services.sunshine = {
   #   enable = true;

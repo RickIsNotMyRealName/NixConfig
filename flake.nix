@@ -62,14 +62,13 @@
 
       # Create a function that takes in a hostname, a list of usernames(strings) and extraSpecialArgs and returns a nixos system configuration
       # Example usage: mkNixosSystem { hostname = "NixOSVM"; usernames = [ "joshk" "rick" ]; extraSpecialArgs = { }; }
-      mkNixosSystem = { hostname, usernames, extraSpecialArgs ? { } }:
+      mkNixosSystem = { hostname, usernames, machineTypes, extraSpecialArgs ? { } }:
         let
           inherit (nixpkgs) lib pkgs;
 
-          # Define a function to generate user configurations
-          mkUsers = usernames:
+          mkHomeUsers = usernames:
             let
-              userConfig = username: ./homes/${username}/home.nix;
+              userConfig = username: ./config/home-manager/homes/${username}/home.nix;
             in
             builtins.listToAttrs (map
               (username: {
@@ -77,22 +76,35 @@
                 value = userConfig username;
               })
               usernames);
+
         in
         nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs outputs; } // extraSpecialArgs;
           modules = [
-            ./systems/${hostname}/default.nix
-            ./systems/common/default.nix
+            ./config/nixos/systems/${hostname}/default.nix
+            {
+              nixpkgs = {
+                overlays = builtins.attrValues outputs.overlays;
+                config = {
+                  allowUnfree = true;
+                  /* permittedInsecurePackages = [
+                      "electron-25.9.0"
+                  ]; */
+                };
+              };
+            }
             home-manager.nixosModules.home-manager
             {
               home-manager.extraSpecialArgs = { inherit inputs outputs; } // extraSpecialArgs;
               home-manager.useGlobalPkgs = true;
-              home-manager.users = mkUsers usernames;
+              home-manager.users = mkHomeUsers usernames;
             }
-          ];
-        };
 
+          ] # map users and their files. Also map the machineTypes like vm, server, laptop, desktop to their respective files at 'config/nixos/systems/groups'
+          ++ (map (username: ./config/nixos/users/${username}/default.nix) usernames)
+          ++ (map (machineType: ./config/nixos/systems/groups/${machineType}/default.nix) machineTypes);
+        };
     in
     {
       # NixOS modules. Like nixpkgs modules.
@@ -118,26 +130,42 @@
           hostname = "NixOSVM";
           usernames = [ "joshk" ];
           extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "vm"
+          ];
         };
         NixOSLaptop = mkNixosSystem {
           hostname = "NixOSLaptop";
           usernames = [ "joshk" ];
           extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "laptop"
+            "endDevice"
+          ];
         };
         NixOSDesktop = mkNixosSystem {
           hostname = "NixOSDesktop";
           usernames = [ "joshk" ];
           extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "desktop"
+            "endDevice"
+          ];
         };
         NixOSServer = mkNixosSystem {
           hostname = "NixOSServer";
           usernames = [ "josh_admin" ];
           extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "server"
+            "endDevice"
+            "vm"
+          ];
         };
       };
     };
 }
-
-
-
-
