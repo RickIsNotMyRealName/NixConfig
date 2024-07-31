@@ -20,7 +20,7 @@
   services.qemuGuest.enable = true;
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.
-  services.xserver.enable = false;
-  services.xserver.desktopManager.plasma5.enable = false;
+  # services.xserver.enable = false;
+  # services.xserver.desktopManager.plasma5.enable = false;
   #services.xserver.displayManager.sddm.enable = true;
 }
