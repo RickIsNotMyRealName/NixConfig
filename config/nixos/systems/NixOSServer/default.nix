@@ -1,6 +1,7 @@
-{ pkgs, config, lib, ... }:
+{ modulesPath, pkgs, config, lib, ... }:
 {
   imports = [
+    (modulesPath + "/profiles/qemu-guest.nix")
     ./hardware-configuration.nix
   ];
 
