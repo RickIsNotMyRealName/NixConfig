@@ -9,7 +9,7 @@
   networking.hostName = "NixOSServer";
   # networking.nameservers = [ "1.1.1.1"];
 
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
   nix.settings.auto-optimise-store = true;
 
   nixpkgs = {
