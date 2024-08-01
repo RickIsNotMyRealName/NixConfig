@@ -2,14 +2,14 @@
 {
 
   imports = [
-    ../../config/wm/hyprland/hyprland.nix
+    # ../../config/wm/hyprland/hyprland.nix
 
-    ../../config/pywal/pywal.nix
+    # ../../config/pywal/pywal.nix
 
-    ../../config/waybar/waybar.nix
+    # ../../config/waybar/waybar.nix
 
     ## Coding
-    ../../config/code/vscode.nix
+    # ../../config/code/vscode.nix
 
     ## Shells
     ../../config/shell/zsh.nix # not working
@@ -18,7 +18,7 @@
     ../../config/terminal/alacritty.nix
 
     ## Wallpapers
-    ../../config/theme/wallpapers.nix
+    # ../../config/theme/wallpapers.nix
 
     ## Git
     ../../config/git/git.nix
@@ -40,7 +40,7 @@
       git
       tree
       nixpkgs-fmt
-      libnotify
+      # libnotify
       # gpt4all # FIXME decide if i want this installed or not.
     ];
 
