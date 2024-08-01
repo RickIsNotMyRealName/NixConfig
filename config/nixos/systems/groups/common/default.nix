@@ -1,7 +1,7 @@
 { pkgs, config, inputs, outputs, ... }:
 {
   imports = [
-    ../../../config/sops/default.nix
+    
 
   ] ++ (builtins.attrValues outputs.nixosModules)
   ++ (builtins.attrValues inputs.NixVirt.nixosModules);
