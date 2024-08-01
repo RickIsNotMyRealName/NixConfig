@@ -4,6 +4,9 @@
     # Use `profiles/minimal.nix` as the base configuration of this system but override `environment.noXlibs` to `false`.
     (modulesPath + "/profiles/minimal.nix") { environment.noXlibs = false; }
     ./hardware-configuration.nix
+
+    # Traefik
+    ../../config/traefik/default.nix
   ];
 
   networking.hostName = "NixOSServer";
