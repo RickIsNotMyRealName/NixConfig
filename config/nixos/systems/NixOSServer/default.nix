@@ -2,7 +2,7 @@
 {
   imports = [
     # Use `profiles/minimal.nix` as the base configuration of this system but override `environment.noXlibs` to `false`.
-    (modulesPath + "/profiles/minimal.nix") { inherit config; environment.noXlibs = false; }
+    (modulesPath + "/profiles/minimal.nix") { environment.noXlibs = false; }
     ./hardware-configuration.nix
   ];
 
