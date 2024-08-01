@@ -18,6 +18,7 @@
   ];
 
   services.qemuGuest.enable = true;
+  services.spice-vdagentd.enable = true;
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.
   # services.xserver.enable = false;
