@@ -1,8 +1,6 @@
 { pkgs, config, inputs, outputs, ... }:
 {
   imports = [
-    # System hyprland
-    ../../../config/hyprland/default.nix
     ../../../config/sops/default.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules)
@@ -46,58 +44,15 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable sound with pipewire.
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-volman
-    ];
-  };
-
-  programs.xfconf.enable = true;
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
-
-  programs.light.enable = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     plymouth
     home-manager
-    sddm-chili-theme
-    pavucontrol
+
     nixd
     nixpkgs-fmt
     kitty
-    playerctl
-    # sunshine
-    # moonlight-qt
-    polkit-kde-agent
-    scrcpy
 
     # Archiving
     p7zip
@@ -105,43 +60,15 @@
     unzip
     zip
 
-    vlc
-
-    unstable.protonmail-desktop
-
     gparted
 
-    depotdownloader
-
     sops
-
-    wayvnc
-    remmina
 
     nvd
     nix-output-monitor
 
     caligula
-
-    (flameshot.overrideAttrs (oldAttrs: {
-      src = fetchFromGitHub {
-        owner = "flameshot-org";
-        repo = "flameshot";
-        rev = "master";
-        sha256 = "sha256-Y9RnVxic5mlRIc48wYVQXrvu/s65smtMMVj8HBskHzE=";
-      };
-      cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
-    }))
   ];
-
-
-
-
-  # services.sunshine = {
-  #   enable = true;
-  #   # autoStart = true;
-  # };
-
 
   services.zerotierone = {
     enable = true;
@@ -149,12 +76,6 @@
       "632ea290851d869e"
     ];
   };
-
-  services.ratbagd = {
-    enable = true;
-    # package = pkgs.libratbag;
-  };
-
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -174,7 +95,6 @@
 
     (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
   ];
-
 
   environment = {
     shells = [ pkgs.zsh ];
@@ -201,11 +121,7 @@
     };
   };
 
-  services.xserver.displayManager.sddm = {
-    enable = true;
-    theme = "chili";
-    settings = { };
-  };
+
 
   security.polkit.enable = true;
 

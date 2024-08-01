@@ -133,6 +133,7 @@
           machineTypes = [
             "common"
             "vm"
+            "gui"
           ];
         };
         NixOSLaptop = mkNixosSystem {
@@ -143,6 +144,7 @@
             "common"
             "laptop"
             "endDevice"
+            "gui"
           ];
         };
         NixOSDesktop = mkNixosSystem {
@@ -153,6 +155,7 @@
             "common"
             "desktop"
             "endDevice"
+            "gui"
           ];
         };
         NixOSServer = mkNixosSystem {
@@ -162,7 +165,6 @@
           machineTypes = [
             "common"
             "server"
-            "endDevice"
             "vm"
           ];
         };
