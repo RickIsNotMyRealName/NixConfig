@@ -7,7 +7,15 @@
 
     # Traefik
     ../../config/traefik/default.nix
+    ../../config/sops/default.nix
   ];
+
+  myConfig = {
+    secretsUserName = "josh_admin";
+    secrets = [
+      "smb-secrets.env"
+    ];
+  };
 
   networking.hostName = "NixOSServer";
   # networking.nameservers = [ "1.1.1.1"];
