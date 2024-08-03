@@ -188,19 +188,91 @@
   }
 */
 
+
 { ... }:
 {
+
+  # Create directories for Traefik
+  systemd.tmpfiles.rules = [
+    "d '/var/log/traefik' 0700 traefik traefik - -"
+    "d '/var/lib/traefik' 0700 traefik traefik - -"
+  ];
+
+  # Open ports for Traefik
+  networking.firewall.allowedTCPPorts = [ 80 443 8081 ];
+
+
   services.traefik = {
     enable = true;
     staticConfigOptions = {
       # Entry points
-      entryPoints.web.address = ":8080";
-      entryPoints.http.address = ":80";
+      entryPoints = {
+        web = {
+          address = ":80";
+          http = {
+            redirections.entryPoint = {
+              to = "websecure";
+              scheme = "https";
+            };
+          };
+        };
+        websecure = {
+          address = ":443";
+          http = {
+            tls = {
+              certResolver = "staging";
+            };
+          };
+        };
+        traefik = {
+          address = ":8081";
+        };
+      };
 
       # API dashboard (optional, for monitoring and debugging)
       api = {
+        dashboard = true;
         insecure = true;
+        debug = true;
+      };
+
+      # Log
+      log = {
+        level = "TRACE";
+        format = "json";
+        filePath = "/var/log/traefik/traefik.log";
+      };
+
+      # Certificates
+      ## Let's Encrypt
+      # certificatesResolvers.letsencrypt.acme.email = "joshkrahn@protonmail.com";
+      # certificatesResolvers.letsencrypt.acme.storage = "/var/lib/traefik/acme.json";
+      # certificatesResolvers.letsencrypt.acme.dnsChallenge.provider = "cloudflare";
+      # certificatesResolvers.letsencrypt.acme.dnsChallenge.delayBeforeCheck = "0";
+
+      ## Staging
+      certificatesResolvers.staging.acme.email = "joshkrahn@protonmail.com";
+      certificatesResolvers.staging.acme.storage = "/var/lib/traefik/acme-staging.json";
+      certificatesResolvers.staging.acme.caServer = "https://acme-staging-v02.api.letsencrypt.org/directory";
+      certificatesResolvers.staging.acme.tlsChallenge = { };
+
+      dynamicConfigOptions = {
+        # Define the router
+        http.routers.myRouter = {
+          rule = "Host(`test.tden.xyz`)";
+          service = "OpenWebUI";
+          entryPoints = [ "websecure" ];
+          tls = {
+            certResolver = "staging";
+          };
+        };
+
+        # Define the service
+        http.services.OpenWebUI.loadBalancer.servers = [
+          { url = "http://192.168.1.30:8080"; }
+        ];
       };
     };
   };
 }
+
