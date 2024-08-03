@@ -7,7 +7,20 @@
     ../../config/nvidia/default.nix
     ../../config/open-webui/default.nix
     ../../config/comfyui/default.nix
+    ../../config/sops/default.nix
   ];
+
+
+  myConfig = {
+    secretsUserName = "joshk";
+    secrets = [
+      "wireless.env"
+      "GPTV4ToolAPIKey"
+      "GoogleSearchAPIKey"
+      "OpenAIAPIKey"
+      "smb-secrets.env"
+    ];
+  };
 
   networking.hostName = "NixOSDesktop";
   networking.nameservers = [ "1.1.1.1" ];
@@ -70,6 +83,8 @@
 
     unstable.gamescope
     unstable.local-ai
+
+    cifs-utils
   ];
 
   services.ollama = {
@@ -126,6 +141,20 @@
   virtualisation.virtualbox = {
     host.enable = true;
     # host.enableExtensionPack = true; # If the long compile times are driving you nuts comment this out
+  };
+
+  # Auto mount smb://192.168.1.10/NixConfig
+  # Mount it so any user can access it
+  fileSystems."/mnt/NixConfig" = {
+    device = "//192.168.1.10/NixConfig";
+    fsType = "cifs";
+    options =
+      let
+        # this line prevents hanging on network split
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s";
+
+      in
+      [ "${automount_opts},credentials=/run/secrets/smb-secrets.env,uid=1000,gid=1000" ];
   };
 
   # Enable KDE Keep here for ease just in case hyprland breaks cause of nvidia things.

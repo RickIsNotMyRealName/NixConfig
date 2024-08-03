@@ -1,36 +1,39 @@
-{ pkgs, inputs, config, ... }:
+{ pkgs, inputs, config, lib, ... }:
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
 
-  sops = {
-    defaultSopsFile = ../../../../secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
+  options.myConfig.secretsUserName = lib.mkOption {
+    type = lib.types.str;
+    default = "root";
+    description = "The user that owns the secrets";
+  };
+  options.myConfig.secrets = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    default = [ ];
+    description = "The list of secrets to be built into the runtime";
+  };
 
-    age =
-      {
-        keyFile = "/home/joshk/.config/sops/age/keys.txt";
+  config = {
+    sops = {
+      defaultSopsFile = ../../../../secrets/secrets.yaml;
+      defaultSopsFormat = "yaml";
+
+      age = {
+        keyFile = "/home/${config.myConfig.secretsUserName}/.config/sops/age/keys.txt";
         sshKeyPaths = [
           "/etc/ssh/ssh_host_ed25519_key"
         ];
         generateKey = true;
       };
 
-
-    secrets = {
-      "wireless.env" = {
-        owner = config.users.users.joshk.name;
-      };
-      "GPTV4ToolAPIKey" = {
-        owner = config.users.users.joshk.name;
-      };
-      "GoogleSearchAPIKey" = {
-        owner = config.users.users.joshk.name;
-      };
-      "OpenAIAPIKey" = {
-        owner = config.users.users.joshk.name;
-      };
+      # Put all of config.myConfig.secretsList into sops.secrets like above
+      secrets = lib.genAttrs config.myConfig.secrets (secret: {
+        owner = config.myConfig.secretsUserName;
+      });
     };
   };
 }
+
+      
