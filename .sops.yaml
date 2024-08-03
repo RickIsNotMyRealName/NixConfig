@@ -1,7 +1,13 @@
 keys:
-  - &primary age1mufyq6qccz0r0czyg575vkx6a03exdfpj767fg7nl2r2jtgk5c2q567q50
+  - &users
+    - &dev age1ludke0yn29dzdrt6xtq6jnphpzdat0p7tg86muftauv4d9z5kqwsv4n7cr
+    - &joshk age1mufyq6qccz0r0czyg575vkx6a03exdfpj767fg7nl2r2jtgk5c2q567q50
+  - &hosts
+    - &server age12xx7xkuxj3axqrqetm70yxfvzrledztwmmf9nzfy34s0uwdjcylsk74rl5
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
-          - *primary
+          - *dev
+          - *joshk
+          - *server
