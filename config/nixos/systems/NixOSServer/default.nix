@@ -21,7 +21,7 @@
     };
   };
 
-    boot.kernelParams = [
+  boot.kernelParams = [
     "console=ttyS0,115200"
     "console=tty1"
   ];
@@ -32,4 +32,7 @@
 
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
+
+
+  services.openssh.passwordAuthentication = true; # FIXME: Set to false
 }
