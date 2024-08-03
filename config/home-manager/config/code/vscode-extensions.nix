@@ -116,5 +116,12 @@ with pkgs.vscode-extensions; [
     version = "2.5.0";
     sha256 = "sha256-ivG20stdIUWSumoqQFlWFqZxEdVs6wWz4Xo47F5vLro=";
   }
+  # ms-vscode-remote.remote-ssh
+  {
+    name = "remote-ssh";
+    publisher = "ms-vscode-remote";
+    version = "0.112.0";
+    sha256 = "sha256-/ukMLK54Di+pC8DsOtwxodjUYV5c/gI9FfljCifnAa0=";
+  }
 
 ]
