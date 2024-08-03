@@ -256,9 +256,11 @@
       certificatesResolvers.staging.acme.caServer = "https://acme-staging-v02.api.letsencrypt.org/directory";
       certificatesResolvers.staging.acme.tlsChallenge = { };
 
-      dynamicConfigOptions = {
-        # Define the router
-        http.routers.myRouter = {
+    };
+    dynamicConfigOptions = {
+      # Define the router
+      http = {
+        routers.myRouter = {
           rule = "Host(`test.tden.xyz`)";
           service = "OpenWebUI";
           entryPoints = [ "websecure" ];
@@ -268,11 +270,12 @@
         };
 
         # Define the service
-        http.services.OpenWebUI.loadBalancer.servers = [
+        services.OpenWebUI.loadBalancer.servers = [
           { url = "http://192.168.1.30:8080"; }
         ];
       };
     };
   };
 }
+
 
