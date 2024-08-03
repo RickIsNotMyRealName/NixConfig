@@ -23,7 +23,7 @@
     ## Git
     ../../config/git/git.nix
 
-    
+
 
 
   ] ++ (builtins.attrValues outputs.homeModules)

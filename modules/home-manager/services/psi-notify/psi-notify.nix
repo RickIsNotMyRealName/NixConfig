@@ -73,7 +73,7 @@ let
     lib.concatStringsSep "\n" (lib.mapAttrsToList
       (name: value:
         if lib.isAttrs value then
-          renderValue value 
+          renderValue value
         else
           "${name} ${renderValue value}"
       )

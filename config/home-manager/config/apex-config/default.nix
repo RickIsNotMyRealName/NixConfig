@@ -15,13 +15,13 @@ in
     source = ./cfg/autoexec.cfg;
   };
 
-  
+
   # ./local/settings.cfg
   xdg.dataFile."${steamApexDataPath}/local/settings.cfg" = {
     source = ./local/settings.cfg;
   };
 
-  
+
   # ./local/videoconfig.txt
   xdg.dataFile."${steamApexDataPath}/local/videoconfig.txt" = {
     source = ./local/videoconfig.txt;
@@ -30,7 +30,7 @@ in
     source = ./local/videoconfig.txt;
   };
 
-  
+
   # ./profile/profile.cfg
   xdg.dataFile."${steamApexDataPath}/profile/profile.cfg" = {
     source = ./profile/profile.cfg;

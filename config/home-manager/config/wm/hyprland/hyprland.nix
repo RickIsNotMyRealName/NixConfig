@@ -22,7 +22,7 @@
     xdg-utils
     glib
     dracula-theme
-    gnome3.adwaita-icon-theme    
+    gnome3.adwaita-icon-theme
     wdisplays
     swaybg
 

@@ -34,13 +34,13 @@ in
   # https://github.com/RickIsNotMyRealName/ComfyUI-Florence2
   florence2 = mkComfyUICustomNodes {
     pname = "florence2";
-    version = "unstable-2024-06-22"; 
+    version = "unstable-2024-06-22";
 
     src = fetchFromGitHub {
       owner = "RickIsNotMyRealName";
       repo = "ComfyUI-Florence2";
-      rev = "b8d7f9db6b46b7ff60dd763405b21d1a75491fbe"; 
-      hash = "sha256-gQOA2Bzyf+2vD/DZGz4udcSrrV1BQqdzddiJrCVjG84="; 
+      rev = "b8d7f9db6b46b7ff60dd763405b21d1a75491fbe";
+      hash = "sha256-gQOA2Bzyf+2vD/DZGz4udcSrrV1BQqdzddiJrCVjG84=";
       fetchSubmodules = true;
     };
     dependencies = with python311Packages; [ transformers matplotlib timm ];

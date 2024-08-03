@@ -101,7 +101,8 @@ let
   customNodesCollection = (
     linkFarm "comfyui-custom-nodes" (builtins.map (pkg: { name = pkg.pname; path = pkg; }) customNodes)
   );
-in stdenv.mkDerivation rec {
+in
+stdenv.mkDerivation rec {
   pname = "comfyui";
   version = "unstable-2024-04-15";
 

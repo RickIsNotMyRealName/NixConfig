@@ -1,4 +1,4 @@
-{...}:
+{ ... }:
 {
   services.psi-notify = {
     enable = true;

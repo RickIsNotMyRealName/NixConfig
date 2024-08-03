@@ -1,6 +1,6 @@
 ## First run do the following:
 /* 
-sudo docker run -d \
+  sudo docker run -d \
   --name=comfyui \
   --gpus all \
   -p 8188:8188 \
