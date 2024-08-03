@@ -79,3 +79,4 @@
 - `nix-shell -p ncdu --run 'ncdu ./'`: Check disk usage of the current directory
 - `nix-shell -p htop --run 'htop'`: Check system usage
 - `nix-store --add-fixed sha256 ./CiscoPacketTracer822_amd64_signed.deb`: Adds `cisco packet tracer` deb to the nix store
+- `sops updatekeys ./secrets/secrets.yaml`: Update the keys in the secrets file
