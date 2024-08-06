@@ -420,6 +420,10 @@
     "float, title:^(Picture in picture)$"
     # Make all windows with the title "flameshot" be fullscreen
     "fullscreen, title:^(flameshot)$"
+    # Make all windows with the class "wofi" be stayfocused
+    "stayfocused, initialclass:^(wofi)$"
+    # dimaround all windows with the class "wofi"
+    "dimaround, initialclass:^(wofi)$"
   ];
 
   # every reload
