@@ -192,18 +192,23 @@
 { ... }:
 {
 
-  # Create directories for Traefik
-  systemd.tmpfiles.rules = [
-    "d '/var/log/traefik' 0700 traefik traefik - -"
-    "d '/var/lib/traefik' 0700 traefik traefik - -"
-  ];
 
   # Open ports for Traefik
   networking.firewall.allowedTCPPorts = [ 80 443 8081 ];
 
+  # Create directories for Traefik
+  # The traefik group/user should have read/write access to /var/log/traefik and /var/lib/traefik
+  systemd.tmpfiles.rules = [
+    "d /var/log/traefik 0755 traefik traefik"
+    "d /var/lib/traefik 0755 traefik traefik"
+  ];
+
 
   services.traefik = {
     enable = true;
+
+    environmentFiles = [ "/run/secrets/traefik.env" ];
+
     staticConfigOptions = {
       # Entry points
       entryPoints = {
@@ -220,7 +225,7 @@
           address = ":443";
           http = {
             tls = {
-              certResolver = "staging";
+              certResolver = "letsencrypt";
             };
           };
         };
@@ -242,13 +247,17 @@
         format = "json";
         filePath = "/var/log/traefik/traefik.log";
       };
+      accessLog = {
+        format = "json";
+        filePath = "/var/log/traefik/access.log";
+      };
+      # tracing = { };
 
       # Certificates
       ## Let's Encrypt
-      # certificatesResolvers.letsencrypt.acme.email = "joshkrahn@protonmail.com";
-      # certificatesResolvers.letsencrypt.acme.storage = "/var/lib/traefik/acme.json";
-      # certificatesResolvers.letsencrypt.acme.dnsChallenge.provider = "cloudflare";
-      # certificatesResolvers.letsencrypt.acme.dnsChallenge.delayBeforeCheck = "0";
+      certificatesResolvers.letsencrypt.acme.email = "joshkrahn@protonmail.com";
+      certificatesResolvers.letsencrypt.acme.storage = "/var/lib/traefik/acme.json";
+      certificatesResolvers.letsencrypt.acme.tlsChallenge = { };
 
       ## Staging
       certificatesResolvers.staging.acme.email = "joshkrahn@protonmail.com";
@@ -256,26 +265,28 @@
       certificatesResolvers.staging.acme.caServer = "https://acme-staging-v02.api.letsencrypt.org/directory";
       certificatesResolvers.staging.acme.tlsChallenge = { };
 
+      serversTransport.insecureSkipVerify = true;
+      # tcpServersTransport.tls.insecureSkipVerify = true;
     };
     dynamicConfigOptions = {
       # Define the router
       http = {
-        routers.myRouter = {
+        routers.testRouter = {
           rule = "Host(`test.tden.xyz`)";
-          service = "OpenWebUI";
+          service = "testService";
           entryPoints = [ "websecure" ];
           tls = {
-            certResolver = "staging";
+            certResolver = "letsencrypt";
           };
         };
 
         # Define the service
-        services.OpenWebUI.loadBalancer.servers = [
-          { url = "http://192.168.1.30:8080"; }
-        ];
+        services.testService.loadBalancer = {
+          servers = [
+            { url = "https://192.168.1.14:8006"; }
+          ];
+        };
       };
     };
   };
 }
-
-
