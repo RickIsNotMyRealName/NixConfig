@@ -130,5 +130,11 @@
       "type" = "prompt";
     }
   ];
+  "transient_prompt"  = {
+    "background" = "transparent";
+    "foreground" = "#ffffff";
+    "template" = " ";
+  };
+
   "version" = 2;
 }
