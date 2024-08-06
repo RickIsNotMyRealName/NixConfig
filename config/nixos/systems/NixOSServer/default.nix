@@ -7,8 +7,9 @@
     ./hardware-configuration.nix
 
     # Traefik
-    ../../config/traefik/default.nix
+    # ../../config/traefik/default.nix
     ../../config/sops/default.nix
+    ../../config/portainer/default.nix
   ];
 
   myConfig = {
