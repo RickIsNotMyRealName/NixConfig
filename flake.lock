@@ -369,6 +369,26 @@
         "type": "github"
       }
     },
+    "portainer-on-nixos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1703706314,
+        "narHash": "sha256-HfOOw9OqqAUsDbARb/577YnqvT2Fg4ph/+BQBcFdfO0=",
+        "owner": "cbleslie",
+        "repo": "portainer-on-nixos",
+        "rev": "a5e90f73951ad775164c7e840cfa0510f08a5ce8",
+        "type": "gitlab"
+      },
+      "original": {
+        "owner": "cbleslie",
+        "repo": "portainer-on-nixos",
+        "type": "gitlab"
+      }
+    },
     "root": {
       "inputs": {
         "NixVirt": "NixVirt",
@@ -379,6 +399,7 @@
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-398141f": "nixpkgs-398141f",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "portainer-on-nixos": "portainer-on-nixos",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
