@@ -47,6 +47,9 @@
 
     ../../config/apex-config/default.nix
 
+    # zoxide
+    ../../config/zoxide/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
