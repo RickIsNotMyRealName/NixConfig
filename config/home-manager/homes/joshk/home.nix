@@ -13,7 +13,7 @@
     ../../config/code/vscode.nix
 
     ## Shells
-    ../../config/shell/zsh.nix # not working
+    ../../config/shells/zsh.nix
 
     ## Terminal
     ../../config/terminal/alacritty.nix
