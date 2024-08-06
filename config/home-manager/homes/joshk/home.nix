@@ -50,6 +50,9 @@
     # zoxide
     ../../config/zoxide/default.nix
 
+    # oh-my-posh
+    ../../config/oh-my-posh/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
