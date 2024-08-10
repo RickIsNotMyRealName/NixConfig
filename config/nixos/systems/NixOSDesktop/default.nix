@@ -76,7 +76,7 @@
 
   environment.systemPackages = with pkgs; [
     # AI
-    lm-studio
+    # lm-studio
     # comfyui
 
     unstable.lutris
