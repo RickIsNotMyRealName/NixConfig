@@ -69,7 +69,7 @@
       obsidian
       discord
       bibletime
-      kcalc
+      qalculate-gtk
       protonvpn-gui
       neofetch
       nwg-wrapper
