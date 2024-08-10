@@ -92,7 +92,7 @@
 
   services.ollama = {
     enable = true;
-    package = pkgs.ollama;
+    package = pkgs.unstable.ollama;
     acceleration = "cuda";
     environmentVariables = {
       # OLLAMA_LLM_LIBRARY = "cuda_v12";
