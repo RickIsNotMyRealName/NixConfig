@@ -356,7 +356,7 @@
 
     # Full screen and fake full screen
     "$mod, F, fullscreen"
-    "$mod, G, fakefullscreen"
+    #"$mod, G, fakefullscreen" # FIXME: It looks like hyprland removed this feature. Its no longer in the documentation last known version v0.42.0.
 
     # Set current window to floating
     "$mod, SPACE, togglefloating"
