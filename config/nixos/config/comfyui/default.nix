@@ -1,25 +1,25 @@
 ## First run do the following:
 /* 
   sudo docker run -d \
-  --name=comfyui \
+  --name=comfyui-cu124-mega \
   --gpus all \
   -p 8188:8188 \
-  -v "${HOME}/comfyui-storage:/home/runner" \
+  -v "${HOME}/comfyui-storage:/root/" \
   -e CLI_ARGS="" \
-  --hostname=comfyui \
+  --hostname=comfyui-cu124-mega \
   --security-opt=label=disable \
   --network=host \
   -device=/dev/video1:/dev/video1 \
-  yanwk/comfyui-boot:latest
+  docker.io/yanwk/comfyui-boot:cu124-megapak
   */
 # 
 ## Then run the following to watch the logs
 #
-# sudo docker logs comfyui
+# sudo docker logs comfyui-cu124-mega
 #
 ## To restart the container after installing some nodes or something run the following
 #
-# sudo docker restart comfyui
+# sudo docker restart comfyui-cu124-mega
 
 { config, pkgs, ... }:
 
@@ -36,18 +36,18 @@
     oci-containers = {
       backend = "docker";
       containers = {
-        comfyui = {
+        comfyui-cu124-mega = {
           autoStart = true;
-          image = "yanwk/comfyui-boot:latest";
+          image = "yanwk/comfyui-boot:cu124-megapak";
           ports = [ "8188:8188" ];
-          volumes = [ "${config.users.users.joshk.home}/comfyui-storage:/home/runner" ];
+          volumes = [ "${config.users.users.joshk.home}/comfyui-storage:/root/" ];
           environment = {
             CLI_ARGS = "";
           };
           extraOptions = [
             "--gpus all"
-            "--name=comfyui"
-            "--hostname=comfyui"
+            "--name=comfyui-cu124-mega"
+            "--hostname=comfyui-cu124-mega"
             "--device=nvidia.com/gpu=all"
             "--security-opt=label=disable"
             "--network=host"
