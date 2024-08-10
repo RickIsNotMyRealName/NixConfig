@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 {
   imports = [
     # System hyprland
@@ -24,15 +24,12 @@
     wayvnc
     remmina
 
-    (flameshot.overrideAttrs (oldAttrs: {
-      src = fetchFromGitHub {
-        owner = "flameshot-org";
-        repo = "flameshot";
-        rev = "master";
-        sha256 = "sha256-Y9RnVxic5mlRIc48wYVQXrvu/s65smtMMVj8HBskHzE=";
-      };
-      cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
-    }))
+    (pkgs.unstable.flameshot.override { enableWlrSupport = true; })
+
+    # (flameshot.overrideAttrs (oldAttrs: {
+    #   src = inputs.flameshot-github;
+    #   cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
+    # }))
 
   ];
 
