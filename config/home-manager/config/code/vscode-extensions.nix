@@ -106,8 +106,8 @@ with pkgs.vscode-extensions; [
   {
     name = "vscode-xml";
     publisher = "redhat";
-    version = "0.26.1";
-    sha256 = "sha256-d9QZFf1DtcglvmCcspMiiKgfT6hHOyzqO1uq7DCGCZw=";
+    version = "0.27.1";
+    sha256 = "sha256-0a1IksSTfqrDDXu/M5ZWVTeEY2rAtpjoU4Rs/9Mlq7A=";
   }
   # DotJoshJohnson.xml
   {
