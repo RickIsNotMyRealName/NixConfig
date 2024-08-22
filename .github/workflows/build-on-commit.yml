@@ -1,0 +1,60 @@
+name: Build NixOS Systems on Commit
+
+on:
+  push:
+    branches:
+      - main
+      - '**/feature/**'
+  pull_request:
+    branches:
+      - main
+      - '**/feature/**'
+
+jobs:
+  build-desktop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Setup Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build NixOS Desktop
+        run: |
+          nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel
+
+  build-laptop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Setup Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build NixOS Laptop
+        run: |
+          nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel
+
+  build-server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Setup Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Build NixOS Server
+        run: |
+          nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel
