@@ -9,6 +9,13 @@
       "@HomeSSID@" = {
         psk = "@HomePassword@";
       };
+      # "@MomsHouseSSID@" = {
+      #   psk = "@MomsHousePassword@";
+      # };
+      "@NathansHouseSSID@" = {
+        psk = "@NathansHousePass@";
+      };
+
       "@SchoolSSID@" = {
         auth = ''
           key_mgmt=WPA-EAP

@@ -2,10 +2,23 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/wireless.nix
-    ./modules/syncthing.nix
+
+    # ../../config/syncthing/default.nix
+    ../../config/wireless/default.nix
+    ../../config/sops/default.nix
   ];
 
+
+  myConfig = {
+    secretsUserName = "joshk";
+    secrets = [
+      "wireless.env"
+      "GPTV4ToolAPIKey"
+      "GoogleSearchAPIKey"
+      "OpenAIAPIKey"
+      "smb-secrets.env"
+    ];
+  };
 
   # Set the hostname of my system.
   networking.hostName = "NixOSLaptop";
