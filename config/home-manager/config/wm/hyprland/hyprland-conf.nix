@@ -312,7 +312,7 @@
   */
 
   bind = [
-    "$mod, RETURN, exec, alacritty"
+    "$mod, RETURN, exec, foot"
     "SUPER_SHIFT, Q, killactive"
     "$mod, D, exec, $menu"
     "$mod, L, exec, hyprlock"

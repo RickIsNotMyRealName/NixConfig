@@ -16,7 +16,8 @@
     ../../config/shells/zsh.nix
 
     ## Terminal
-    ../../config/terminal/alacritty.nix
+    # ../../config/terminal/alacritty.nix
+    ../../config/terminal/foot.nix
 
     ## Fonts
     #../../config/fonts/fonts.nix
