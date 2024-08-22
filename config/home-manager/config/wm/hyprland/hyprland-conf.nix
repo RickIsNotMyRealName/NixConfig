@@ -209,7 +209,7 @@
   ];
 
   general = {
-    "sensitivity" = "1.0";
+    # "sensitivity" = "1.0";
     "border_size" = "3";
     "no_border_on_floating" = "true";
     "gaps_in" = "5";
@@ -223,7 +223,7 @@
     "layout" = "master";
     # "no_cursor_warps" = "true";
     "no_focus_fallback" = "true";
-    "apply_sens_to_raw" = "false";
+    # "apply_sens_to_raw" = "false";
     "resize_on_border" = "true";
     "extend_border_grab_area" = "15";
     "hover_icon_on_border" = "true";
