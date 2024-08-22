@@ -17,6 +17,8 @@ jobs:
       - name: "Create Directory for Nix Store"
         run: |
           sudo mkdir /nix
+          sudo chown root:root /nix
+          sudo chmod 755 /nix
 
       - name: "Clean Up Disk Space for Nix Build"
         run: |
@@ -61,6 +63,8 @@ jobs:
       - name: "Create Directory for Nix Store"
         run: |
           sudo mkdir /nix
+          sudo chown root:root /nix
+          sudo chmod 755 /nix
 
       - name: "Clean Up Disk Space for Nix Build"
         run: |
@@ -105,6 +109,8 @@ jobs:
       - name: "Create Directory for Nix Store"
         run: |
           sudo mkdir /nix
+          sudo chown root:root /nix
+          sudo chmod 755 /nix
 
       - name: "Clean Up Disk Space for Nix Build"
         run: |
