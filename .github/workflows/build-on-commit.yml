@@ -11,6 +11,17 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
+      - name: "Maximize Disk Space"
+          run: |
+            sudo rm -rf $AGENT_TOOLSDIRECTORY
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/local/share/chromium
+            sudo rm -rf /usr/local/lib/node_modules
+            sudo rm -rf /usr/local/lib/heroku
+            sudo rm -rf /var/lib/docker/overlay2
+            sudo rm -rf /home/linuxbrew
+            sudo rm -rf /home/runner/.rustup
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
@@ -24,6 +35,17 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
+      - name: "Maximize Disk Space"
+          run: |
+            sudo rm -rf $AGENT_TOOLSDIRECTORY
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/local/share/chromium
+            sudo rm -rf /usr/local/lib/node_modules
+            sudo rm -rf /usr/local/lib/heroku
+            sudo rm -rf /var/lib/docker/overlay2
+            sudo rm -rf /home/linuxbrew
+            sudo rm -rf /home/runner/.rustup
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
@@ -37,6 +59,17 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
+      - name: "Maximize Disk Space"
+          run: |
+            sudo rm -rf $AGENT_TOOLSDIRECTORY
+            sudo rm -rf /usr/local/.ghcup
+            sudo rm -rf /usr/local/share/powershell
+            sudo rm -rf /usr/local/share/chromium
+            sudo rm -rf /usr/local/lib/node_modules
+            sudo rm -rf /usr/local/lib/heroku
+            sudo rm -rf /var/lib/docker/overlay2
+            sudo rm -rf /home/linuxbrew
+            sudo rm -rf /home/runner/.rustup
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
