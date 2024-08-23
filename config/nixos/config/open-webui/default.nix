@@ -1,7 +1,7 @@
 { pkgs, inputs, ... }:
 {
   imports = [
-    "${inputs.nixpkgs-unstable}/nixos/modules/services/misc/open-webui.nix"
+    "${inputs.nixpkgs-pinned}/nixos/modules/services/misc/open-webui.nix"
   ];
 
   services.open-webui = {
