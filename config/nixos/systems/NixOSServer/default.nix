@@ -10,6 +10,7 @@
     # ../../config/traefik/default.nix
     ../../config/sops/default.nix
     ../../config/portainer/default.nix
+        ../../config/cachix/default.nix
   ];
 
   myConfig = {

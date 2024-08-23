@@ -8,6 +8,7 @@
     ../../config/open-webui/default.nix
     ../../config/comfyui/default.nix
     ../../config/sops/default.nix
+    ../../config/cachix/default.nix
   ];
 
 
