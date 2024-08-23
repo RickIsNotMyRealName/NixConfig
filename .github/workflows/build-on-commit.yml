@@ -1,150 +1,19 @@
-name: Build NixOS Systems on Commit
+name: CI
 
 on:
   push:
-    branches:
-      - main
-      - '**/feature/**'
   pull_request:
-    branches:
-      - main
-      - '**/feature/**'
 
 jobs:
-  build-desktop:
-    runs-on: ubuntu-latest
+  check:
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: "write"
+      contents: "read"
     steps:
-      - name: "Create Directory for Nix Store"
-        run: |
-          sudo mkdir /nix
-          sudo chown runner:runner /nix
-          sudo chmod 755 /nix
-
-      - name: "Clean Up Disk Space for Nix Build"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
-
-      - name: "Maximize Disk Space for Nix Build"
-        uses: easimon/maximize-build-space@v8
-        with:
-          root-reserve-mb: 8192
-          swap-size-mb: 1024
-          build-mount-path: /nix
-          remove-dotnet: "true"
-          remove-android: "true"
-          remove-haskell: "true"
-          remove-codeql: "true"
-          remove-docker-images: "true"
-
-      - name: "Checkout Repository"
-        uses: actions/checkout@v4
-
-      - name: "Install Nix"
-        uses: DeterminateSystems/nix-installer-action@main
-
-      - name: "Setup Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@main
-
-      - name: "Build NixOS Desktop System"
-        run: |
-          nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
-
-  build-laptop:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Create Directory for Nix Store"
-        run: |
-          sudo mkdir /nix
-          sudo chown runner:runner /nix
-          sudo chmod 755 /nix
-
-      - name: "Clean Up Disk Space for Nix Build"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
-
-      - name: "Maximize Disk Space for Nix Build"
-        uses: easimon/maximize-build-space@v8
-        with:
-          root-reserve-mb: 8192
-          swap-size-mb: 1024
-          build-mount-path: /nix
-          remove-dotnet: "true"
-          remove-android: "true"
-          remove-haskell: "true"
-          remove-codeql: "true"
-          remove-docker-images: "true"
-
-      - name: "Checkout Repository"
-        uses: actions/checkout@v4
-
-      - name: "Install Nix"
-        uses: DeterminateSystems/nix-installer-action@main
-
-      - name: "Setup Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@main
-
-      - name: "Build NixOS Laptop System"
-        run: |
-          nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
-
-  build-server:
-    runs-on: ubuntu-latest
-    steps:
-      - name: "Create Directory for Nix Store"
-        run: |
-          sudo mkdir /nix
-          sudo chown runner:runner /nix
-          sudo chmod 755 /nix
-
-      - name: "Clean Up Disk Space for Nix Build"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
-
-      - name: "Maximize Disk Space for Nix Build"
-        uses: easimon/maximize-build-space@v8
-        with:
-          root-reserve-mb: 8192
-          swap-size-mb: 1024
-          build-mount-path: /nix
-          remove-dotnet: "true"
-          remove-android: "true"
-          remove-haskell: "true"
-          remove-codeql: "true"
-          remove-docker-images: "true"
-
-      - name: "Checkout Repository"
-        uses: actions/checkout@v4
-
-      - name: "Install Nix"
-        uses: DeterminateSystems/nix-installer-action@main
-
-      - name: "Setup Cache"
-        uses: DeterminateSystems/magic-nix-cache-action@main
-
-      - name: "Build NixOS Server System"
-        run: |
-          nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+      - uses: actions/checkout@v4
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flake-checker-action@main
+      - name: Run `nix build`
+        run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
