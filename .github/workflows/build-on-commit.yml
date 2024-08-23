@@ -26,6 +26,11 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
+      - name: "Install Cachix"
+        uses: cachix/cachix-action@v15
+        with:
+          name: rickisnotmyrealname
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Server
         run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config  
   build-desktop:
@@ -50,6 +55,11 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
+      - name: "Install Cachix"
+        uses: cachix/cachix-action@v15
+        with:
+          name: rickisnotmyrealname
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Desktop
         run: nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
 
@@ -75,5 +85,10 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
+      - name: "Install Cachix"
+        uses: cachix/cachix-action@v15
+        with:
+          name: rickisnotmyrealname
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Laptop
         run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
