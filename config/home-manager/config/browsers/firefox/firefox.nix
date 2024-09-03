@@ -65,38 +65,6 @@ in
           }
         ];
       };
-      streaming = {
-        isDefault = false;
-        id = 1;
-        extensions = with addons;[
-          ublock-origin
-          proton-pass
-          h264ify
-          enhanced-h264ify
-          privacy-badger
-          darkreader
-          sponsorblock
-        ];
-
-        settings = {
-          "signon.rememberSignons" = false;
-          "browser.shell.checkDefaultBrowser" = false;
-          "browser.shell.defaultBrowserCheckCount" = 1;
-          "browser.download.panel.shown" = true;
-          "browser.download.useDownloadDir" = false;
-          "browser.newtabpage.activity-stream.feeds.section.topstories" = false;
-          "browser.newtabpage.pinned" = [
-            {
-              "label" = "ChatGPT";
-              "url" = "https://chat.openai.com/";
-            }
-            {
-              "label" = "MyNixOS";
-              "url" = "https://mynixos.com/";
-            }
-          ];
-        };
-      };
     };
   };
 }
