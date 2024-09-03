@@ -10,7 +10,7 @@ in
 {
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox;
+    package = pkgs.unstable.firefox;
     profiles = {
       joshk = {
         isDefault = true;
