@@ -58,5 +58,5 @@
   services.spice-vdagentd.enable = true;
 
 
-  services.openssh.passwordAuthentication = true; # FIXME: Set to false
+  services.openssh.settings.PasswordAuthentication = true; # FIXME: Set to false
 }
