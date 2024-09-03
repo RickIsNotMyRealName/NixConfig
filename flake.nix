@@ -23,7 +23,7 @@
     nixpkgs-unstable = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    nixpkgs-398141f = {
+    nixpkgs-pinned = {
       url = "github:nixos/nixpkgs/398141f68ad42a51e664751e72c5972ab8d4cbfd";
     };
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";

@@ -22,7 +22,7 @@
     };
   };
   pinned-packages = final: _prev: {
-    pinned = import inputs.nixpkgs-398141f {
+    pinned = import inputs.nixpkgs-pinned {
       system = final.system;
       config.allowUnfree = true;
     };
