@@ -429,7 +429,6 @@
   # every reload
   exec = [
     ".config/hypr/scripts/reload.sh"
-
   ];
 
   # every launch
