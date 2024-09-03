@@ -36,6 +36,10 @@ in
               "label" = "MyNixOS";
               "url" = "https://mynixos.com/";
             }
+            {
+              "label" = "Homepage";
+              "url" = "http://192.168.1.27:3000";
+            }
           ];
         };
         bookmarks = [
