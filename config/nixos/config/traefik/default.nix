@@ -187,7 +187,23 @@
   };
   }
 */
-
+/*
+  - 192.168.1.10-192.168.1.19 - Servers/Services
+   	- 192.168.1.10:444,81 - TrueNAS Server
+   	- 192.168.1.11 - TrueNAS set as kubernetes node ip as well.
+   	- 192.168.1.11:31012  - Actual Budget (Not used anymore)
+   	- 192.168.1.12:53,80 - PiHole
+   	- 192.168.1.13:8123 - Home Assistant
+   	- 192.168.1.14:8006 - Proxmox (PVE) Server
+   	- 192.168.1.16 - **Free**
+   	- 192.168.1.17:8443 - UniFi Controller
+   	- 192.168.1.18: - **Free**
+   	- 192.168.1.22 - Cloudflared
+   	- 192.168.1.23:5006: Actual Budget
+   	- 192.168.1.24:8081 - nixos-Traefik
+   	- 192.168.1.25:8080 - KeyCloak
+   	- 192.168.1.27:3000 - Homepage
+*/
 
 { ... }:
 {
@@ -205,7 +221,7 @@
 
 
   services.traefik = {
-    enable = true;
+    enable = false;
 
     environmentFiles = [ "/run/secrets/traefik.env" ];
 
@@ -225,7 +241,7 @@
           address = ":443";
           http = {
             tls = {
-              certResolver = "letsencrypt";
+              certResolver = "staging";
             };
           };
         };
@@ -238,7 +254,7 @@
       api = {
         dashboard = true;
         insecure = true;
-        debug = true;
+        debug = false;
       };
 
       # Log
@@ -266,25 +282,160 @@
       certificatesResolvers.staging.acme.tlsChallenge = { };
 
       serversTransport.insecureSkipVerify = true;
-      # tcpServersTransport.tls.insecureSkipVerify = true;
+      tcpServersTransport.tls.insecureSkipVerify = true;
+
+      Experimental.plugins = {
+        # enabled = true;
+        keycloakopenid = {
+          moduleName = "github.com/Gwojda/keycloakopenid";
+          version = "v0.1.35";
+        };
+      };
+
+      authSources.oidcSource.oidc = {
+        issuer = "http://192.168.1.25:8080/realms/master";
+        clientID = "traefik-middleware";
+        clientSecret = "2qaC4nNbTi891LiMyOwjpm9a1FOQsdHV";
+      };
+
     };
+
+
     dynamicConfigOptions = {
-      # Define the router
       http = {
-        routers.testRouter = {
-          rule = "Host(`test.tden.xyz`)";
-          service = "testService";
-          entryPoints = [ "websecure" ];
-          tls = {
-            certResolver = "letsencrypt";
+        services = {
+          testService.loadBalancer = {
+            servers = [
+              { url = "https://192.168.1.14:8006"; }
+            ];
+          };
+          trueNASService.loadBalancer = {
+            servers = [
+              { url = "https://192.168.1.10:444"; }
+            ];
+          };
+          piHoleService.loadBalancer = {
+            servers = [
+              { url = "http://192.168.1.12/admin/login.php"; }
+            ];
+          };
+          homeAssistantService.loadBalancer = {
+            servers = [
+              { url = "http://192.168.1.13:8123"; }
+            ];
+          };
+          proxmoxService.loadBalancer = {
+            servers = [
+              { url = "https://192.168.1.14:8006"; }
+            ];
+          };
+          unifiService.loadBalancer = {
+            servers = [
+              { url = "https://192.168.1.17:8443"; }
+            ];
+          };
+          nixosTraefikService.loadBalancer = {
+            servers = [
+              { url = "http://192.168.1.24:8081/dashboard/"; }
+            ];
+          };
+          keycloakService.loadBalancer = {
+            servers = [
+              { url = "http://192.168.1.25:8080"; }
+            ];
+          };
+          homepageService.loadBalancer = {
+            servers = [
+              { url = "http://192.168.1.27:3000"; }
+            ];
           };
         };
 
-        # Define the service
-        services.testService.loadBalancer = {
-          servers = [
-            { url = "https://192.168.1.14:8006"; }
-          ];
+        middlewares = {
+          my-keycloakopenid = {
+            plugin = {
+              keycloakopenid = {
+                # ClientID = "traefik-middleware";
+                # ClientSecret = "2qaC4nNbTi891LiMyOwjpm9a1FOQsdHV";
+                # KeycloakRealm = "test";
+                # KeycloakURL = "http://192.168.1.25:8080/realms/test";
+                # KeycloakURL = "http://192.168.1.25:8080/auth/realms/test";
+                # KeycloakURL = "http://192.168.1.25:8080/";
+                # Scope = "openid";
+                # TokenCookieName = "AUTH_TOKEN";
+                # UseAuthHeader = "false";
+                KeycloakURLEnv = "MY_KEYCLOAK_URL";
+                ClientIDEnv = "MY_KEYCLOAK_CLIENT_ID";
+                ClientSecretEnv = "MY_KEYCLOAK_CLIENT_SECRET";
+                KeycloakRealmEnv = "MY_KEYCLOAK_REALM";
+                ScopeEnv = "SCOPE";
+                TokenCookieNameEnv = "TOKEN_COOKIE_NAME";
+                UseAuthHeaderEnv = "USE_AUTH_HEADER";
+              };
+            };
+          };
+          keycloak-auth.fowardAuth = {
+            address = "http://192.168.1.25:8080/auth/realms/master/protocol/openid-connect/auth";
+            trustForwardHeader = true;
+            authResponseHeaders = [ "X-Auth-Request-User" "X-Auth-Request-Email" ];
+
+          };
+        };
+
+        routers = {
+          testRouter = {
+            rule = "Host(`test.tden.xyz`)";
+            service = "testService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          trueNASRouter = {
+            rule = "Host(`truenas.tden.xyz`)";
+            service = "trueNASService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          piHoleRouter = {
+            rule = "Host(`pihole.tden.xyz`)";
+            service = "piHoleService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          homeAssistantRouter = {
+            rule = "Host(`homeassistant.tden.xyz`)";
+            service = "homeAssistantService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          proxmoxRouter = {
+            rule = "Host(`proxmox.tden.xyz`)";
+            service = "proxmoxService";
+            middlewares = [ "keycloak-auth" ];
+          };
+          unifiRouter = {
+            rule = "Host(`unifi.tden.xyz`)";
+            service = "unifiService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          nixosTraefikRouter = {
+            rule = "Host(`traefik.tden.xyz`)";
+            service = "nixosTraefikService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          keycloakRouter = {
+            rule = "Host(`auth.tden.xyz`)";
+            service = "keycloakService";
+            entryPoints = [ "websecure" ];
+            middlewares = [ "keycloak-auth" ];
+          };
+          homepageRouter = {
+            rule = "Host(`tden.xyz`) || Host(`www.tden.xyz`) || Host(`homepage.tden.xyz`)";
+            service = "homepageService";
+            entryPoints = [ "websecure" ];
+            # middlewares = "my-keycloakopenid";
+          };
         };
       };
     };
