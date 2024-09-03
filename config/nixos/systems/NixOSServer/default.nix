@@ -33,7 +33,7 @@
   };
 
   networking.hostName = "NixOSServer";
-  # networking.nameservers = [ "1.1.1.1"];
+  networking.nameservers = [ "192.168.1.12" ];
 
   boot.tmp.cleanOnBoot = true;
   nix.settings.auto-optimise-store = true;
