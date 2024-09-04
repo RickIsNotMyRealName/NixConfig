@@ -5,7 +5,10 @@
 { lib, pkgs, ... }:
 
 {
-  imports = [ <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix> ];
+  imports = [
+    <nixpkgs/nixos/modules/virtualisation/qemu-vm.nix>
+    ../../config/cachix/default.nix
+  ];
 
   environment.systemPackages = with pkgs; [
   ];

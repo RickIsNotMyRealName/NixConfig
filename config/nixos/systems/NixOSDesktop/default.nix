@@ -9,6 +9,7 @@
     ../../config/comfyui/default.nix
     ../../config/sops/default.nix
     # ../../config/autologin-joshk/default.nix
+    ../../config/cachix/default.nix
   ];
 
 
