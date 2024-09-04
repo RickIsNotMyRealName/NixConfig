@@ -1,7 +1,7 @@
-{...}:
+{ ... }:
 {
-   services.displayManager = {
-	autoLogin.enable = true;
-	autoLogin.user = "joshk";
-   };
+  services.displayManager = {
+    autoLogin.enable = true;
+    autoLogin.user = "joshk";
+  };
 }

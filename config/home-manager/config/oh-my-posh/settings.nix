@@ -1,5 +1,5 @@
 /*
-# https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/agnoster.minimal.omp.json
+  # https://github.com/JanDeDobbeleer/oh-my-posh/blob/main/themes/agnoster.minimal.omp.json
   {
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
@@ -130,7 +130,7 @@
       "type" = "prompt";
     }
   ];
-  "transient_prompt"  = {
+  "transient_prompt" = {
     "background" = "transparent";
     "foreground" = "#ffffff";
     "template" = " ";

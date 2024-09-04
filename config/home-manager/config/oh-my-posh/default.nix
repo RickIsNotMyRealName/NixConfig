@@ -6,5 +6,5 @@
     enableZshIntegration = true;
     settings = import ./settings.nix;
   };
-  
+
 }
