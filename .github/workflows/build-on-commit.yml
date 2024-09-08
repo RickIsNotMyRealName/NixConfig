@@ -35,6 +35,7 @@ jobs:
         run: nix build .#nixosConfigurations.NixOSMinecraftServer.config.system.build.toplevel --accept-flake-config
   build-server:
     runs-on: ubuntu-22.04
+    needs: [build-minecraft-server]
     permissions:
       id-token: "write"
       contents: "read"
@@ -63,7 +64,7 @@ jobs:
         run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
   build-laptop:
     runs-on: ubuntu-22.04
-    needs: [build-desktop]
+    needs: [build-server]
     permissions:
       id-token: "write"
       contents: "read"
@@ -92,7 +93,7 @@ jobs:
         run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config      
   build-desktop:
     runs-on: ubuntu-22.04
-    needs: [build-server]
+    needs: [build-laptop]
     permissions:
       id-token: "write"
       contents: "read"
