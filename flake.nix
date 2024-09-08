@@ -54,7 +54,7 @@
       url = "gitlab:cbleslie/portainer-on-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, sops-nix, spicetify-nix, NixVirt, ... }@inputs:

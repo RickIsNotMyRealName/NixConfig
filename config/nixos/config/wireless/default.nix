@@ -9,9 +9,9 @@
       "@HomeSSID@" = {
         psk = "@HomePassword@";
       };
-      # "@MomsHouseSSID@" = {
-      #   psk = "@MomsHousePassword@";
-      # };
+      "@MomsHouseSSID@" = {
+        psk = "@MomsHousePassword@";
+      };
       "@NathansHouseSSID@" = {
         psk = "@NathansHousePass@";
       };

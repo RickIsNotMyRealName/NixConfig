@@ -6,7 +6,7 @@
     # ../../config/syncthing/default.nix
     ../../config/wireless/default.nix
     ../../config/sops/default.nix
-        ../../config/cachix/default.nix
+    ../../config/cachix/default.nix
   ];
 
 

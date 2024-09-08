@@ -7,10 +7,10 @@
     ./hardware-configuration.nix
 
     # Traefik
-    # ../../config/traefik/default.nix
+    ../../config/traefik/default.nix
     ../../config/sops/default.nix
-    ../../config/portainer/default.nix
-        ../../config/cachix/default.nix
+    # ../../config/portainer/default.nix
+    ../../config/cachix/default.nix
   ];
 
   myConfig = {
@@ -34,7 +34,7 @@
   };
 
   networking.hostName = "NixOSServer";
-  # networking.nameservers = [ "1.1.1.1"];
+  networking.nameservers = [ "192.168.1.12" ];
 
   boot.tmp.cleanOnBoot = true;
   nix.settings.auto-optimise-store = true;
@@ -59,5 +59,5 @@
   services.spice-vdagentd.enable = true;
 
 
-  services.openssh.passwordAuthentication = true; # FIXME: Set to false
+  services.openssh.settings.PasswordAuthentication = true; # FIXME: Set to false
 }

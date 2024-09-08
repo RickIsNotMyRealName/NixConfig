@@ -1,7 +1,7 @@
 { ... }:
 {
   programs.zoxide = {
-    enable = true;    
+    enable = true;
     enableZshIntegration = true;
     options = [
       "--cmd cd"

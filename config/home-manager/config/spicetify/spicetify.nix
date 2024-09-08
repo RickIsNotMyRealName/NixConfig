@@ -10,8 +10,8 @@ in
   programs.spicetify = {
     enable = true;
 
-    theme = spicePkgs.themes.text;
-    colorScheme = "Spotify";
+    theme = spicePkgs.themes.blossom;
+    # colorScheme = "Spotify";
 
     enabledExtensions = with spicePkgs.extensions; [
       fullAppDisplay

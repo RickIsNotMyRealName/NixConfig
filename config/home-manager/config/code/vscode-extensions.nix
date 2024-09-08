@@ -123,5 +123,12 @@ with pkgs.vscode-extensions; [
     version = "0.112.0";
     sha256 = "sha256-/ukMLK54Di+pC8DsOtwxodjUYV5c/gI9FfljCifnAa0=";
   }
+  # GitHub.vscode-pull-request-github
+  {
+    name = "vscode-pull-request-github";
+    publisher = "GitHub";
+    version = "0.94.0";
+    sha256 = "sha256-3ReTBDZFdx62AXIxi39scxLUY83HclpeOtP9bdq+K5U=";
+  }
 
 ]

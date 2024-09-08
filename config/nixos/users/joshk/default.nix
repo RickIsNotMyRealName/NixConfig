@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.joshk = {
     isNormalUser = true;
@@ -16,7 +15,6 @@
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/mnt/NixConfig";
-
   };
 
   users.extraGroups.vboxusers.members = [ "joshk" ];
