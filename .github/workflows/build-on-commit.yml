@@ -61,8 +61,7 @@ jobs:
           name: rickisnotmyrealname
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Laptop
-        run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
-         
+        run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config      
   build-desktop:
     runs-on: ubuntu-22.04
     needs: [build-server]
