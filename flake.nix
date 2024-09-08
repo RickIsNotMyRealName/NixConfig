@@ -54,6 +54,7 @@
       url = "gitlab:cbleslie/portainer-on-nixos";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
