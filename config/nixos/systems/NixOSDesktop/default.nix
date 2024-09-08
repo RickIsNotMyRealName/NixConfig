@@ -25,11 +25,8 @@
   };
 
   networking.hostName = "NixOSDesktop";
-  # networking.nameservers = [
-  #   "1.1.1.1"
-  #   "1.0.0.1"
-  # ];
-  networking.nameservers = [ "192.168.1.12" ];
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  # networking.nameservers = [ "192.168.1.12" ];
 
   hardware.bluetooth = {
     enable = true;
