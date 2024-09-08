@@ -6,18 +6,15 @@
     { environment.noXlibs = false; }
     ./hardware-configuration.nix
 
-    # Traefik
-    ../../config/traefik/default.nix
     ../../config/sops/default.nix
-    # ../../config/portainer/default.nix
     ../../config/cachix/default.nix
+    ../../config/minecraft/default.nix
   ];
 
   myConfig = {
     secretsUserName = "josh_admin";
     secrets = [
       "smb-secrets.env"
-      "traefik.env"
     ];
   };
 
@@ -33,17 +30,11 @@
       [ "${automount_opts},credentials=/run/secrets/smb-secrets.env,uid=1000,gid=1000" ];
   };
 
-  networking.hostName = "NixOSServer";
+  networking.hostName = "NixOSMinecraftServer";
   networking.nameservers = [ "192.168.1.12" ];
 
   boot.tmp.cleanOnBoot = true;
   nix.settings.auto-optimise-store = true;
-
-  nixpkgs = {
-    config = {
-      cudaSupport = true;
-    };
-  };
 
   boot.kernelParams = [
     "console=ttyS0,115200"
@@ -52,7 +43,6 @@
 
   environment.systemPackages = with pkgs; [
     spice-vdagent
-    authentik
   ];
 
   services.qemuGuest.enable = true;
