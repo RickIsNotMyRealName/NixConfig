@@ -1,9 +1,6 @@
 { modulesPath, pkgs, config, lib, ... }:
 {
   imports = [
-    # Use `profiles/minimal.nix` as the base configuration of this system but override `environment.noXlibs` to `false`.
-    (modulesPath + "/profiles/minimal.nix")
-    { environment.noXlibs = false; }
     ./hardware-configuration.nix
 
     ../../config/sops/default.nix
@@ -40,6 +37,10 @@
     "console=ttyS0,115200"
     "console=tty1"
   ];
+
+  virtualisation.proxmoxLXC = {
+    enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     spice-vdagent
