@@ -24,7 +24,7 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.enable = lib.mkDefault true;
 
   boot.supportedFilesystems = [ "ntfs" ];
 
