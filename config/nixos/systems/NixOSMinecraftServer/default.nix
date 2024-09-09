@@ -45,6 +45,13 @@
   services.qemuGuest.enable = true;
   services.spice-vdagentd.enable = true;
 
+  users.users.root = {
+    isNormalUser = true;
+    description = "root";
+    extraGroups = ["wheel" ];
+    shell = pkgs.zsh;
+    initialHashedPassword = "$y$j9T$jArB/OK7dwNWOYmxJ1Lm2/$BGA8dUMUqGp.lavPnys.JVdM.4J/7yeDdzUH4qqVw08"; # password is "test"
+  };
 
   services.openssh.settings.PasswordAuthentication = true; # FIXME: Set to false
 }
