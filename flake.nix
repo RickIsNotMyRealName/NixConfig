@@ -182,6 +182,7 @@
             "common"
             "server"
             "vm"
+            "proxmox-lxc"
           ];
         };
       };

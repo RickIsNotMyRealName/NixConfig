@@ -1,4 +1,4 @@
-{ modulesPath, pkgs, config, lib, ... }:
+{ pkgs, config, lib, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -37,10 +37,6 @@
     "console=ttyS0,115200"
     "console=tty1"
   ];
-
-  virtualisation.proxmoxLXC = {
-    enable = true;
-  };
 
   environment.systemPackages = with pkgs; [
     spice-vdagent
