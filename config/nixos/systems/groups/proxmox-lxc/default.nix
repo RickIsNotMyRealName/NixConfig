@@ -8,6 +8,8 @@
 
   proxmoxLXC = {
     enable = true;
+    manageNetwork = false;
+    manageHostName = false;
   };
 
 }
