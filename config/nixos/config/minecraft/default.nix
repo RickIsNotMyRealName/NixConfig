@@ -1,52 +1,38 @@
 { pkgs, lib, inputs, ... }:
 {
 
-  boot.enableContainers = true;
+  imports = [
+    inputs.nix-minecraft.nixosModules.minecraft-servers
+  ];
 
-  containers.minecraft-container = {
-    autoStart = true;
-    config = { pkgs, ... }: {
+  nixpkgs.overlays = [
+    inputs.nix-minecraft.overlay
+  ];
 
-      imports = [
-        inputs.nix-minecraft.nixosModules.minecraft-servers
-      ];
+  services.minecraft-servers = {
+    enable = true;
+    eula = true;
+    openFirewall = true;
 
-      nixpkgs.overlays = [
-        inputs.nix-minecraft.overlay
-      ];
-
-      nixpkgs.config = {
-        allowUnfree = true;
-      };
-
-      system.stateVersion = "23.11";
-
-      services.minecraft-servers = {
+    servers = {
+      main = {
         enable = true;
-        eula = true;
-        openFirewall = true;
+        package = pkgs.fabricServers.fabric-1_21_1;
 
-        servers = {
-          main = {
-            enable = true;
-            package = pkgs.fabricServers.fabric-1_21_1;
+        serverProperties = {
+          gamemode = "survival";
+          difficulty = "normal";
+          simulation-distance = 10;
+          level-seed = "youngadults2024";
+          server-port = 25565;
+        };
 
-            serverProperties = {
-              gamemode = "survival";
-              difficulty = "normal";
-              simulation-distance = 10;
-              level-seed = "youngadults2024";
-              server-port = 25565;
-            };
+        whitelist = {
+          YeYeGame42069 = "38e9466c-26b8-44d3-b0c1-9ad456e0a156";
+        };
 
-            whitelist = {
-              YeYeGame42069 = "38e9466c-26b8-44d3-b0c1-9ad456e0a156";
-            };
-
-            symlinks = {
-              mods = ./servers/main/mods;
-            };
-          };
+        symlinks = {
+          mods = ./servers/main/mods;
         };
       };
     };
