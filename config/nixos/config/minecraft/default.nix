@@ -8,6 +8,8 @@
   nixpkgs.overlays = [
     inputs.nix-minecraft.overlay
   ];
+  
+  networking.firewall.allowedUDPPorts = [ 24454 ];
 
   services.minecraft-servers = {
     enable = true;
