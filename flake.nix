@@ -174,17 +174,7 @@
             "vm"
           ];
         };
-        NixOSMinecraftServer = mkNixosSystem {
-          hostname = "NixOSMinecraftServer";
-          usernames = [ "josh_admin" ];
-          extraSpecialArgs = { };
-          machineTypes = [
-            "common"
-            "server"
-            "vm"
-            "proxmox-lxc"
-          ];
-        };
+        
       };
     };
 }
