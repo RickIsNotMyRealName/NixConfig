@@ -21,6 +21,15 @@
     ];
   };
 
+
+  virtualisation.virtualbox.host = {
+    enable = true;
+    enableKvm = true;
+    enableExtensionPack = true;
+    addNetworkInterface = false;
+  };
+
+
   # Set the hostname of my system.
   networking.hostName = "NixOSLaptop";
 
