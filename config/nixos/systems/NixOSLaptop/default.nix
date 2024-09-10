@@ -29,6 +29,8 @@
     addNetworkInterface = false;
   };
 
+  virtualisation.vmware.host.enable = true;
+
 
   # Set the hostname of my system.
   networking.hostName = "NixOSLaptop";
