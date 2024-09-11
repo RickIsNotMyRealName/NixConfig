@@ -9,7 +9,7 @@
     inputs.nix-minecraft.overlay
   ];
   
-  networking.firewall.allowedUDPPorts = [ 24454 ];
+  networking.firewall.allowedUDPPorts = [ 24454 19132 ];
 
   services.minecraft-servers = {
     enable = true;
