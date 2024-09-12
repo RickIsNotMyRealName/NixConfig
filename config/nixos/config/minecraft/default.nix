@@ -28,9 +28,11 @@
         symlinks = {
           mods = ./servers/main/mods;
           "config/Geyser-Fabric/config.yml" = ./servers/main/config/Geyser-Fabric/config.yml;
-          "config/fallingtree.json" = ./servers/main/config/fallingtree.json;
           "config/ping-wheel.server.json" = ./servers/main/config/ping-wheel.server.json;
           "config/voicechat/voicechat-server.properties" = ./servers/main/config/voicechat/voicechat-server.properties;
+        };
+        files = {
+          "config/fallingtree.json" = ./servers/main/config/fallingtree.json;
         };
       };
     };
