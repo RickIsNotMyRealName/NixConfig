@@ -151,6 +151,7 @@ jobs:
           nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
       - name: Commit and push changes
         run: |
+          rm -rf ./result
           git add flake.lock
           git commit -m "Update flake.lock"
           git push origin update-test
