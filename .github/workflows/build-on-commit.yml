@@ -3,9 +3,12 @@ name: CI
 on:
   push:
   pull_request:
+  schedule:
+    - cron: '0 2 * * 5'  # Runs every Friday at 2 AM UTC
 
 jobs:
   build-server:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-22.04
     permissions:
       id-token: "write"
@@ -33,7 +36,9 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Server
         run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+
   build-laptop:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-22.04
     needs: [build-server]
     permissions:
@@ -62,7 +67,9 @@ jobs:
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Laptop
         run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config      
+
   build-desktop:
+    if: github.event_name != 'schedule'
     runs-on: ubuntu-22.04
     needs: [build-laptop]
     permissions:
@@ -92,4 +99,51 @@ jobs:
       - name: Build NixOS Desktop
         run: nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
 
-  
+  update-flake:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - name: "Maximize Disk Space"
+        run: |
+          sudo rm -rf $AGENT_TOOLSDIRECTORY
+          sudo rm -rf /usr/local/.ghcup
+          sudo rm -rf /usr/local/share/powershell
+          sudo rm -rf /usr/local/share/chromium
+          sudo rm -rf /usr/local/lib/node_modules
+          sudo rm -rf /usr/local/lib/heroku
+          sudo rm -rf /var/lib/docker/overlay2
+          sudo rm -rf /home/linuxbrew
+          sudo rm -rf /home/runner/.rustup
+      - uses: actions/checkout@v4
+        with:
+          ref: update-test  # Checkout the update-test branch
+          fetch-depth: 0    # Fetch all history for accurate git operations
+      - name: Ensure we're on the update-test branch
+        run: git checkout update-test
+      - name: Set up git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+      - uses: DeterminateSystems/nix-installer-action@main
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      - uses: DeterminateSystems/flake-checker-action@main
+      - name: "Install Cachix"
+        uses: cachix/cachix-action@v15
+        with:
+          name: rickisnotmyrealname
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+      - name: Update Nix Flake
+        run: nix flake update --commit-lock-file .
+      - name: Build NixOS Server
+        run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+      - name: Build NixOS Laptop
+        run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
+      - name: Build NixOS Desktop
+        run: nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
+      - name: Commit and push changes
+        run: |
+          git add flake.lock
+          git commit -m "Update flake.lock"
+          git push origin update-test
