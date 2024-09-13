@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, outputs, ... }:
+{ pkgs, lib, config, inputs, outputs, ... }:
 {
   imports = [
 
@@ -22,9 +22,9 @@
   };
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.enable = lib.mkDefault true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.systemd.enable = true;
+  boot.initrd.systemd.enable = lib.mkDefault true;
 
   boot.supportedFilesystems = [ "ntfs" ];
 
