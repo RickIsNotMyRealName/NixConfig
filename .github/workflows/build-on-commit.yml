@@ -4,12 +4,12 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 9 * * 5'  # Runs every Friday 9:00 AM UTC
-    - cron: '10 19 * * 5'
+    - cron: '0 9 * * 5'    # Runs every Friday at 09:00 UTC
+    - cron: '7 20 * * 5'  # Runs every Friday at 19:10 UTC
 
 jobs:
   build-server:
-    if: github.event_name != 'schedule'
+    if: ${{ github.event_name != 'schedule' }}
     runs-on: ubuntu-22.04
     permissions:
       id-token: "write"
@@ -36,10 +36,11 @@ jobs:
           name: rickisnotmyrealname
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Server
-        run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+        run: |
+          nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
 
   build-laptop:
-    if: github.event_name != 'schedule'
+    if: ${{ github.event_name != 'schedule' }}
     runs-on: ubuntu-22.04
     needs: [build-server]
     permissions:
@@ -67,10 +68,11 @@ jobs:
           name: rickisnotmyrealname
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Laptop
-        run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config      
+        run: |
+          nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config      
 
   build-desktop:
-    if: github.event_name != 'schedule'
+    if: ${{ github.event_name != 'schedule' }}
     runs-on: ubuntu-22.04
     needs: [build-laptop]
     permissions:
@@ -98,10 +100,11 @@ jobs:
           name: rickisnotmyrealname
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
       - name: Build NixOS Desktop
-        run: nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
+        run: |
+          nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
 
   update-flake:
-    if: github.event_name == 'schedule'
+    if: ${{ github.event_name == 'schedule' }}
     runs-on: ubuntu-22.04
     permissions:
       contents: write
@@ -138,11 +141,14 @@ jobs:
       - name: Update Nix Flake
         run: nix flake update --commit-lock-file .
       - name: Build NixOS Server
-        run: nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+        run: |
+          nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
       - name: Build NixOS Laptop
-        run: nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
+        run: |
+          nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
       - name: Build NixOS Desktop
-        run: nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
+        run: |
+          nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
       - name: Commit and push changes
         run: |
           git add flake.lock
