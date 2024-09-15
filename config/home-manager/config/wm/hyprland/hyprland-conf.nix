@@ -434,14 +434,13 @@
   # every launch
   exec-once = [
     ".config/hypr/scripts/launch.sh"
-    # ".config/hypr/scripts/reload.sh"
     "exec ${pkgs.polkit-kde-agent}/libexec/polkit-kde-authentication-agent-1"
-    "[workspace 9 silent] google-chrome-stable --app=https://messages.google.com/web"
-    "[workspace 0 silent] google-chrome-stable --app=https://calendar.google.com"
     "[workspace 8 silent] spotify"
-    "[workspace 9 silent] google-chrome-stable --app=https://chat.openai.com"
     "wayvnc -o DP-3 0.0.0.0"
     "steam -silent %U"
     "flameshot"
+    # "[workspace 9 silent] google-chrome-stable --app=https://messages.google.com/web"
+    # "[workspace 9 silent] google-chrome-stable --app=https://chat.openai.com"
+    # "[workspace 0 silent] google-chrome-stable --app=https://calendar.google.com"
   ];
 }
