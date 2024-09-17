@@ -112,6 +112,8 @@
     };
   };
 
+  programs.command-not-found.enable = true;
+
 
 
   security.polkit.enable = true;
