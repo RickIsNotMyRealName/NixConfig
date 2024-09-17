@@ -34,6 +34,8 @@
 
   # Set the hostname of my system.
   networking.hostName = "NixOSLaptop";
+  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+  # networking.nameservers = [ "192.168.1.12" ];
 
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
