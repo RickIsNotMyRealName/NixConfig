@@ -189,20 +189,20 @@
 */
 /*
   - 192.168.1.10-192.168.1.19 - Servers/Services
-  	- 192.168.1.10:444,81 - TrueNAS Server
-  	- 192.168.1.11 - TrueNAS set as kubernetes node ip as well.
-  	- 192.168.1.11:31012  - Actual Budget (Not used anymore)
-  	- 192.168.1.12:53,80 - PiHole
-  	- 192.168.1.13:8123 - Home Assistant
-  	- 192.168.1.14:8006 - Proxmox (PVE) Server
-  	- 192.168.1.16 - **Free**
-  	- 192.168.1.17:8443 - UniFi Controller
-  	- 192.168.1.18: - **Free**
-  	- 192.168.1.22 - Cloudflared
-  	- 192.168.1.23:5006: Actual Budget
-  	- 192.168.1.24:8081 - nixos-Traefik
-  	- 192.168.1.25:8080 - KeyCloak
-  	- 192.168.1.27:3000 - Homepage
+  - 192.168.1.10:444,81 - TrueNAS Server
+  - 192.168.1.11 - TrueNAS set as kubernetes node ip as well.
+  - 192.168.1.11:31012  - Actual Budget (Not used anymore)
+  - 192.168.1.12:53,80 - PiHole
+  - 192.168.1.13:8123 - Home Assistant
+  - 192.168.1.14:8006 - Proxmox (PVE) Server
+  - 192.168.1.16 - **Free**
+  - 192.168.1.17:8443 - UniFi Controller
+  - 192.168.1.18: - **Free**
+  - 192.168.1.22 - Cloudflared
+  - 192.168.1.23:5006: Actual Budget
+  - 192.168.1.24:8081 - nixos-Traefik
+  - 192.168.1.25:8080 - KeyCloak
+  - 192.168.1.27:3000 - Homepage
 */
 
 { ... }:
