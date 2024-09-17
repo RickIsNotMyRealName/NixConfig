@@ -284,20 +284,6 @@
       serversTransport.insecureSkipVerify = true;
       tcpServersTransport.tls.insecureSkipVerify = true;
 
-      Experimental.plugins = {
-        # enabled = true;
-        keycloakopenid = {
-          moduleName = "github.com/Gwojda/keycloakopenid";
-          version = "v0.1.35";
-        };
-      };
-
-      authSources.oidcSource.oidc = {
-        issuer = "http://192.168.1.25:8080/realms/master";
-        clientID = "traefik-middleware";
-        clientSecret = "2qaC4nNbTi891LiMyOwjpm9a1FOQsdHV";
-      };
-
     };
 
 
@@ -351,90 +337,58 @@
           };
         };
 
-        middlewares = {
-          my-keycloakopenid = {
-            plugin = {
-              keycloakopenid = {
-                # ClientID = "traefik-middleware";
-                # ClientSecret = "2qaC4nNbTi891LiMyOwjpm9a1FOQsdHV";
-                # KeycloakRealm = "test";
-                # KeycloakURL = "http://192.168.1.25:8080/realms/test";
-                # KeycloakURL = "http://192.168.1.25:8080/auth/realms/test";
-                # KeycloakURL = "http://192.168.1.25:8080/";
-                # Scope = "openid";
-                # TokenCookieName = "AUTH_TOKEN";
-                # UseAuthHeader = "false";
-                KeycloakURLEnv = "MY_KEYCLOAK_URL";
-                ClientIDEnv = "MY_KEYCLOAK_CLIENT_ID";
-                ClientSecretEnv = "MY_KEYCLOAK_CLIENT_SECRET";
-                KeycloakRealmEnv = "MY_KEYCLOAK_REALM";
-                ScopeEnv = "SCOPE";
-                TokenCookieNameEnv = "TOKEN_COOKIE_NAME";
-                UseAuthHeaderEnv = "USE_AUTH_HEADER";
-              };
-            };
-          };
-          keycloak-auth.fowardAuth = {
-            address = "http://192.168.1.25:8080/auth/realms/master/protocol/openid-connect/auth";
-            trustForwardHeader = true;
-            authResponseHeaders = [ "X-Auth-Request-User" "X-Auth-Request-Email" ];
-
-          };
-        };
-
         routers = {
           testRouter = {
             rule = "Host(`test.tden.xyz`)";
             service = "testService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           trueNASRouter = {
             rule = "Host(`truenas.tden.xyz`)";
             service = "trueNASService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           piHoleRouter = {
             rule = "Host(`pihole.tden.xyz`)";
             service = "piHoleService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           homeAssistantRouter = {
             rule = "Host(`homeassistant.tden.xyz`)";
             service = "homeAssistantService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           proxmoxRouter = {
             rule = "Host(`proxmox.tden.xyz`)";
             service = "proxmoxService";
-            middlewares = [ "keycloak-auth" ];
+
           };
           unifiRouter = {
             rule = "Host(`unifi.tden.xyz`)";
             service = "unifiService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           nixosTraefikRouter = {
             rule = "Host(`traefik.tden.xyz`)";
             service = "nixosTraefikService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           keycloakRouter = {
             rule = "Host(`auth.tden.xyz`)";
             service = "keycloakService";
             entryPoints = [ "websecure" ];
-            middlewares = [ "keycloak-auth" ];
+
           };
           homepageRouter = {
             rule = "Host(`tden.xyz`) || Host(`www.tden.xyz`) || Host(`homepage.tden.xyz`)";
             service = "homepageService";
             entryPoints = [ "websecure" ];
-            # middlewares = "my-keycloakopenid";
           };
         };
       };
