@@ -80,7 +80,7 @@
     # comfyui
 
     # Packet Tracer
-    ciscoPacketTracer8
+    # ciscoPacketTracer8
 
     unstable.lutris
     unstable.winetricks
