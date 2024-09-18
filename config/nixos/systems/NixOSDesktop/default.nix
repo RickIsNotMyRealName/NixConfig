@@ -79,6 +79,9 @@
     # lm-studio
     # comfyui
 
+    # Packet Tracer
+    ciscoPacketTracer8
+
     unstable.lutris
     unstable.winetricks
     unstable.wine
