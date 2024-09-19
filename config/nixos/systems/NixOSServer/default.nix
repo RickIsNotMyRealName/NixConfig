@@ -12,6 +12,7 @@
     # ../../config/portainer/default.nix
     ../../config/cachix/default.nix
     ../../config/minecraft/default.nix
+    ../../config/wireguard-server/default.nix
   ];
 
   myConfig = {
