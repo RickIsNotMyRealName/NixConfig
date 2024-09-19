@@ -28,6 +28,7 @@
   networking.hostName = "NixOSDesktop";
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   # networking.nameservers = [ "192.168.1.12" ];
+  networking.wireguard.interfaces.wg0.ips = [ "10.0.0.3/32" ];
 
   hardware.bluetooth = {
     enable = true;
