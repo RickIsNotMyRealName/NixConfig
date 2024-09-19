@@ -10,6 +10,7 @@
     ../../config/sops/default.nix
     # ../../config/autologin-joshk/default.nix
     ../../config/cachix/default.nix
+    ../../config/wireguard-client/default.nix
   ];
 
 
