@@ -33,12 +33,12 @@
 
         peers = [
           {
-            # Phone
+            name = "Phone";
             publicKey = "bAtOGoLZX57W/ggInQL7d61v07beLNUYeXSYLbJ5oS0=";
             allowedIPs = [ "10.0.0.2/32" ];
           }
           {
-            # NixOSDesktop
+            name = "NixOSDesktop";
             publicKey = "WvZQohDENY3YqiseWC30/SNO2qddqB3hQjbX0yv9eCU=";
             allowedIPs = [ "10.0.0.3/32" ];
           }
