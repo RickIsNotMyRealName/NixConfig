@@ -7,6 +7,7 @@
     ../../config/wireless/default.nix
     ../../config/sops/default.nix
     ../../config/cachix/default.nix
+    ../../config/wireguard-client/default.nix
   ];
 
 
@@ -36,6 +37,7 @@
   networking.hostName = "NixOSLaptop";
   networking.nameservers = [ "1.0.0.1" "1.1.1.1" ];
   # networking.nameservers = [ "192.168.1.12" ];
+  networking.wireguard.interfaces.wg0.ips = [ "10.0.0.4/32" ];
 
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth

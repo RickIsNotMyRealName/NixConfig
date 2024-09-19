@@ -42,6 +42,11 @@
             publicKey = "WvZQohDENY3YqiseWC30/SNO2qddqB3hQjbX0yv9eCU=";
             allowedIPs = [ "10.0.0.3/32" ];
           }
+          {
+            name = "NixOSLaptop";
+            publicKey = "nX8DQwDhVkbneYFwgMVl69Aaz9g7keJQugYU/wYLL2w=";
+            allowedIPs = [ "10.0.0.4/32" ];
+          }
         ];
       };
     };
