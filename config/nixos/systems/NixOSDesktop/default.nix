@@ -93,6 +93,8 @@
     unstable.local-ai
 
     cifs-utils
+
+    remmina
   ];
 
   services.ollama = {
