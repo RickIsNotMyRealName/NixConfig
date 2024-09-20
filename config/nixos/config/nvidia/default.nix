@@ -50,6 +50,9 @@
     package = pkgs.unstable.linuxPackages.nvidiaPackages.latest;
   };
 
+  # Ensure we match the nvidia driver version with the kernel version
+  boot.kernelPackages = pkgs.unstable.linuxPackages;
+
   boot.extraModprobeConfig = ''
     options nvidia NVreg_RegistryDwords="PowerMizerEnable=0x1; PerfLevelSrc=0x2222; PowerMizerLevel=0x3; PowerMizerDefault=0x3; PowerMizerDefaultAC=0x3"
   '';
