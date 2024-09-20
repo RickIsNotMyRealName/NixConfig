@@ -3,8 +3,6 @@
   boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = with config.boot.kernelPackages; [
     v4l2loopback
-  ] ++ [
-    pkgs.linuxPackages.v4l2loopback
   ];
 
   boot.extraModprobeConfig = ''
