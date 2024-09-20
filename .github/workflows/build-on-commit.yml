@@ -121,10 +121,10 @@ jobs:
           sudo rm -rf /home/runner/.rustup
       - uses: actions/checkout@v4
         with:
-          ref: update-test  # Checkout the update-test branch
+          ref: main # Fetch all history for accurate git operations
           fetch-depth: 0    # Fetch all history for accurate git operations
-      - name: Ensure we're on the update-test branch
-        run: git checkout update-test
+      - name: Ensure we're on the main branch
+        run: git checkout main
       - name: Set up git config
         run: |
           git config user.name "github-actions[bot]"
