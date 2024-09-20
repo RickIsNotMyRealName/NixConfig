@@ -5,6 +5,7 @@ on:
   pull_request:
   schedule:
     - cron: '0 9 * * 5'    # Runs every Friday at 09:00 UTC
+  workflow_dispatch:
 
 jobs:
   build-server:
@@ -103,7 +104,7 @@ jobs:
           nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
 
   update-flake:
-    if: ${{ github.event_name == 'schedule' }}
+    if: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-22.04
     permissions:
       contents: write
