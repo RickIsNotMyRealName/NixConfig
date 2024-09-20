@@ -15,22 +15,21 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
-      - name: "Maximize Disk Space"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
+      - name: Maximize Build Space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'          # Optional: Remove Android SDKs
+          remove-haskell: 'true'          # Optional: Remove Haskell artifacts
+          remove-codeql: 'true'           # Optional: Remove CodeQL Action Bundles
+          remove-docker-images: 'true'    # Optional: Remove cached Docker images
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: "Install Cachix"
+      - name: Install Cachix
         uses: cachix/cachix-action@v15
         with:
           name: rickisnotmyrealname
@@ -47,22 +46,21 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
-      - name: "Maximize Disk Space"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
+      - name: Maximize Build Space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: "Install Cachix"
+      - name: Install Cachix
         uses: cachix/cachix-action@v15
         with:
           name: rickisnotmyrealname
@@ -79,22 +77,21 @@ jobs:
       id-token: "write"
       contents: "read"
     steps:
-      - name: "Maximize Disk Space"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
+      - name: Maximize Build Space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
       - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: "Install Cachix"
+      - name: Install Cachix
         uses: cachix/cachix-action@v15
         with:
           name: rickisnotmyrealname
@@ -109,17 +106,16 @@ jobs:
     permissions:
       contents: write
     steps:
-      - name: "Maximize Disk Space"
-        run: |
-          sudo rm -rf $AGENT_TOOLSDIRECTORY
-          sudo rm -rf /usr/local/.ghcup
-          sudo rm -rf /usr/local/share/powershell
-          sudo rm -rf /usr/local/share/chromium
-          sudo rm -rf /usr/local/lib/node_modules
-          sudo rm -rf /usr/local/lib/heroku
-          sudo rm -rf /var/lib/docker/overlay2
-          sudo rm -rf /home/linuxbrew
-          sudo rm -rf /home/runner/.rustup
+      - name: Maximize Build Space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+          remove-android: 'true'
+          remove-haskell: 'true'
+          remove-codeql: 'true'
+          remove-docker-images: 'true'
       - uses: actions/checkout@v4
         with:
           ref: main # Fetch all history for accurate git operations
@@ -133,7 +129,7 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
       - uses: DeterminateSystems/magic-nix-cache-action@main
       - uses: DeterminateSystems/flake-checker-action@main
-      - name: "Install Cachix"
+      - name: Install Cachix
         uses: cachix/cachix-action@v15
         with:
           name: rickisnotmyrealname
