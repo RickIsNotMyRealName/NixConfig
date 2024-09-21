@@ -21,7 +21,6 @@ jobs:
     name: Build Component
     runs-on: ubuntu-22.04
     permissions:
-      id-token: write
       contents: read
     if: ${{ inputs.needs_job == '' || needs[inputs.needs_job].result == 'success' }}
     steps:
