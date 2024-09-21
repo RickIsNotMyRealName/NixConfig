@@ -5,8 +5,6 @@
 
     # ../../config/syncthing/default.nix
     ../../config/wireless/default.nix
-    ../../config/sops/default.nix
-    ../../config/cachix/default.nix
     ../../config/wireguard-client/default.nix
   ];
 
@@ -17,7 +15,6 @@
       "GPTV4ToolAPIKey"
       "GoogleSearchAPIKey"
       "OpenAIAPIKey"
-      "smb-secrets.env"
     ];
   };
 

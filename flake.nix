@@ -151,6 +151,7 @@
             "laptop"
             "endDevice"
             "gui"
+            "smb-shares"
           ];
         };
         NixOSDesktop = mkNixosSystem {
@@ -162,6 +163,7 @@
             "desktop"
             "endDevice"
             "gui"
+            "smb-shares"
           ];
         };
         NixOSServer = mkNixosSystem {
@@ -172,6 +174,7 @@
             "common"
             "server"
             "vm"
+            "smb-shares"
           ];
         };
         NixOSBaseContainer = mkNixosSystem {
@@ -181,6 +184,17 @@
           machineTypes = [
             "common"
             "proxmox-container"
+            "smb-shares"
+          ];
+        };
+        NixOSMinecraftServer = mkNixosSystem {
+          hostname = "NixOSMinecraftServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+            "smb-shares"
           ];
         };
 

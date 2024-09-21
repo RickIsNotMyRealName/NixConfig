@@ -1,6 +1,6 @@
 { ... }:
 {
-  imports = [];
+  imports = [ ];
 
   networking.stevenblack = {
     enable = true;
