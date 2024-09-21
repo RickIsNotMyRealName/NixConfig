@@ -120,4 +120,5 @@
     ```plaintext
     features: keyctl=1,nesting=1
     ```
+- Check if you need to generate a new ssh key for the container. `sudo ssh-keygen -t ed25519 -f /etc/ssh/ssh_host_ed25519_key`
 
