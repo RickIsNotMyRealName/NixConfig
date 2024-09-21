@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       contents: read
-    if: ${{ inputs.needs_job == '' || needs[inputs.needs_job].result == 'success' }}
+    if: ${{ inputs.needs_job == '' || needs[inputs.needs_job].conclusion == 'success' }}
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
