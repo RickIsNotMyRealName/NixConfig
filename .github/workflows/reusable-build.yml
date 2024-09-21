@@ -1,0 +1,58 @@
+# .github/workflows/reusable-build.yml
+name: Reusable Build Workflow
+
+on:
+  workflow_call:
+    inputs:
+      build_command:
+        description: 'The Nix build command to execute'
+        required: true
+        type: string
+      needs_job:
+        description: 'Jobs that this job depends on'
+        required: false
+        type: string
+    secrets:
+      CACHIX_AUTH_TOKEN:
+        required: true
+
+jobs:
+  build:
+    name: Build Component
+    runs-on: ubuntu-22.04
+    permissions:
+      id-token: write
+      contents: read
+    if: ${{ inputs.needs_job == '' || needs.${{ inputs.needs_job }}.result == 'success' }}
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Check Flake
+        uses: DeterminateSystems/flake-checker-action@main
+
+      - name: Install Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: rickisnotmyrealname
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Execute Build Command
+        run: ${{ inputs.build_command }}
