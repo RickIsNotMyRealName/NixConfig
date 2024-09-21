@@ -5,6 +5,8 @@
     (modulesPath + "/profiles/minimal.nix")
     { environment.noXlibs = false; }
     ./hardware-configuration.nix
+
+    ../../config/wireguard-server/default.nix
   ];
 
   networking.nameservers = [ "192.168.1.12" ];
