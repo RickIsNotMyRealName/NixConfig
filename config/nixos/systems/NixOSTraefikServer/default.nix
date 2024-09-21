@@ -3,10 +3,4 @@
   imports = [
     ../../config/traefik/default.nix
   ];
-
-  myConfig = {
-    secrets = [
-      "traefik.env"
-    ];
-  };
 }

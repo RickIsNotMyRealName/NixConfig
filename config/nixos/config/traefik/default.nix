@@ -219,6 +219,11 @@
     "d /var/lib/traefik 0755 traefik traefik"
   ];
 
+  myConfig = {
+    secrets = [
+      "traefik.env"
+    ];
+  };
 
   services.traefik = {
     enable = false;
