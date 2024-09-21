@@ -28,9 +28,6 @@
 
   virtualisation.vmware.host.enable = true;
 
-
-  # Set the hostname of my system.
-  networking.hostName = "NixOSLaptop";
   networking.nameservers = [ "1.0.0.1" "1.1.1.1" ];
   # networking.nameservers = [ "192.168.1.12" ];
   networking.wg-quick.interfaces.wg0.address = [ "10.0.0.4/32" ];

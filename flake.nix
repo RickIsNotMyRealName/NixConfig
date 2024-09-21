@@ -90,6 +90,8 @@
           modules = [
             ./config/nixos/systems/${hostname}/default.nix
             {
+              networking.hostName = hostname;
+
               nixpkgs = {
                 overlays = builtins.attrValues outputs.overlays;
                 config = {

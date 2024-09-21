@@ -12,8 +12,6 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  # Set the hostname of my system.
-  networking.hostName = "NixOSVM";
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 

@@ -17,9 +17,6 @@
     ];
   };
 
-  
-
-  networking.hostName = "NixOSServer";
   networking.nameservers = [ "192.168.1.12" ];
 
   boot.tmp.cleanOnBoot = true;
