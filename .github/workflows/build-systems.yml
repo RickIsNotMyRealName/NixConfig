@@ -21,7 +21,6 @@ jobs:
     with:
       build_command: |
         nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
-      needs_job: build-server
     secrets:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
@@ -31,6 +30,5 @@ jobs:
     with:
       build_command: |
         nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
-      needs_job: build-laptop
     secrets:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
