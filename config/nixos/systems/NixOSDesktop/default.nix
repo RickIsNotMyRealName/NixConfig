@@ -81,8 +81,6 @@
 
     unstable.gamescope
     unstable.local-ai
-
-    cifs-utils
   ];
 
   services.ollama = {
