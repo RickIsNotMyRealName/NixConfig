@@ -2,6 +2,7 @@
 {
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.joshk = {
+    createHome = true;
     isNormalUser = true;
     description = "Josh Krahn";
     extraGroups = [ "networkmanager" "wheel" "video" "input" "adbusers" ];
