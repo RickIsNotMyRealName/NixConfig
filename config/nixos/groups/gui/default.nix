@@ -25,12 +25,6 @@
     remmina
 
     (pkgs.unstable.flameshot.override { enableWlrSupport = true; })
-
-    # (flameshot.overrideAttrs (oldAttrs: {
-    #   src = inputs.flameshot-github;
-    #   cmakeFlags = [ "-DUSE_WAYLAND_GRIM=ON" ];
-    # }))
-
   ];
 
   services.displayManager.sddm = {
