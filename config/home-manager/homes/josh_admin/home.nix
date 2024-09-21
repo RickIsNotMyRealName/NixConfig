@@ -6,13 +6,17 @@
     ../../config/shells/zsh.nix
 
     ## Terminal
-    ../../config/terminal/alacritty.nix
-
+    # ../../config/terminal/alacritty.nix
+    ../../config/terminal/foot.nix
 
     ## Git
     ../../config/git/git.nix
 
+    # zoxide
+    ../../config/zoxide/default.nix
 
+    # oh-my-posh
+    ../../config/oh-my-posh/default.nix
 
 
   ] ++ (builtins.attrValues outputs.homeModules)
