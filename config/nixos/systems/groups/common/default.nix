@@ -40,7 +40,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    plymouth
     home-manager
 
     nixd
@@ -63,12 +62,7 @@
     caligula
   ];
 
-  services.zerotierone = {
-    enable = true;
-    joinNetworks = [
-      "632ea290851d869e"
-    ];
-  };
+  
 
   fonts.packages = with pkgs; [
     noto-fonts
@@ -105,10 +99,6 @@
       enable = true;
       allowedTCPPorts = [ 22 57621 5900 15151 ];
       allowedUDPPorts = [ 22 5353 37015 37016 37017 37018 37019 37020 15151 ];
-    };
-    stevenblack = {
-      enable = true;
-      block = [ "fakenews" "gambling" "porn" /* "social" */ ];
     };
   };
 

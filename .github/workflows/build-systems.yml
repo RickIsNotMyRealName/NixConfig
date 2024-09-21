@@ -7,7 +7,15 @@ on:
   workflow_dispatch:
 
 jobs:
+  build-base_container:
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSBaseContainer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
   build-server:
+    needs: build-base_container
     uses: ./.github/workflows/reusable-build.yml
     with:
       build_command: |
@@ -32,3 +40,4 @@ jobs:
         nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
     secrets:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+ 

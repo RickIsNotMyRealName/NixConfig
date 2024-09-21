@@ -67,6 +67,9 @@ jobs:
       - name: Build NixOS Desktop
         run: |
           nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
+      - name: Build NixOS Base Container
+        run: |
+          nix build .#nixosConfigurations.NixOSBaseContainer.config.system.build.toplevel --accept-flake-config
 
       - name: Commit and Push Changes
         run: |
