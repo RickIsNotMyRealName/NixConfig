@@ -1,0 +1,36 @@
+# .github/workflows/build-systems.yml
+name: Combined Build
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build-server:
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+  build-laptop:
+    needs: build-server
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
+      needs_job: build-server
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+
+  build-desktop:
+    needs: build-laptop
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
+      needs_job: build-laptop
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}

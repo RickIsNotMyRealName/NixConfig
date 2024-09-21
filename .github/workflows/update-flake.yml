@@ -1,0 +1,74 @@
+# .github/workflows/update-flake.yml
+name: Update Flake
+
+on:
+  schedule:
+    - cron: '0 9 * * 5'    # Runs every Friday at 09:00 UTC
+  workflow_dispatch:
+
+jobs:
+  update-flake:
+    name: Update Flake and Build All
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - name: Free Disk Space (Ubuntu)
+        uses: jlumbroso/free-disk-space@main
+        with:
+          tool-cache: true
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: true
+          swap-storage: true
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Ensure Main Branch
+        run: git checkout main
+
+      - name: Set Up Git Config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Setup Magic Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
+      - name: Check Flake
+        uses: DeterminateSystems/flake-checker-action@main
+
+      - name: Install Cachix
+        uses: cachix/cachix-action@v15
+        with:
+          name: rickisnotmyrealname
+          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
+
+      - name: Update Nix Flake
+        run: nix flake update --flake . --commit-lock-file
+
+      - name: Build NixOS Server
+        run: |
+          nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
+
+      - name: Build NixOS Laptop
+        run: |
+          nix build .#nixosConfigurations.NixOSLaptop.config.system.build.toplevel --accept-flake-config
+
+      - name: Build NixOS Desktop
+        run: |
+          nix build .#nixosConfigurations.NixOSDesktop.config.system.build.toplevel --accept-flake-config
+
+      - name: Commit and Push Changes
+        run: |
+          rm -rf ./result
+          git push origin main
