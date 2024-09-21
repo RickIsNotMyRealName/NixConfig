@@ -103,16 +103,17 @@
 - Execute the following command to configure caching:
 
     ```sh
-    sudo nixos-rebuild switch --flake github:RickIsNotMyRealName/NixConfig#NixOSBaseContainer
+    sudo nixos-rebuild switch --flake 'github:RickIsNotMyRealName/NixConfig#NixOSBaseContainer'
     ```
 
   Then run:
 
     ```sh
-    sudo nixos-rebuild switch --flake github:RickIsNotMyRealName/NixConfig#<hostname>
+    sudo nixos-rebuild switch --flake 'github:RickIsNotMyRealName/NixConfig#<hostname>'
     ```
 
 - Update the password for the user added by the flake.
+- Also ensure you run `sudo chown -R <user>:<group> /home/<user>/` to fix the permissions for the user. As they get messed up for some reason.
 
 - Add one or both of the following features:
 
