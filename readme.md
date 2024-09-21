@@ -83,8 +83,40 @@
 
 ## Proxmox Containers
 
-- Need to add one or both of the following:
+- Ensure `Unprivileged container` is enabled.
+- Add the `nixos` tag.
+- Verify that `Nesting` is enabled.
 
-```plaintext
-features: keyctl=1,nesting=1
-```
+> **Note:** The password field in the Proxmox UI does not function with NixOS containers.
+
+- After creating the VM, navigate to the `Options` tab and change the console mode to `shell`. Boot the VM and execute the following commands:
+
+    ```sh
+    source /etc/set-environment
+    passwd
+    ```
+
+  You can revert to the default console mode afterward.
+
+- Run `nix-channel --update` to refresh the channels.
+
+- Execute the following command to configure caching:
+
+    ```sh
+    sudo nixos-rebuild switch --flake github:RickIsNotMyRealName/NixConfig#NixOSBaseContainer
+    ```
+
+  Then run:
+
+    ```sh
+    sudo nixos-rebuild switch --flake github:RickIsNotMyRealName/NixConfig#<hostname>
+    ```
+
+- Update the password for the user added by the flake.
+
+- Add one or both of the following features:
+
+    ```plaintext
+    features: keyctl=1,nesting=1
+    ```
+
