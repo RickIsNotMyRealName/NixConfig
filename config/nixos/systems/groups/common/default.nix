@@ -61,6 +61,12 @@
     nix-output-monitor
 
     caligula
+
+    micro
+    neofetch
+    git
+    tree
+
   ];
 
 

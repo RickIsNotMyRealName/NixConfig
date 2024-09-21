@@ -22,16 +22,7 @@
     username = "josh_admin";
     homeDirectory = "/home/josh_admin";
 
-    packages = with pkgs; [
-      micro
-      zsh
-      neofetch
-      git
-      tree
-      nixpkgs-fmt
-      # libnotify
-      # gpt4all # FIXME decide if i want this installed or not.
-    ];
+    packages = with pkgs; [ ];
 
     sessionVariables = {
       EDITOR = "code --wait";
