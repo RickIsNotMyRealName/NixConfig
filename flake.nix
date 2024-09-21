@@ -186,7 +186,6 @@
           machineTypes = [
             "common"
             "proxmox-container"
-            "smb-shares"
           ];
         };
         NixOSMinecraftServer = mkNixosSystem {
