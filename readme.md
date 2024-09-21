@@ -1,5 +1,7 @@
 # My NixOS configuration
 
+> Note: the `./scripts` folder does not get built into the system.
+
 ## Todo
 
 - Waybar
