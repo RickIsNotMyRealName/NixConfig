@@ -22,7 +22,6 @@
 
   environment.systemPackages = with pkgs; [
     spice-vdagent
-    authentik
   ];
 
   services.qemuGuest.enable = true;
