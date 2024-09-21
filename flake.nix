@@ -197,6 +197,24 @@
             "proxmox-container"
           ];
         };
+        NixOSTraefikServer = mkNixosSystem {
+          hostname = "NixOSTraefikServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
+        NixOSWireguardServer = mkNixosSystem {
+          hostname = "NixOSWireguardServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
       };
     };
 }
