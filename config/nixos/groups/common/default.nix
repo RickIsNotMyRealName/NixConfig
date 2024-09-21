@@ -12,6 +12,9 @@
     extraOptions = ''experimental-features = nix-command flakes'';
   };
 
+  boot.tmp.cleanOnBoot = true;
+  nix.settings.auto-optimise-store = true;
+
   programs.zsh = {
     enable = true;
 
