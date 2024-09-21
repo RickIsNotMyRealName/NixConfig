@@ -75,11 +75,4 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
-
-  # services.sunshine = {
-  #   enable = true;
-  #   # autoStart = true;
-  # };
-
 }
