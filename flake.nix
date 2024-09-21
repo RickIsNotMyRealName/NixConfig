@@ -111,7 +111,7 @@
 
           ] # map users and their files. Also map the machineTypes like vm, server, laptop, desktop to their respective files at 'config/nixos/systems/groups'
           ++ (map (username: ./config/nixos/users/${username}/default.nix) usernames)
-          ++ (map (machineType: ./config/nixos/systems/groups/${machineType}/default.nix) machineTypes);
+          ++ (map (machineType: ./config/nixos/groups/${machineType}/default.nix) machineTypes);
         };
     in
     {

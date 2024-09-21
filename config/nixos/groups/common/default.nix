@@ -1,8 +1,8 @@
 { pkgs, lib, config, inputs, outputs, ... }:
 {
   imports = [
-    ../../../config/sops/default.nix
-    ../../../config/cachix/default.nix
+    ../../config/sops/default.nix
+    ../../config/cachix/default.nix
 
   ] ++ (builtins.attrValues outputs.nixosModules)
   ++ (builtins.attrValues inputs.NixVirt.nixosModules);

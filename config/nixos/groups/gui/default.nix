@@ -2,7 +2,7 @@
 {
   imports = [
     # System hyprland
-    ../../../config/hyprland/default.nix
+    ../../config/hyprland/default.nix
   ];
 
   environment.systemPackages = with pkgs; [
