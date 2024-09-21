@@ -195,10 +195,8 @@
           machineTypes = [
             "common"
             "proxmox-container"
-            "smb-shares"
           ];
         };
-
       };
     };
 }
