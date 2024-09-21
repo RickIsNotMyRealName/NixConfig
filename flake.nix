@@ -174,6 +174,15 @@
             "vm"
           ];
         };
+        NixOSBaseContainer = mkNixosSystem {
+          hostname = "NixOSBaseContainer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
 
       };
     };
