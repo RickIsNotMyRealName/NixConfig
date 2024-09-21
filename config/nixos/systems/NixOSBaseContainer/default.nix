@@ -25,8 +25,9 @@
       [ "${automount_opts},credentials=/run/secrets/smb-secrets.env,uid=1000,gid=1000" ];
   };
 
-  environment.systemPackages = [
-    pkgs.micro
+  environment.systemPackages = with pkgs; [
+    micro
+    git
   ];
 
 }
