@@ -5,17 +5,8 @@
     (modulesPath + "/profiles/minimal.nix")
     { environment.noXlibs = false; }
     ./hardware-configuration.nix
-
-    # Traefik
-    ../../config/traefik/default.nix
     ../../config/wireguard-server/default.nix
   ];
-
-  myConfig = {
-    secrets = [
-      "traefik.env"
-    ];
-  };
 
   networking.nameservers = [ "192.168.1.12" ];
 
