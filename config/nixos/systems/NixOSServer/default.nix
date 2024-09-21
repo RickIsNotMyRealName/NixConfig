@@ -16,7 +16,6 @@
   ];
 
   myConfig = {
-    secretsUserName = "josh_admin";
     secrets = [
       "smb-secrets.env"
       "traefik.env"

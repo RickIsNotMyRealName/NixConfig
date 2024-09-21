@@ -15,7 +15,6 @@
 
 
   myConfig = {
-    secretsUserName = "joshk";
     secrets = [
       "wireless.env"
       "GPTV4ToolAPIKey"
