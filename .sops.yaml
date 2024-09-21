@@ -3,9 +3,11 @@ keys:
     - &joshk age1mufyq6qccz0r0czyg575vkx6a03exdfpj767fg7nl2r2jtgk5c2q567q50
   - &hosts
     - &server age1ap6gwsfj5hx6p4k8kjavu2ad30kn5rrmsgeze5camjz9cxrrqswsy3wnx0
+    - &NixOSWireguardServer age18m458wljrn2yjz8ta4f7dwqsvcskfx326m8gyfc2cjfn0k46e9us5lcsfn
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
       - age:
           - *joshk
           - *server
+          - *NixOSWireguardServer
