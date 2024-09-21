@@ -10,8 +10,6 @@
     polkit-kde-agent
     pavucontrol
     playerctl
-    # sunshine
-    # moonlight-qt
 
     scrcpy
 
