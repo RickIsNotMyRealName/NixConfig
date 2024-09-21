@@ -70,10 +70,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    # AI
-    # lm-studio
-    # comfyui
-
+    
     # Packet Tracer
     # ciscoPacketTracer8
 
