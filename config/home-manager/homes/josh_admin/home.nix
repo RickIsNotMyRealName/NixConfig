@@ -2,23 +2,12 @@
 {
 
   imports = [
-    # ../../config/wm/hyprland/hyprland.nix
-
-    # ../../config/pywal/pywal.nix
-
-    # ../../config/waybar/waybar.nix
-
-    ## Coding
-    # ../../config/code/vscode.nix
-
     ## Shells
-    ../../config/shells/zsh.nix # not working
+    ../../config/shells/zsh.nix
 
     ## Terminal
     ../../config/terminal/alacritty.nix
 
-    ## Wallpapers
-    # ../../config/theme/wallpapers.nix
 
     ## Git
     ../../config/git/git.nix
