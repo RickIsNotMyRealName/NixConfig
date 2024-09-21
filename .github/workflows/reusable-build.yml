@@ -23,7 +23,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
-    if: ${{ inputs.needs_job == '' || needs.${{ inputs.needs_job }}.result == 'success' }}
+    if: ${{ inputs.needs_job == '' || needs[inputs.needs_job].result == 'success' }}
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
