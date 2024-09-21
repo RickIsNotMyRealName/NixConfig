@@ -86,6 +86,7 @@
     "hyprland"
     "nixpkgs"
     "nixos"
+    "cachix"
   ];
 
   "debug.onTaskErrors" = "abort";
