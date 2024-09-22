@@ -5,6 +5,7 @@ keys:
     - &server age1ap6gwsfj5hx6p4k8kjavu2ad30kn5rrmsgeze5camjz9cxrrqswsy3wnx0
     - &NixOSWireguardServer age18m458wljrn2yjz8ta4f7dwqsvcskfx326m8gyfc2cjfn0k46e9us5lcsfn
     - &NixOSTraefikServer age1myhkvv8gwdjgr0r34h8n0x5tdj7r9awd2uk4268689lesj4y73dqmpdy40
+    - &NixOSHomepageServer age18hyl6smjtsk79arpr5820x4nje70a4j2kpfqvn0v8u2yxmfn3qdqzuad4z
 creation_rules:
   - path_regex: secrets/secrets.yaml$
     key_groups:
@@ -13,3 +14,4 @@ creation_rules:
           - *server
           - *NixOSWireguardServer
           - *NixOSTraefikServer
+          - *NixOSHomepageServer
