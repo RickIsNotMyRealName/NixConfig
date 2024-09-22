@@ -215,6 +215,15 @@
             "proxmox-container"
           ];
         };
+        NixOSHomepageServer = mkNixosSystem {
+          hostname = "NixOSHomepageServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
       };
     };
 }
