@@ -99,20 +99,7 @@
               };
             };
           }
-          {
-            ActualBudget = {
-              icon = "https://budget.tden.xyz/favicon.ico";
-              href = "https://budget.tden.xyz/";
-              siteMonitor = "https://budget.tden.xyz/";
-            };
-          }
-          {
-            Keycloak = {
-              icon = "https://auth.tden.xyz/resources/m7nor/admin/keycloak.v2/favicon.svg";
-              href = "https://auth.tden.xyz/admin/master/console/";
-              siteMonitor = "https://auth.tden.xyz/admin/master/console/";
-            };
-          }
+
           {
             ProxmoxCloudflareTunnel = {
               icon = "cloudflare.png";
@@ -135,6 +122,20 @@
                 tunnelid = "{{HOMEPAGE_VAR_Cloudflare_Tunnel_ID_2}}";
                 key = "{{HOMEPAGE_VAR_Cloudflare_Tunnel_Key}}";
               };
+            };
+          }
+          {
+            ActualBudget = {
+              icon = "https://budget.tden.xyz/favicon.ico";
+              href = "https://budget.tden.xyz/";
+              siteMonitor = "https://budget.tden.xyz/";
+            };
+          }
+          {
+            Keycloak = {
+              icon = "https://auth.tden.xyz/resources/m7nor/admin/keycloak.v2/favicon.svg";
+              href = "https://auth.tden.xyz/admin/master/console/";
+              siteMonitor = "https://auth.tden.xyz/admin/master/console/";
             };
           }
         ];
