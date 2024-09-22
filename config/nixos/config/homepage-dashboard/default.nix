@@ -53,6 +53,18 @@
       {
         Services = [
           {
+            Proxmox = {
+              icon = "proxmox.png";
+              href = "https://proxmox.tden.xyz";
+              widget = {
+                type = "proxmox";
+                url = "https://192.168.1.14:8006";
+                username = "{{HOMEPAGE_VAR_Proxmox_Username}}";
+                password = "{{HOMEPAGE_VAR_Proxmox_Password}}";
+              };
+            };
+          }
+          {
             TrueNAS = {
               icon = "truenas.png";
               href = "https://truenas.tden.xyz";
