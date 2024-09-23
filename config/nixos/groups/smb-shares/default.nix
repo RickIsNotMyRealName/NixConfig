@@ -29,7 +29,7 @@
       in
       [ "${automount_opts},credentials=/run/secrets/smb-secrets.env,uid=1000,gid=1000" ];
   };
-  
+
   environment.systemPackages = with pkgs; [
     cifs-utils
   ];

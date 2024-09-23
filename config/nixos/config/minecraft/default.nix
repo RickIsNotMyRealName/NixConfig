@@ -31,7 +31,7 @@
         whitelist = {
           YeYeGame42069 = "38e9466c-26b8-44d3-b0c1-9ad456e0a156";
         };
-        
+
         symlinks = {
           mods = ./servers/main/mods;
           "config/Geyser-Fabric/config.yml" = ./servers/main/config/Geyser-Fabric/config.yml;
@@ -42,7 +42,7 @@
         files = {
           "config/fallingtree.json" = ./servers/main/config/fallingtree.json;
         };
-        
+
       };
     };
   };
