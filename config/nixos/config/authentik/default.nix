@@ -11,8 +11,12 @@
     ];
   };
 
+  environment.systemPackages = with pkgs; [
+    authentik
+  ];
+
   services.authentik = {
-    enable = true;
+    enable = false;
     environmentFile = "/run/secrets/authentik.env";
     settings = {
       # email = {
