@@ -224,6 +224,15 @@
             "proxmox-container"
           ];
         };
+        NixOSAuthServer = mkNixosSystem {
+          hostname = "NixOSAuthServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
       };
     };
 }
