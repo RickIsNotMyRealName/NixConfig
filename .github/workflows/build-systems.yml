@@ -1,4 +1,13 @@
 # .github/workflows/build-systems.yml
+# NixOSBaseContainer
+# NixOSHomepageServer
+# NixOSMinecraftServer
+# NixOSWireguardServer
+# NixOSTraefikServer
+# NixOSAuthServer
+# NixOSServer
+# NixOSLaptop
+# NixOSDesktop
 name: Combined Build
 
 on:
@@ -14,17 +23,54 @@ jobs:
         nix build .#nixosConfigurations.NixOSBaseContainer.config.system.build.toplevel --accept-flake-config
     secrets:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
-  build-server:
+  build-homepage-server:
     needs: build-base_container
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSHomepageServer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+  build-minecraft-server:
+    needs: build-base_container
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSMinecraftServer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+  build-wireguard-server:
+    needs: build-base_container
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSWireguardServer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+  build-traefik-server:
+    needs: build-base_container
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSTraefikServer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+  build-auth-server:
+    needs: build-base_container
+    uses: ./.github/workflows/reusable-build.yml
+    with:
+      build_command: |
+        nix build .#nixosConfigurations.NixOSAuthServer.config.system.build.toplevel --accept-flake-config
+    secrets:
+      CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
+  build-server:
     uses: ./.github/workflows/reusable-build.yml
     with:
       build_command: |
         nix build .#nixosConfigurations.NixOSServer.config.system.build.toplevel --accept-flake-config
     secrets:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
-
   build-laptop:
-    needs: build-server
     uses: ./.github/workflows/reusable-build.yml
     with:
       build_command: |
@@ -33,7 +79,6 @@ jobs:
       CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
 
   build-desktop:
-    needs: build-laptop
     uses: ./.github/workflows/reusable-build.yml
     with:
       build_command: |

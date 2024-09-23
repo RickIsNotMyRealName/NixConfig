@@ -1,4 +1,13 @@
 # .github/workflows/update-flake.yml
+# NixOSBaseContainer
+# NixOSHomepageServer
+# NixOSMinecraftServer
+# NixOSWireguardServer
+# NixOSTraefikServer
+# NixOSAuthServer
+# NixOSServer
+# NixOSLaptop
+# NixOSDesktop
 name: Update Flake
 
 on:
@@ -55,6 +64,30 @@ jobs:
 
       - name: Update Nix Flake
         run: nix flake update --flake . --commit-lock-file
+      
+      - name: Build NixOS Base Container
+        run: |
+          nix build .#nixosConfigurations.NixOSBaseContainer.config.system.build.toplevel --accept-flake-config
+      
+      - name: Build NixOS Homepage Server
+        run: |
+          nix build .#nixosConfigurations.NixOSHomepageServer.config.system.build.toplevel --accept-flake-config
+      
+      - name: Build NixOS Minecraft Server
+        run: |
+          nix build .#nixosConfigurations.NixOSMinecraftServer.config.system.build.toplevel --accept-flake-config
+      
+      - name: Build NixOS Wireguard Server
+        run: |
+          nix build .#nixosConfigurations.NixOSWireguardServer.config.system.build.toplevel --accept-flake-config
+      
+      - name: Build NixOS Traefik Server
+        run: |
+          nix build .#nixosConfigurations.NixOSTraefikServer.config.system.build.toplevel --accept-flake-config
+      
+      - name: Build NixOS Auth Server
+        run: |
+          nix build .#nixosConfigurations.NixOSAuthServer.config.system.build.toplevel --accept-flake-config
 
       - name: Build NixOS Server
         run: |
