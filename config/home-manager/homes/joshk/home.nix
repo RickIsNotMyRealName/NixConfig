@@ -11,6 +11,7 @@
 
     ## Coding
     ../../config/code/vscode.nix
+    ../../config/kickstart.nixvim/nixvim.nix
 
     ## Shells
     ../../config/shells/zsh.nix
@@ -90,7 +91,7 @@
     ];
 
     sessionVariables = {
-      EDITOR = "code --wait";
+      # EDITOR = "code --wait";
       SYSTEMD_EDITOR = "code --wait";
       VISUAL = "code --wait";
     };

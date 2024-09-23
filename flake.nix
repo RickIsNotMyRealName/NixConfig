@@ -57,6 +57,10 @@
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     authentik-nix.url = "github:nix-community/authentik-nix";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, hyprland, sops-nix, spicetify-nix, NixVirt, ... }@inputs:
