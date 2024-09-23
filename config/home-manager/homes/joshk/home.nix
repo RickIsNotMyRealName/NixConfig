@@ -54,6 +54,9 @@
     # oh-my-posh
     ../../config/oh-my-posh/default.nix
 
+    # Libre Office
+    ../../config/libre-office/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
