@@ -8,7 +8,7 @@
 
   users.users.root = {
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPj8gjwywhMlsCqD/2v5d1ba6RbbW4QUo9sk+UkokyhW root@nixos"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJX/6PTPe8gVtAlWQcO7GUvb/AWa4N9GrG21xk2mSfEc joshk@NixOSDesktop"
     ];
   };
 
