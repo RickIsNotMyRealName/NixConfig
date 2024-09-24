@@ -2,6 +2,6 @@
 {
   services.nextcloud = {
     enable = true;
-    hostname = "nextcloud.tden.xyz";
+    hostName = "nextcloud.tden.xyz";
   };
 }
