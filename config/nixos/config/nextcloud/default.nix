@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   myConfig = {
-    secrets = [
-      "adminpassFile"
-    ];
+    secrets = {
+      "adminpassFile" = { };
+    };
   };
 
   services.nextcloud = {
