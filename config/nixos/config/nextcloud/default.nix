@@ -2,7 +2,9 @@
 {
   myConfig = {
     secrets = {
-      "adminpassFile" = { };
+      "adminpassFile" = {
+        owner = "nextcloud";
+      };
     };
   };
 
