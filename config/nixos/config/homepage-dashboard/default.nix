@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   myConfig = {
-    secrets = [
-      "homepage-dashboard.env"
-    ];
+    secrets = {
+      "homepage-dashboard.env" = { };
+    };
   };
 
   services.homepage-dashboard = {

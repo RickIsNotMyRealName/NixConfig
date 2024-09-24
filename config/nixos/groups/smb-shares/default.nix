@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
   myConfig = {
-    secrets = [
-      "smb-secrets.env"
-    ];
+    secrets = {
+      "smb-secrets.env" = { };
+    };
   };
 
   fileSystems."/mnt/NixConfig" = {

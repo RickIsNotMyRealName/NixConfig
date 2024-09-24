@@ -19,6 +19,6 @@
   };
 
   myConfig = {
-    secretsUserName = "josh_admin";
+    keyFileUserName = "josh_admin";
   };
 }

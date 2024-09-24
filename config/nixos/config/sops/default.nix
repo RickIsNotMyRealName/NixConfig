@@ -1,18 +1,38 @@
 { pkgs, inputs, config, lib, ... }:
+
+let
+  cfg = config.myConfig;
+in
 {
   imports = [
     inputs.sops-nix.nixosModules.sops
   ];
 
-  options.myConfig.secretsUserName = lib.mkOption {
+  # Define the user who owns the keyfile, defaulting to "root"
+  options.myConfig.keyFileUserName = lib.mkOption {
     type = lib.types.str;
-    default = "root";
-    description = "The user that owns the secrets";
+    default = "root";  # Added a default value
+    description = "The user who has the keyfile that can decrypt the secrets when building the system.";
   };
+
+  # Define the secrets as an attribute set with sub-options
   options.myConfig.secrets = lib.mkOption {
-    type = lib.types.listOf lib.types.str;
-    default = [ ];
-    description = "The list of secrets to be built into the runtime";
+    type = lib.types.attrsOf (lib.types.submodule {
+      options = {
+        owner = lib.mkOption {
+          type = lib.types.str;
+          default = cfg.keyFileUserName;
+          description = "The user that owns the secret.";
+        };
+        path = lib.mkOption {
+          type = lib.types.str;
+          default = "/run/secrets";
+          description = "The folder where the secret will be stored.";
+        };
+      };
+    });
+    default = { };
+    description = "An attribute set of secrets with their properties like owner and folder.";
   };
 
   config = {
@@ -21,19 +41,18 @@
       defaultSopsFormat = "yaml";
 
       age = {
-        keyFile = "/home/${config.myConfig.secretsUserName}/.config/sops/age/keys.txt";
+        keyFile = "/home/${cfg.keyFileUserName}/.config/sops/age/keys.txt";
         sshKeyPaths = [
           "/etc/ssh/ssh_host_ed25519_key"
         ];
         generateKey = true;
       };
 
-      # Put all of config.myConfig.secretsList into sops.secrets like above
-      secrets = lib.genAttrs config.myConfig.secrets (secret: {
-        owner = config.myConfig.secretsUserName;
-      });
+      # Use lib.mapAttrs to correctly transform the attribute set
+      secrets = lib.mapAttrs (secretName: secretConfig: {
+        owner = secretConfig.owner or cfg.keyFileUserName;
+        path = "${secretConfig.path or "/run/secrets"}/${secretName}";
+      }) cfg.secrets;
     };
   };
 }
-
-      

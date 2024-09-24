@@ -6,9 +6,9 @@
   ];
 
   myConfig = {
-    secrets = [
-      "authentik.env"
-    ];
+    secrets = {
+      "authentik.env" = { };
+    };
   };
 
   environment.systemPackages = with pkgs; [

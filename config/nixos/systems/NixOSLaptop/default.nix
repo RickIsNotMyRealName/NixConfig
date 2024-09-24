@@ -10,12 +10,12 @@
 
 
   myConfig = {
-    secrets = [
-      "wireless.env"
-      "GPTV4ToolAPIKey"
-      "GoogleSearchAPIKey"
-      "OpenAIAPIKey"
-    ];
+    secrets = {
+      "wireless.env" = { };
+      "GPTV4ToolAPIKey" = { };
+      "GoogleSearchAPIKey" = { };
+      "OpenAIAPIKey" = { };
+    };
   };
 
 

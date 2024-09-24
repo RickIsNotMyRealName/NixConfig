@@ -5,6 +5,6 @@
   ];
 
   myConfig = {
-    secrets = [ ];
+    secrets = { };
   };
 }
