@@ -10,7 +10,7 @@ let
 
 in
 {
-  # example = pkgs.callPackage ./example { };
+  actual-server = pkgs.callPackage ./actual-server/default.nix { };
 
   lm-studio = pkgs.callPackage ./lm-studio/package.nix { };
 
