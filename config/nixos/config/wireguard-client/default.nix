@@ -6,11 +6,11 @@
   };
 
   myConfig = {
-    secrets = [
-      "wireguard-${config.networking.hostName}-key"
-      "wireguard-${config.networking.hostName}-key.pub"
-      "wireguard-server-key.pub"
-    ];
+    secrets = {
+      "wireguard-${config.networking.hostName}-key" = { };
+      "wireguard-${config.networking.hostName}-key.pub" = { };
+      "wireguard-server-key.pub" = { };
+    };
   };
 
   networking.wg-quick = {

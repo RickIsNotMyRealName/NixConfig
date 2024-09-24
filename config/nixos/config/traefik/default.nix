@@ -220,9 +220,9 @@
   ];
 
   myConfig = {
-    secrets = [
-      "traefik.env"
-    ];
+    secrets = {
+      "traefik.env" = { };
+    };
   };
 
   services.traefik = {

@@ -21,6 +21,6 @@
   users.extraGroups.vboxusers.members = [ "joshk" ];
 
   myConfig = {
-    secretsUserName = "joshk";
+    keyFileUserName = "joshk";
   };
 }

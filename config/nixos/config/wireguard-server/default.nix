@@ -5,10 +5,10 @@
   ];
 
   myConfig = {
-    secrets = [
-      "wireguard-server-key"
-      "wireguard-server-key.pub"
-    ];
+    secrets = {
+      "wireguard-server-key" = { };
+      "wireguard-server-key.pub" = { };
+    };
   };
 
   networking.nat = {
