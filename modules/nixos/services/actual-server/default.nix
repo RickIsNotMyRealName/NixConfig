@@ -46,10 +46,7 @@ in
       };
       upload = lib.mkOption {
         type = lib.types.attrsOf lib.types.str;
-        default = {
-          fileSizeLimitMB = "1000";
-          syncEncryptedFileSizeLimitMB = "1000";
-        };
+        default = { };
         description = "Upload configuration";
       };
     };
