@@ -139,6 +139,7 @@
       formatter = forAllSystems (system: nixpkgs.legacyPackages.${system}.nixpkgs-fmt);
 
       nixosConfigurations = {
+        # VM
         NixOSVM = mkNixosSystem {
           hostname = "NixOSVM";
           usernames = [ "joshk" ];
@@ -149,6 +150,7 @@
             "gui"
           ];
         };
+        # Laptop
         NixOSLaptop = mkNixosSystem {
           hostname = "NixOSLaptop";
           usernames = [ "joshk" ];
@@ -161,6 +163,7 @@
             "smb-shares"
           ];
         };
+        # Desktop
         NixOSDesktop = mkNixosSystem {
           hostname = "NixOSDesktop";
           usernames = [ "joshk" ];
@@ -173,6 +176,7 @@
             "smb-shares"
           ];
         };
+        # Server
         NixOSServer = mkNixosSystem {
           hostname = "NixOSServer";
           usernames = [ "josh_admin" ];
@@ -184,6 +188,7 @@
             "smb-shares"
           ];
         };
+        # Base Container
         NixOSBaseContainer = mkNixosSystem {
           hostname = "NixOSBaseContainer";
           usernames = [ "josh_admin" ];
@@ -193,6 +198,7 @@
             "proxmox-container"
           ];
         };
+        # Minecraft
         NixOSMinecraftServer = mkNixosSystem {
           hostname = "NixOSMinecraftServer";
           usernames = [ "josh_admin" ];
@@ -202,6 +208,7 @@
             "proxmox-container"
           ];
         };
+        # Traefik
         NixOSTraefikServer = mkNixosSystem {
           hostname = "NixOSTraefikServer";
           usernames = [ "josh_admin" ];
@@ -211,6 +218,7 @@
             "proxmox-container"
           ];
         };
+        # Wireguard
         NixOSWireguardServer = mkNixosSystem {
           hostname = "NixOSWireguardServer";
           usernames = [ "josh_admin" ];
@@ -220,6 +228,7 @@
             "proxmox-container"
           ];
         };
+        # Homepage
         NixOSHomepageServer = mkNixosSystem {
           hostname = "NixOSHomepageServer";
           usernames = [ "josh_admin" ];
@@ -229,6 +238,7 @@
             "proxmox-container"
           ];
         };
+        # Authentik or Keycloak
         NixOSAuthServer = mkNixosSystem {
           hostname = "NixOSAuthServer";
           usernames = [ "josh_admin" ];
@@ -238,8 +248,19 @@
             "proxmox-container"
           ];
         };
+        # Actual Budget
         NixOSBudgetServer = mkNixosSystem {
           hostname = "NixOSBudgetServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
+        # Nextcloud
+        NixOSNextcloudServer = mkNixosSystem {
+          hostname = "NixOSNextcloudServer";
           usernames = [ "josh_admin" ];
           extraSpecialArgs = { };
           machineTypes = [
