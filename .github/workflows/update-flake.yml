@@ -5,6 +5,7 @@
 # NixOSWireguardServer
 # NixOSTraefikServer
 # NixOSAuthServer
+# NixOSNextcloudServer
 # NixOSServer
 # NixOSLaptop
 # NixOSDesktop
@@ -82,6 +83,10 @@ jobs:
       - name: Build NixOS Auth Server
         run: |
           nix build .#nixosConfigurations.NixOSAuthServer.config.system.build.toplevel --accept-flake-config
+      
+      - name: Build NixOS Nextcloud Server
+        run: |
+          nix build .#nixosConfigurations.NixOSNextcloudServer.config.system.build.toplevel --accept-flake-config
 
       - name: Build NixOS Server
         run: |
