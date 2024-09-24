@@ -238,6 +238,15 @@
             "proxmox-container"
           ];
         };
+        NixOSBudgetServer = mkNixosSystem {
+          hostname = "NixOSBudgetServer";
+          usernames = [ "josh_admin" ];
+          extraSpecialArgs = { };
+          machineTypes = [
+            "common"
+            "proxmox-container"
+          ];
+        };
       };
     };
 }
