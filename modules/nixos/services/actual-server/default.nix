@@ -39,6 +39,19 @@ in
         default = "actual";
         description = "Group to run as";
       };
+      https = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        default = { };
+        description = "HTTPS configuration";
+      };
+      upload = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        default = {
+          fileSizeLimitMB = "1000";
+          syncEncryptedFileSizeLimitMB = "1000";
+        };
+        description = "Upload configuration";
+      };
     };
   };
 
@@ -49,6 +62,8 @@ in
       inherit (cfg) hostname port;
       serverFiles = "${dataDir}/server-files";
       userFiles = "${dataDir}/user-files";
+      https = cfg.https;
+      upload = cfg.upload;
     };
 
     users.users."${cfg.user}" = {
@@ -88,3 +103,4 @@ in
     };
   };
 }
+    
