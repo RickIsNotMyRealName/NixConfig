@@ -24,6 +24,11 @@ in
         default = 5006;
         description = "Port to bind to";
       };
+      openFirewall = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Open the firewall for the server";
+      };
       user = lib.mkOption {
         type = lib.types.str;
         default = "actual";
@@ -77,5 +82,9 @@ in
       mkdir -p ${dataDir}/user-files
       chown -R ${cfg.user}:${cfg.group} ${dataDir}
     '';
+
+    networking.firewall = lib.mkIf cfg.openFirewall {
+      allowedTCPPorts = [ cfg.port ];
+    };
   };
 }
