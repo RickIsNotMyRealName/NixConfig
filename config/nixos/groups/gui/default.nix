@@ -3,7 +3,6 @@
   imports = [
     # System hyprland
     ../../config/hyprland/default.nix
-    ../../config/nextcloud-client/default.nix
   ];
 
   environment.systemPackages = with pkgs; [

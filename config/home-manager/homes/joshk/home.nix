@@ -58,6 +58,9 @@
     # Libre Office
     ../../config/libre-office/default.nix
 
+    # Nextcloud Client
+    ../../config/nextcloud-client/default.nix
+
   ] ++ (builtins.attrValues outputs.homeModules)
   ++ (builtins.attrValues inputs.NixVirt.homeModules);
 
