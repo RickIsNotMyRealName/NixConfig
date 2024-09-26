@@ -220,7 +220,7 @@
     "col.nogroup_border" = "$color13";
     "col.nogroup_border_active" = "$color10";
     # "cursor_inactive_timeout" = "0";
-    "layout" = "master";
+    "layout" = "dwindle";
     # "no_cursor_warps" = "true";
     "no_focus_fallback" = "true";
     # "apply_sens_to_raw" = "false";
@@ -230,7 +230,10 @@
     "allow_tearing" = "true";
   };
 
-  dwindle = { };
+  dwindle = {
+    pseudotile = true;
+    preserve_split = true;
+  };
 
   master = { };
 
