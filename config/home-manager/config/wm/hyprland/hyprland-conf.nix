@@ -433,6 +433,7 @@
     "stayfocused, initialclass:^(wofi)$"
     # dimaround all windows with the class "wofi"
     "dimaround, initialclass:^(wofi)$"
+    "suppressevent maximize, class:*"
   ];
 
   # every reload
