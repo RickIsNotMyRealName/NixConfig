@@ -452,4 +452,9 @@
     # "[workspace 9 silent] google-chrome-stable --app=https://chat.openai.com"
     # "[workspace 0 silent] google-chrome-stable --app=https://calendar.google.com"
   ];
+
+  misc = {
+    force_default_wallpaper = 1;
+    disable_hyprland_logo = true;
+  };
 }
