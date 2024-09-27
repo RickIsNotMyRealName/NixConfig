@@ -6,7 +6,7 @@
     ../../config/nvidia/default.nix
     ../../config/open-webui/default.nix
     ../../config/comfyui/default.nix
-    ../../config/wireguard-client/default.nix
+    # ../../config/wireguard-client/default.nix
   ];
 
 
@@ -21,7 +21,7 @@
 
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   # networking.nameservers = [ "192.168.1.12" ];
-  networking.wg-quick.interfaces.wg0.address = [ "10.0.0.3/32" ];
+  # networking.wg-quick.interfaces.wg0.address = [ "10.0.0.3/32" ];
 
   hardware.bluetooth = {
     enable = true;

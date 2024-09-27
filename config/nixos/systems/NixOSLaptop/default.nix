@@ -5,7 +5,7 @@
 
     # ../../config/syncthing/default.nix
     ../../config/wireless/default.nix
-    ../../config/wireguard-client/default.nix
+    # ../../config/wireguard-client/default.nix
   ];
 
 
@@ -30,7 +30,7 @@
 
   networking.nameservers = [ "1.0.0.1" "1.1.1.1" ];
   # networking.nameservers = [ "192.168.1.12" ];
-  networking.wg-quick.interfaces.wg0.address = [ "10.0.0.4/32" ];
+  # networking.wg-quick.interfaces.wg0.address = [ "10.0.0.4/32" ];
 
   hardware.bluetooth = {
     enable = true; # enables support for Bluetooth
