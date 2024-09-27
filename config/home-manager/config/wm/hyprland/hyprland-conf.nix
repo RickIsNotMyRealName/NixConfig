@@ -434,7 +434,10 @@
     "stayfocused, initialclass:^(wofi)$"
     # dimaround all windows with the class "wofi"
     "dimaround, initialclass:^(wofi)$"
+
     "suppressevent maximize, class:*"
+    # Make all windows with the title "Qalculate!" be floating
+    "float, title:^(Qalculate!)$"
   ];
 
   # every reload
