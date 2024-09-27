@@ -71,7 +71,10 @@
       thefuck
       calibre
       prismlauncher
+       
       obsidian
+      nodejs
+      
       discord
       bibletime
       qalculate-gtk
