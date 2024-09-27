@@ -130,5 +130,12 @@ with pkgs.vscode-extensions; [
     version = "0.94.0";
     sha256 = "sha256-3ReTBDZFdx62AXIxi39scxLUY83HclpeOtP9bdq+K5U=";
   }
+  # eamodio.gitlens
+  {
+    name = "gitlens";
+    publisher = "eamodio";
+    version = "15.5.1";
+    sha256 = "sha256-tzBjS92TDqC+2srj6LZd8SSPNQTEDpHM5H9/gy7K7z8=";
+  }
 
 ]
