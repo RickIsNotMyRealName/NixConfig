@@ -7,6 +7,7 @@
     ../../config/open-webui/default.nix
     ../../config/comfyui/default.nix
     # ../../config/wireguard-client/default.nix
+    ../../config/ollama/default.nix
   ];
 
 
@@ -83,17 +84,7 @@
     unstable.local-ai
   ];
 
-  services.ollama = {
-    enable = true;
-    package = pkgs.unstable.ollama;
-    acceleration = "cuda";
-    environmentVariables = {
-      # OLLAMA_LLM_LIBRARY = "cuda_v12";
-      OLLAMA_CUDA_LIBRARY = "cuda_v11";
-      OLLAMA_HOST = "0.0.0.0";
-    };
-    listenAddress = "0.0.0.0:11434";
-  };
+  
   # Open port 11434
   networking.firewall.allowedTCPPorts = [ 11434 ];
 
