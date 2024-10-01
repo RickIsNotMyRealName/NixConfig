@@ -11,7 +11,7 @@ in
   # Define the user who owns the keyfile, defaulting to "root"
   options.myConfig.keyFileUserName = lib.mkOption {
     type = lib.types.str;
-    default = "root";  # Added a default value
+    default = "root"; # Added a default value
     description = "The user who has the keyfile that can decrypt the secrets when building the system.";
   };
 
@@ -49,10 +49,12 @@ in
       };
 
       # Use lib.mapAttrs to correctly transform the attribute set
-      secrets = lib.mapAttrs (secretName: secretConfig: {
-        owner = secretConfig.owner or cfg.keyFileUserName;
-        path = "${secretConfig.path or "/run/secrets"}/${secretName}";
-      }) cfg.secrets;
+      secrets = lib.mapAttrs
+        (secretName: secretConfig: {
+          owner = secretConfig.owner or cfg.keyFileUserName;
+          path = "${secretConfig.path or "/run/secrets"}/${secretName}";
+        })
+        cfg.secrets;
     };
   };
 }

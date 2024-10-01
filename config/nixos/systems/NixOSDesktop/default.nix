@@ -84,7 +84,7 @@
     unstable.local-ai
   ];
 
-  
+
   # Open port 11434
   networking.firewall.allowedTCPPorts = [ 11434 ];
 

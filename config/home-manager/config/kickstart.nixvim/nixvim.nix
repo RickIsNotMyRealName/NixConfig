@@ -36,27 +36,27 @@
   ];
 
   /*
-  =====================================================================
-  ==================== READ THIS BEFORE CONTINUING ====================
-  =====================================================================
-  ========                                    .-----.          ========
-  ========         .----------------------.   | === |          ========
-  ========         |.-""""""""""""""""""-.|   |-----|          ========
-  ========         ||                    ||   | === |          ========
-  ========         ||  KICKSTART.NIXVIM  ||   |-----|          ========
-  ========         ||                    ||   | === |          ========
-  ========         ||                    ||   |-----|          ========
-  ========         ||:Tutor              ||   |:::::|          ========
-  ========         |'-..................-'|   |____o|          ========
-  ========         `"")----------------(""`   ___________      ========
-  ========        /::::::::::|  |::::::::::\  \ no mouse \     ========
-  ========       /:::========|  |==hjkl==:::\  \ required \    ========
-  ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
-  ========                                                     ========
-  =====================================================================
-  =====================================================================
+    =====================================================================
+    ==================== READ THIS BEFORE CONTINUING ====================
+    =====================================================================
+    ========                                    .-----.          ========
+    ========         .----------------------.   | === |          ========
+    ========         |.-""""""""""""""""""-.|   |-----|          ========
+    ========         ||                    ||   | === |          ========
+    ========         ||  KICKSTART.NIXVIM  ||   |-----|          ========
+    ========         ||                    ||   | === |          ========
+    ========         ||                    ||   |-----|          ========
+    ========         ||:Tutor              ||   |:::::|          ========
+    ========         |'-..................-'|   |____o|          ========
+    ========         `"")----------------(""`   ___________      ========
+    ========        /::::::::::|  |::::::::::\  \ no mouse \     ========
+    ========       /:::========|  |==hjkl==:::\  \ required \    ========
+    ========      '""""""""""""'  '""""""""""""'  '""""""""""'   ========
+    ========                                                     ========
+    =====================================================================
+    =====================================================================
 
-  What is Kickstart.nixvim?
+    What is Kickstart.nixvim?
 
     Kickstart.nixvim is a starting point for your own configuration.
       The goal is that you can read every line of code, top-to-bottom, understand
@@ -70,7 +70,7 @@
         - https://learnxinyminutes.com/docs/nix/
         - https://learnxinyminutes.com/docs/lua/
 
-  Kickstart.nixvim Guide:
+    Kickstart.nixvim Guide:
 
     TODO: The very first thing you should do is to run the command `:Tutor` in Neovim.
 
@@ -105,12 +105,12 @@
       Feel free to delete them once you know what you're doing, but they should serve as a guide
       for when you are first encountering a few different constructs in your Nixvim Neovim config.
 
-  If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
+    If you experience any errors while trying to install kickstart, run `:checkhealth` for more info.
 
-  I hope you enjoy your Neovim journey,
-  - JMartJonesy
+    I hope you enjoy your Neovim journey,
+    - JMartJonesy
 
-  P.S. You can delete this when you're done too. It's your config now! :)
+    P.S. You can delete this when you're done too. It's your config now! :)
   */
   programs.nixvim = {
     enable = true;
@@ -318,7 +318,7 @@
       #  Try it with `yap` in normal mode
       #  See `:help vim.highlight.on_yank()`
       {
-        event = ["TextYankPost"];
+        event = [ "TextYankPost" ];
         desc = "Highlight when yanking (copying) text";
         group = "kickstart-highlight-yank";
         callback.__raw = ''
