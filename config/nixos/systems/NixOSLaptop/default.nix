@@ -6,6 +6,7 @@
     # ../../config/syncthing/default.nix
     ../../config/wireless/default.nix
     # ../../config/wireguard-client/default.nix
+    ../../config/ollama/default.nix
   ];
 
 
