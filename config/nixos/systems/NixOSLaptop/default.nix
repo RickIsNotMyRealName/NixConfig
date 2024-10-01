@@ -7,6 +7,7 @@
     ../../config/wireless/default.nix
     # ../../config/wireguard-client/default.nix
     ../../config/ollama/default.nix
+    ../../config/nvidia/default.nix
   ];
 
 
@@ -42,5 +43,15 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
+
+  hardware.nvidia.prime = {
+    # Make sure to use the correct Bus ID values for your system!
+    intelBusId = "PCI:0:2:0";
+    nvidiaBusId = "PCI:1:0:0";
+    offload = {
+      enable = true;
+      enableOffloadCmd = true;
+    };
+  };
 
 }
