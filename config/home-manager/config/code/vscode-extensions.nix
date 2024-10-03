@@ -137,5 +137,12 @@ with pkgs.vscode-extensions; [
     version = "15.5.1";
     sha256 = "sha256-tzBjS92TDqC+2srj6LZd8SSPNQTEDpHM5H9/gy7K7z8=";
   }
+  #Tanvir.ollama-modelfile
+  {
+    name = "ollama-modelfile";
+    publisher = "Tanvir";
+    version = "1.5.0";
+    sha256 = "sha256-diuHE+rcrEWi6+5gDdk055Uck4wdWesGpREZJNGd4JM=";
+  }
 
 ]
