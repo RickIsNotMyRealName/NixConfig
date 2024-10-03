@@ -200,7 +200,6 @@
 
   env = [
     "GTK_THEME=Nord"
-    "WLR_DRM_NO_ATOMIC,1"
     "XDG_SESSION_TYPE,wayland"
     "XDG_SESSION_DESKTOP,Hyprland"
   ];
