@@ -438,6 +438,8 @@
     "suppressevent maximize, class:*"
     # Make all windows with the title "Qalculate!" be floating
     "float, title:^(Qalculate!)$"
+    # Make all windows with the title "LLMTest2" be floating
+    "float, title:^(LLMTest2)$"
   ];
 
   # every reload
