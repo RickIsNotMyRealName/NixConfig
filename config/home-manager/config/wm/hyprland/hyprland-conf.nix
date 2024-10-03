@@ -192,10 +192,7 @@
   "$superMod" = "SUPER_SHIFT";
   "$winKey" = "SUPER";
   "$terminal" = "alacritty";
-  "$menu" = "wofi --show=drun --matching fuzzy --normal-window";
-  # "$menu" = "rofi -show drun -show-icons";
-  # "$launcher" = "wofi --show=run";
-  # "$launcher" = "rofi -show drun -show-icons";
+  "$menu" = "rofi -show drun -show-icons";
   "$opacityActive" = "1";
   "$opacityInactive" = "1";
   "$opacityFullscreen" = "1";
