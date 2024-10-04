@@ -193,6 +193,7 @@
   "$winKey" = "SUPER";
   "$terminal" = "alacritty";
   "$menu" = "rofi -show drun -show-icons";
+  "$menuFile" = "rofi -show filebrowser -show-icons";
   "$opacityActive" = "1";
   "$opacityInactive" = "1";
   "$opacityFullscreen" = "1";
@@ -313,7 +314,12 @@
   bind = [
     "$mod, RETURN, exec, foot"
     "SUPER_SHIFT, Q, killactive"
+    # Application launcher
     "$mod, D, exec, $menu"
+    # File picker
+    "$mod, E, exec, $menuFile"
+
+
     "$mod, L, exec, hyprlock"
 
     "$mod, 1, workspace, 1"
