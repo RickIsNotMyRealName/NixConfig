@@ -82,6 +82,11 @@
 
     unstable.gamescope
     unstable.local-ai
+
+    # llama-cpp with gpu support
+    (unstable.llama-cpp.override {
+      cudaSupport = true;
+    })
   ];
 
 
