@@ -8,6 +8,7 @@
     ../../config/comfyui/default.nix
     # ../../config/wireguard-client/default.nix
     ../../config/ollama/default.nix
+    ../../config/actual-server/default.nix
   ];
 
 
