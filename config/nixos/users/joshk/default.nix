@@ -15,7 +15,7 @@
     package = pkgs.unstable.nh;
     clean.enable = true;
     clean.extraArgs = "--keep-since 4d --keep 3";
-    flake = "/mnt/NixConfig";
+    flake = "/home/joshk/NixConfig/";
   };
 
   users.extraGroups.vboxusers.members = [ "joshk" ];
