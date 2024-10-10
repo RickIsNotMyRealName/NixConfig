@@ -38,7 +38,7 @@
       backend = "docker";
       containers = {
         comfyui-cu124-mega = {
-          autoStart = true;
+          autoStart = false;
           image = "yanwk/comfyui-boot:cu124-megapak";
           ports = [ "8188:8188" ];
           volumes = [ "${config.users.users.joshk.home}/comfyui-storage:/root/" ];
