@@ -3,7 +3,7 @@
 
   services.open-webui = {
     enable = true;
-    package = pkgs.unstable.open-webui;
+    package = pkgs.open-webui; # TODO: Switch back to unstable once it's missing dependencies are fixed
     openFirewall = true;
     host = "0.0.0.0";
     environment = {
