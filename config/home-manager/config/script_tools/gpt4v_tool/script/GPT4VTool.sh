@@ -150,7 +150,7 @@ fi
 payload_file=$(mktemp)
 cat >"$payload_file" <<EOM
 {
-  "model": "gpt-4-vision-preview",
+  "model": "gpt-4o",
   "messages": [
     {
       "role": "user",
